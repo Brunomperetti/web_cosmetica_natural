@@ -4,10 +4,9 @@
   .story__layout { gap: 4rem; }
   .visual-placeholder--story { min-height: 36rem; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .wholesale-teaser__layout, .wholesale-hero__layout { gap: 3rem; }
+  .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-value__layout { gap: 3rem; }
   .wholesale-visual { min-height: 29rem; }
   .wholesale-visual--hero { min-height: 33rem; }
-  .wholesale-section-layout { gap: 4rem; }
 }
 
 @media (max-width: 48rem) {
@@ -37,16 +36,21 @@
   .section-heading--split { display: block; }
   .section-heading--split .text-link { margin-top: 1rem; }
   .product-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-  .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-section-layout { grid-template-columns: 1fr; }
+  .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-value__layout { grid-template-columns: 1fr; }
   .wholesale-teaser__layout { gap: 3rem; }
   .wholesale-teaser__content { padding-block: 0; }
   .wholesale-visual, .wholesale-visual--hero { min-height: min(112vw, 32rem); }
   .wholesale-hero__layout { min-height: auto; gap: 1.25rem; padding-bottom: 2.5rem; }
   .wholesale-hero__content { padding-block: 4.5rem 2rem; }
   .wholesale-hero__content h1 { font-size: clamp(3.35rem, 15vw, 5rem); }
-  .wholesale-section-layout { gap: 2rem; }
+  .wholesale-audience header { margin-bottom: 2.5rem; }
+  .wholesale-lines { grid-template-columns: 1fr; }
+  .wholesale-lines li, .wholesale-lines li:first-child { min-height: 0; padding: 1.75rem 0; border-top: 1px solid var(--color-border); border-left: 0; }
+  .wholesale-lines li:first-child { border-top: 0; }
+  .wholesale-lines h3 { margin-top: .65rem; }
+  .wholesale-value__layout { gap: 3rem; }
   .wholesale-values { grid-template-columns: 1fr; }
-  .wholesale-lines li { min-height: 6.5rem; }
+  .wholesale-visual--detail { min-height: min(105vw, 30rem); }
   .story__layout { grid-template-columns: 1fr; gap: 0; }
   .visual-placeholder--story { min-height: min(115vw, 34rem); }
   .story__content { padding-block: 4.5rem; }

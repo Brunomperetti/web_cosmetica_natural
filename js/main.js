@@ -7,8 +7,14 @@ document.querySelectorAll("[data-current-year]").forEach((element) => {
 // Las fotografías se revelan únicamente después de cargar. Si el archivo aún no
 // existe, el atributo hidden conserva el placeholder editorial del contenedor.
 document.querySelectorAll("[data-local-photo]").forEach((image) => {
-  const revealImage = () => { image.hidden = false; };
-  const keepFallback = () => { image.hidden = true; };
+  const revealImage = () => {
+    image.hidden = false;
+    image.parentElement?.classList.add("has-photo");
+  };
+  const keepFallback = () => {
+    image.hidden = true;
+    image.parentElement?.classList.remove("has-photo");
+  };
 
   image.addEventListener("load", revealImage);
   image.addEventListener("error", keepFallback);
