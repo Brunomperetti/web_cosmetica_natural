@@ -5,6 +5,7 @@
   --color-mauve: #e8d2e4;
   --color-cream: #fbf8fc;
   --color-text: #5a4964;
+  --color-hero-heading: #574660;
   --color-text-secondary: #7b6a86;
   --color-border: #e7dded;
   --color-primary-deep: #71547f;
@@ -61,12 +62,12 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 .hero { background: var(--color-ivory); }
 .hero__layout { position: relative; display: grid; width: 100%; height: clamp(40rem, 74vh, 46rem); align-items: center; overflow: hidden; }
 .hero__layout::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgba(247,243,248,.94) 0%, rgba(248,244,249,.82) 24%, rgba(250,247,250,.48) 39%, rgba(250,247,250,.12) 58%, transparent 72%); content: ""; pointer-events: none; }
-.hero__content { position: relative; z-index: 2; width: min(37%, 31rem); margin-left: clamp(3rem, 8.5vw, 9.5rem); padding-block: 2rem; transform: translateY(-.5rem); }
+.hero__content { position: relative; z-index: 2; width: min(37%, 31rem); margin-left: clamp(3rem, 8.5vw, 9.5rem); padding-block: 2rem; transform: translateY(1rem); }
 .hero__content .eyebrow { margin-bottom: 1.65rem; letter-spacing: .17em; }
-.hero__content h1 { margin-bottom: 2rem; font-size: clamp(3.8rem, 5.4vw, 5.8rem); line-height: 1.01; }
+.hero__content h1 { max-width: 27rem; margin-bottom: 2rem; color: var(--color-hero-heading); font-size: clamp(3.8rem, 5.4vw, 5.8rem); line-height: 1; text-wrap: balance; }
 .hero__text { max-width: 24rem; margin-bottom: 2.75rem; color: var(--color-taupe); font-size: var(--text-md); line-height: 1.85; }
-.hero .button { padding: .9rem 1.75rem; letter-spacing: .12em; box-shadow: 0 .6rem 1.5rem rgba(90,73,100,.09); }
-.hero .button:hover { background: #654a72; box-shadow: 0 .8rem 1.75rem rgba(90,73,100,.13); transform: translateY(-1px); }
+.hero .button { padding: .78rem 1.85rem; letter-spacing: .12em; box-shadow: 0 .5rem 1.25rem rgba(90,73,100,.08); }
+.hero .button:hover { background: #6d517b; box-shadow: 0 .55rem 1.35rem rgba(90,73,100,.09); transform: none; }
 .button { display: inline-block; padding: 1.05rem 1.9rem; background: var(--color-primary-deep); color: var(--color-cream); font-size: var(--text-sm); font-weight: 500; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; box-shadow: 0 .75rem 2rem rgba(90,73,100,.12); transition: background .25s ease, box-shadow .25s ease, transform .25s ease; }
 .button:hover { background: var(--color-text); box-shadow: 0 1rem 2.25rem rgba(90,73,100,.18); transform: translateY(-2px); }
 .visual-placeholder { position: relative; min-height: 36rem; overflow: hidden; background: var(--color-blush); }
