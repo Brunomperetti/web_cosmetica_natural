@@ -149,13 +149,17 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 }
 .media-frame__image { object-position: var(--image-position, center); }
 .category__photo { object-position: var(--image-position, center); }
-.product-card__image { object-position: var(--image-position, center); }
+.product-card__image {
+  box-sizing: border-box;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  object-fit: contain;
+  object-position: var(--image-position, center);
+}
 .instagram__item { position: relative; overflow: hidden; }
 .instagram__photo { object-position: center; }
 .media-frame__image[hidden],
 .category__photo[hidden],
 .instagram__photo[hidden],
 .product-card__image[hidden] { display: none; }
-.product-card__visual:has(.product-card__image:not([hidden])) .product-card__shape { visibility: hidden; }
 .product-card__price--pending { color: var(--color-taupe); }
 .page-heading > p { max-width: 42rem; font-size: var(--text-md); color: var(--color-taupe); }
