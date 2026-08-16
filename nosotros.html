@@ -4,15 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Información sobre nuestra marca de cosmética natural.">
-  <title>Nosotros | Cosmética Natural</title>
+  <title>Nosotros | Luzia Cosmética Natural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container site-header__content">
-      <a class="site-logo" href="index.html">Cosmética Natural</a>
-      <nav class="site-nav" aria-label="Navegación principal">
+      <a class="site-logo" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation"><span class="menu-toggle__label">Menú</span><span class="menu-toggle__lines" aria-hidden="true"></span></button>
+      <nav class="site-nav" id="main-navigation" aria-label="Navegación principal">
         <ul class="site-nav__list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="productos.html">Productos</a></li>
@@ -31,7 +35,8 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container"><p>&copy; <span data-current-year></span> Cosmética Natural.</p></div>
+    <div class="container site-footer__main"><a class="site-logo site-logo--footer" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a></div>
+    <div class="container site-footer__bottom"><p>&copy; <span data-current-year></span> Luzia Cosmética Natural</p><p>Hecho con cuidado</p></div>
   </footer>
   <script src="js/main.js"></script>
 </body>
