@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Jabón facial de caléndula",
+    "categoria": "Limpieza facial",
+    "descripcion": "Producto ficticio de prueba para una limpieza suave.",
+    "precio": 8500
+  },
+  {
+    "id": 2,
+    "nombre": "Crema corporal de lavanda",
+    "categoria": "Cuidado corporal",
+    "descripcion": "Producto ficticio de prueba para hidratar la piel.",
+    "precio": 12000
+  },
+  {
+    "id": 3,
+    "nombre": "Bálsamo labial de cacao",
+    "categoria": "Cuidado labial",
+    "descripcion": "Producto ficticio de prueba para proteger los labios.",
+    "precio": 4800
+  }
+]
