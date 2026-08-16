@@ -22,6 +22,17 @@ document.querySelectorAll("[data-local-photo]").forEach((image) => {
   if (image.complete) {
     image.naturalWidth > 0 ? revealImage() : keepFallback();
   }
+
+  // Cuando hay una versión WebP disponible, se valida antes de reemplazar el
+  // JPG. Así un WebP ausente nunca provoca un icono roto ni altera el fallback.
+  const preferredSource = image.dataset.preferredSrc;
+  if (preferredSource) {
+    const preferredImage = new Image();
+    preferredImage.addEventListener("load", () => {
+      image.src = preferredSource;
+    });
+    preferredImage.src = preferredSource;
+  }
 });
 
 const menuToggle = document.querySelector(".menu-toggle");

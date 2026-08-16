@@ -1,6 +1,7 @@
 @media (max-width: 60rem) {
   .hero__layout { grid-template-columns: .9fr 1.1fr; gap: 3rem; }
   .visual-placeholder { min-height: 31rem; }
+  .hero__visual { min-height: 0; }
   .story__layout { gap: 4rem; }
   .visual-placeholder--story { min-height: 36rem; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -29,7 +30,7 @@
   .hero__content { padding-block: 4.5rem 2rem; }
   h1 { font-size: clamp(3.35rem, 16vw, 5.2rem); line-height: 1; }
   h2 { font-size: clamp(2.55rem, 12vw, 3.5rem); line-height: 1.08; }
-  .hero__visual { min-height: min(118vw, 34rem); }
+  .hero__visual { min-height: 0; aspect-ratio: 16 / 10; }
   .category-grid { grid-template-columns: 1fr; gap: 3.5rem; }
   .category__image { height: min(120vw, 32rem); }
   .category:nth-child(2) .category__image { height: min(105vw, 29rem); }
