@@ -99,6 +99,46 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 .product-card__price { margin: 0; font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
 .loading-message { grid-column: 1 / -1; text-align: center; }
 
+/* Mayoristas: una extensión editorial de la identidad visual existente. */
+.wholesale-teaser { background: var(--color-warm-white); }
+.wholesale-teaser__layout { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
+.wholesale-teaser__content { max-width: 31rem; padding-block: 2rem; }
+.wholesale-teaser__content h2 { font-size: clamp(2.8rem, 4.5vw, 4.4rem); }
+.wholesale-teaser__content > p:not(.eyebrow),
+.wholesale-hero__content > p:not(.eyebrow),
+.wholesale-conditions__content > p:not(.eyebrow),
+.wholesale-contact__content > p:not(.eyebrow) { margin-bottom: 2.25rem; color: var(--color-taupe); font-size: var(--text-md); }
+.wholesale-visual { position: relative; min-height: 34rem; overflow: hidden; background: linear-gradient(145deg, #eee3f2, var(--color-lavender)); }
+.wholesale-visual__arch { position: absolute; inset: 15% 24% 0; border: 1px solid rgba(251,248,252,.8); border-radius: 50% 50% 0 0; background: rgba(251,248,252,.2); }
+.wholesale-visual__word { position: absolute; top: 47%; left: 50%; color: rgba(113,84,127,.2); font-family: var(--font-serif); font-size: clamp(5rem, 10vw, 9rem); font-style: italic; line-height: 1; transform: translate(-50%, -50%); }
+.wholesale-visual__leaf { position: absolute; width: 10rem; height: 3.5rem; border: 1px solid rgba(113,84,127,.18); border-radius: 100% 0 100% 0; transform: rotate(-42deg); }
+.wholesale-visual__leaf--one { right: -1.5rem; bottom: 14%; }
+.wholesale-visual__leaf--two { top: 16%; left: -3rem; transform: rotate(138deg) scale(.72); }
+
+.wholesale-hero { background: var(--color-ivory); }
+.wholesale-hero__layout { display: grid; min-height: min(44rem, calc(100vh - 8.75rem)); grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); padding-bottom: clamp(4rem, 7vw, 7rem); }
+.wholesale-hero__content { max-width: 35rem; padding-block: 4rem; }
+.wholesale-hero__content h1 { font-size: clamp(3.75rem, 6.5vw, 6rem); }
+.wholesale-visual--hero { min-height: 37rem; }
+.wholesale-section-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 9vw, 9rem); }
+.wholesale-section-layout header { max-width: 29rem; }
+.wholesale-section-layout h2 { font-size: clamp(2.7rem, 4vw, 3.8rem); }
+.wholesale-lines, .wholesale-values { margin: 0; padding: 0; list-style: none; }
+.wholesale-lines li { display: grid; min-height: 7rem; grid-template-columns: 3rem 1fr; align-items: center; gap: 1rem; border-top: 1px solid var(--color-border); }
+.wholesale-lines li:last-child { border-bottom: 1px solid var(--color-border); }
+.wholesale-lines span { color: var(--color-primary); font-family: var(--font-serif); font-style: italic; }
+.wholesale-lines h3 { margin: 0; font-size: clamp(1.75rem, 3vw, 2.5rem); }
+.wholesale-value { background: var(--color-ivory); }
+.wholesale-values { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; counter-reset: values; }
+.wholesale-values li { position: relative; min-height: 7rem; padding: 2rem 0 1.5rem 2.5rem; border-top: 1px solid var(--color-border); font-family: var(--font-serif); font-size: clamp(1.45rem, 2.2vw, 1.9rem); line-height: 1.25; counter-increment: values; }
+.wholesale-values li::before { position: absolute; top: 2.15rem; left: 0; color: var(--color-primary); font-family: var(--font-serif); font-size: var(--text-sm); font-style: italic; content: "0" counter(values); }
+.wholesale-conditions { background: var(--color-mauve); text-align: center; }
+.wholesale-conditions__content { max-width: 46rem; margin-inline: auto; }
+.wholesale-conditions__content > p:not(.eyebrow) { max-width: 39rem; margin-inline: auto; }
+.wholesale-contact { text-align: center; }
+.wholesale-contact__content { max-width: 48rem; margin-inline: auto; }
+.wholesale-contact__content > p:not(.eyebrow) { max-width: 40rem; margin-inline: auto; margin-bottom: 2.25rem; }
+
 .story { padding-block: 0; background: var(--color-warm-white); }
 .story__layout { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(3rem, 9vw, 9rem); }
 .visual-placeholder--story { min-height: 42rem; background: linear-gradient(150deg, var(--color-mauve), var(--color-lavender)); }
@@ -124,6 +164,7 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 .site-logo--footer { width: clamp(13rem, 22vw, 17rem); }
 .footer-nav a { font-size: var(--text-sm); letter-spacing: .08em; text-decoration: none; text-transform: uppercase; transition: opacity .2s ease; }
 .footer-nav a:hover { opacity: .55; }
+.footer-nav a[aria-current="page"] { border-bottom: 1px solid var(--color-primary); }
 .site-footer__bottom { display: flex; justify-content: space-between; padding-block: 1.25rem; border-top: 1px solid rgba(90,73,100,.15); color: var(--color-taupe); font-size: var(--text-xs); letter-spacing: .05em; text-transform: uppercase; }
 .site-footer p { margin: 0; }
 
