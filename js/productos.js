@@ -15,6 +15,17 @@ function crearTarjetaProducto(producto) {
   silueta.className = "product-card__shape";
   visual.append(silueta);
 
+  if (producto.imagen) {
+    const imagen = document.createElement("img");
+    imagen.className = "product-card__image";
+    imagen.alt = producto.nombre;
+    imagen.hidden = true;
+    imagen.addEventListener("load", () => { imagen.hidden = false; });
+    imagen.addEventListener("error", () => { imagen.remove(); });
+    imagen.src = producto.imagen;
+    visual.append(imagen);
+  }
+
   const nombre = document.createElement("h3");
   nombre.textContent = producto.nombre;
 
@@ -22,13 +33,9 @@ function crearTarjetaProducto(producto) {
   categoria.className = "product-card__category";
   categoria.textContent = producto.categoria;
 
-  const precio = document.createElement("p");
-  precio.className = "product-card__price";
-  precio.textContent = `$${producto.precio.toLocaleString("es-AR")}`;
-
   const informacion = document.createElement("div");
   informacion.className = "product-card__meta";
-  informacion.append(categoria, precio);
+  informacion.append(categoria);
 
   tarjeta.append(visual, nombre, informacion);
   return tarjeta;
