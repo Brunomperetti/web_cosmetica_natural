@@ -6,6 +6,15 @@ function crearTarjetaProducto(producto) {
   const tarjeta = document.createElement("article");
   tarjeta.className = "product-card";
 
+  const visual = document.createElement("div");
+  visual.className = "product-card__visual";
+  visual.setAttribute("role", "img");
+  visual.setAttribute("aria-label", `Imagen de ${producto.nombre}`);
+
+  const silueta = document.createElement("span");
+  silueta.className = "product-card__shape";
+  visual.append(silueta);
+
   const nombre = document.createElement("h3");
   nombre.textContent = producto.nombre;
 
@@ -13,14 +22,15 @@ function crearTarjetaProducto(producto) {
   categoria.className = "product-card__category";
   categoria.textContent = producto.categoria;
 
-  const descripcion = document.createElement("p");
-  descripcion.textContent = producto.descripcion;
-
   const precio = document.createElement("p");
   precio.className = "product-card__price";
   precio.textContent = `$${producto.precio.toLocaleString("es-AR")}`;
 
-  tarjeta.append(nombre, categoria, descripcion, precio);
+  const informacion = document.createElement("div");
+  informacion.className = "product-card__meta";
+  informacion.append(categoria, precio);
+
+  tarjeta.append(visual, nombre, informacion);
   return tarjeta;
 }
 
@@ -33,7 +43,8 @@ async function cargarProductos() {
     }
 
     const productos = await respuesta.json();
-    productosContainer.replaceChildren(...productos.map(crearTarjetaProducto));
+    const limite = Number(productosContainer.dataset.limit) || productos.length;
+    productosContainer.replaceChildren(...productos.slice(0, limite).map(crearTarjetaProducto));
   } catch (error) {
     console.error(error);
     productosContainer.textContent = "No fue posible cargar los productos.";
