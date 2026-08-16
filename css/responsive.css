@@ -33,7 +33,6 @@
   .section-heading--split { display: block; }
   .section-heading--split .text-link { margin-top: 1rem; }
   .product-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-  .product-card__visual { height: min(115vw, 32rem); }
   .story__layout { grid-template-columns: 1fr; gap: 0; }
   .visual-placeholder--story { min-height: min(115vw, 34rem); }
   .story__content { padding-block: 4.5rem; }
@@ -50,5 +49,4 @@
 
 @media (min-width: 48.0625rem) and (max-width: 64rem) {
   .category__image { height: 25rem; }
-  .product-card__visual { height: 25rem; }
 }

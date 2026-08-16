@@ -64,8 +64,11 @@ async function cargarProductos() {
     }
 
     const productos = await respuesta.json();
-    const limite = Number(productosContainer.dataset.limit) || productos.length;
-    productosContainer.replaceChildren(...productos.slice(0, limite).map(crearTarjetaProducto));
+    const seleccion = productosContainer.dataset.featured === "true"
+      ? productos.filter((producto) => producto.destacado)
+      : productos;
+    const limite = Number(productosContainer.dataset.limit) || seleccion.length;
+    productosContainer.replaceChildren(...seleccion.slice(0, limite).map(crearTarjetaProducto));
   } catch (error) {
     console.error(error);
     productosContainer.textContent = "No fue posible cargar los productos.";
