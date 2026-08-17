@@ -53,7 +53,7 @@ function crearTarjetaProducto(producto) {
 
   const llamada = document.createElement("span");
   llamada.className = "product-card__cta";
-  llamada.textContent = "Ver producto →";
+  llamada.textContent = "Ver producto";
   contenidoOverlay.append(llamada);
   overlay.append(contenidoOverlay);
   visual.append(overlay);
