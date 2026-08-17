@@ -40,17 +40,6 @@ function crearTarjetaProducto(producto) {
   const contenidoOverlay = document.createElement("div");
   contenidoOverlay.className = "product-card__overlay-content";
 
-  const descripcionCorta = typeof producto.descripcion === "string"
-    ? producto.descripcion.trim()
-    : "";
-
-  if (descripcionCorta) {
-    const descripcion = document.createElement("p");
-    descripcion.className = "product-card__description";
-    descripcion.textContent = descripcionCorta;
-    contenidoOverlay.append(descripcion);
-  }
-
   const llamada = document.createElement("span");
   llamada.className = "product-card__cta";
   llamada.textContent = "Ver producto";
