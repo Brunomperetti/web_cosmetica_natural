@@ -6,6 +6,11 @@ function crearTarjetaProducto(producto) {
   const tarjeta = document.createElement("article");
   tarjeta.className = "product-card";
 
+  const enlace = document.createElement("a");
+  enlace.className = "product-card__link";
+  enlace.href = `producto.html?slug=${encodeURIComponent(producto.slug)}`;
+  enlace.setAttribute("aria-label", `Ver ${producto.nombre}`);
+
   const visual = document.createElement("div");
   visual.className = "product-card__visual";
 
@@ -29,6 +34,36 @@ function crearTarjetaProducto(producto) {
     visual.append(imagen);
   }
 
+  const overlay = document.createElement("div");
+  overlay.className = "product-card__overlay";
+
+  const contenidoOverlay = document.createElement("div");
+  contenidoOverlay.className = "product-card__overlay-content";
+
+  const nombreOverlay = document.createElement("p");
+  nombreOverlay.className = "product-card__overlay-name";
+  nombreOverlay.textContent = producto.nombre;
+
+  const categoriaOverlay = document.createElement("p");
+  categoriaOverlay.className = "product-card__overlay-category";
+  categoriaOverlay.textContent = producto.categoria;
+
+  contenidoOverlay.append(nombreOverlay);
+
+  if (producto.descripcion) {
+    const descripcion = document.createElement("p");
+    descripcion.className = "product-card__description";
+    descripcion.textContent = producto.descripcion;
+    contenidoOverlay.append(descripcion);
+  }
+
+  const llamada = document.createElement("span");
+  llamada.className = "product-card__cta";
+  llamada.textContent = "Ver producto →";
+  contenidoOverlay.append(categoriaOverlay, llamada);
+  overlay.append(contenidoOverlay);
+  visual.append(overlay);
+
   const nombre = document.createElement("h3");
   nombre.textContent = producto.nombre;
 
@@ -51,8 +86,31 @@ function crearTarjetaProducto(producto) {
     informacion.append(precio);
   }
 
-  tarjeta.append(visual, nombre, informacion);
+  enlace.append(visual, nombre, informacion);
+  tarjeta.append(enlace);
   return tarjeta;
+}
+
+function observarEntradaTarjetas(tarjetas) {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    tarjetas.forEach((tarjeta) => tarjeta.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+      entrada.target.classList.add("is-visible");
+      observer.unobserve(entrada.target);
+    });
+  }, { threshold: 0.12 });
+
+  tarjetas.forEach((tarjeta, indice) => {
+    tarjeta.style.setProperty("--reveal-delay", `${Math.min(indice % 3, 2) * 70}ms`);
+    observer.observe(tarjeta);
+  });
 }
 
 async function cargarProductos() {
@@ -68,7 +126,9 @@ async function cargarProductos() {
       ? productos.filter((producto) => producto.destacado)
       : productos;
     const limite = Number(productosContainer.dataset.limit) || seleccion.length;
-    productosContainer.replaceChildren(...seleccion.slice(0, limite).map(crearTarjetaProducto));
+    const tarjetas = seleccion.slice(0, limite).map(crearTarjetaProducto);
+    productosContainer.replaceChildren(...tarjetas);
+    observarEntradaTarjetas(tarjetas);
   } catch (error) {
     console.error(error);
     productosContainer.textContent = "No fue posible cargar los productos.";
