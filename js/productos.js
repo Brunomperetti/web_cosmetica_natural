@@ -40,27 +40,21 @@ function crearTarjetaProducto(producto) {
   const contenidoOverlay = document.createElement("div");
   contenidoOverlay.className = "product-card__overlay-content";
 
-  const nombreOverlay = document.createElement("p");
-  nombreOverlay.className = "product-card__overlay-name";
-  nombreOverlay.textContent = producto.nombre;
+  const descripcionCorta = typeof producto.descripcion === "string"
+    ? producto.descripcion.trim()
+    : "";
 
-  const categoriaOverlay = document.createElement("p");
-  categoriaOverlay.className = "product-card__overlay-category";
-  categoriaOverlay.textContent = producto.categoria;
-
-  contenidoOverlay.append(nombreOverlay);
-
-  if (producto.descripcion) {
+  if (descripcionCorta) {
     const descripcion = document.createElement("p");
     descripcion.className = "product-card__description";
-    descripcion.textContent = producto.descripcion;
+    descripcion.textContent = descripcionCorta;
     contenidoOverlay.append(descripcion);
   }
 
   const llamada = document.createElement("span");
   llamada.className = "product-card__cta";
   llamada.textContent = "Ver producto →";
-  contenidoOverlay.append(categoriaOverlay, llamada);
+  contenidoOverlay.append(llamada);
   overlay.append(contenidoOverlay);
   visual.append(overlay);
 
