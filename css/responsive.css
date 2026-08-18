@@ -9,6 +9,7 @@
   .visual-placeholder--story { min-height: 36rem; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-value__layout { gap: 3rem; }
+  .wholesale-teaser__botanical { inset: 10% -7% 0 -9%; width: 116%; opacity: .8; }
   .wholesale-visual { min-height: 29rem; }
   .wholesale-visual--hero { min-height: 33rem; }
 }
@@ -46,6 +47,8 @@
   .product-grid { grid-template-columns: 1fr; gap: 3.5rem; }
   .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-value__layout { grid-template-columns: 1fr; }
   .wholesale-teaser__layout { gap: 3rem; }
+  .wholesale-teaser::before { inset: 2% -25% 8% -18%; background: radial-gradient(ellipse at 50% 58%, rgba(226,211,231,.16), transparent 69%); }
+  .wholesale-teaser__botanical { inset: 2% -48% auto -34%; width: 176%; height: 64%; opacity: .55; }
   .wholesale-teaser__content { padding-block: 0; }
   .wholesale-visual, .wholesale-visual--hero { min-height: min(112vw, 32rem); }
   .wholesale-teaser__visual { min-height: 0; aspect-ratio: 4 / 3; }
