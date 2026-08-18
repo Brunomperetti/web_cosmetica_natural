@@ -48,6 +48,7 @@
   .wholesale-teaser__layout { gap: 3rem; }
   .wholesale-teaser__content { padding-block: 0; }
   .wholesale-visual, .wholesale-visual--hero { min-height: min(112vw, 32rem); }
+  .wholesale-teaser__visual { min-height: 0; aspect-ratio: 4 / 3; }
   .wholesale-hero__layout { min-height: auto; gap: 1.25rem; padding-bottom: 2.5rem; }
   .wholesale-hero__content { padding-block: 4.5rem 2rem; }
   .wholesale-hero__content h1 { font-size: clamp(3.35rem, 15vw, 5rem); }

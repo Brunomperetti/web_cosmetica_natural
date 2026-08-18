@@ -118,6 +118,8 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 .wholesale-teaser__layout { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
 .wholesale-teaser__content { max-width: 31rem; padding-block: 2rem; }
 .wholesale-teaser__content h2 { font-size: clamp(2.8rem, 4.5vw, 4.4rem); }
+.wholesale-teaser__visual { background: none; }
+.wholesale-teaser__visual::after { display: none; }
 .wholesale-teaser__content > p:not(.eyebrow),
 .wholesale-hero__content > p:not(.eyebrow),
 .wholesale-conditions__content > p:not(.eyebrow),
