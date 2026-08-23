@@ -45,6 +45,18 @@
   .section-heading--split { display: block; }
   .section-heading--split .text-link { margin-top: 1rem; }
   .product-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .shop-catalog { padding-top: 4.5rem; padding-bottom: 7rem; }
+  .shop-heading { margin-bottom: 3.25rem; }
+  .shop-heading h1 { font-size: clamp(3.5rem, 17vw, 5rem); }
+  .shop-filters { width: calc(100% + 1.25rem); margin-bottom: 5rem; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .shop-filters::-webkit-scrollbar { display: none; }
+  .shop-filters__list { width: max-content; gap: 2rem; padding-right: 1.25rem; }
+  .shop-page .product-grid { gap: 4.5rem; }
+  .shop-collection + .shop-collection { margin-top: 7rem; }
+  .shop-collection__heading { margin-bottom: 2.5rem; }
+  .shop-collection__heading h2 { font-size: clamp(2.55rem, 12vw, 3.5rem); }
+  .shop-page .product-card__visual { aspect-ratio: 4 / 5; }
+  .shop-page .product-card__overlay { display: none; }
   .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-value__layout { grid-template-columns: 1fr; }
   .wholesale-teaser__layout { gap: 3rem; }
   .wholesale-teaser::before { inset: 45% -25% 4% 25%; background: radial-gradient(ellipse at center, rgba(226,211,231,.1), transparent 70%); }

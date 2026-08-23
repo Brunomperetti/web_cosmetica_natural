@@ -1,6 +1,9 @@
 "use strict";
 
 const productosContainer = document.querySelector("#productos-container");
+const filtros = [...document.querySelectorAll(".shop-filter")];
+const ordenCategorias = ["Facial", "Corporal", "Cabello", "Bienestar", "Jabones"];
+let temporizadorFiltro;
 
 function crearTarjetaProducto(producto) {
   const tarjeta = document.createElement("article");
@@ -40,6 +43,22 @@ function crearTarjetaProducto(producto) {
   const contenidoOverlay = document.createElement("div");
   contenidoOverlay.className = "product-card__overlay-content";
 
+  const microdatos = [
+    producto.beneficio,
+    Array.isArray(producto.beneficios) ? producto.beneficios.find(Boolean) : producto.beneficios,
+    producto.tipoPiel,
+    producto.tipoCabello,
+    producto.contenido,
+    producto.ingredienteProtagonista
+  ].filter((dato, indice, datos) => typeof dato === "string" && dato.trim() && datos.indexOf(dato) === indice).slice(0, 2);
+
+  microdatos.forEach((dato) => {
+    const detalle = document.createElement("p");
+    detalle.className = "product-card__microdata";
+    detalle.textContent = dato.trim();
+    contenidoOverlay.append(detalle);
+  });
+
   const llamada = document.createElement("span");
   llamada.className = "product-card__cta";
   llamada.textContent = "Ver producto";
@@ -72,6 +91,53 @@ function crearTarjetaProducto(producto) {
   enlace.append(visual, nombre, informacion);
   tarjeta.append(enlace);
   return tarjeta;
+}
+
+function crearColeccion(categoria, productos) {
+  const seccion = document.createElement("section");
+  seccion.className = "shop-collection";
+  seccion.dataset.category = categoria;
+
+  const encabezado = document.createElement("header");
+  encabezado.className = "shop-collection__heading";
+  const titulo = document.createElement("h2");
+  titulo.textContent = categoria === "Facial" ? "Cuidado facial" : categoria === "Corporal" ? "Cuidado corporal" : categoria;
+  encabezado.append(titulo);
+
+  const grilla = document.createElement("div");
+  grilla.className = "product-grid";
+  const tarjetas = productos.map(crearTarjetaProducto);
+  grilla.append(...tarjetas);
+  seccion.append(encabezado, grilla);
+  return { seccion, tarjetas };
+}
+
+function renderizarCatalogo(productos, categoria = "Todos") {
+  const tarjetas = [];
+  const fragmento = document.createDocumentFragment();
+
+  if (categoria === "Todos") {
+    ordenCategorias.forEach((nombreCategoria) => {
+      const productosCategoria = productos.filter((producto) => producto.categoria === nombreCategoria);
+      if (!productosCategoria.length) return;
+      const coleccion = crearColeccion(nombreCategoria, productosCategoria);
+      tarjetas.push(...coleccion.tarjetas);
+      fragmento.append(coleccion.seccion);
+    });
+  } else {
+    const grilla = document.createElement("div");
+    grilla.className = "product-grid product-grid--filtered";
+    const productosFiltrados = productos.filter((producto) => producto.categoria === categoria);
+    const nuevasTarjetas = productosFiltrados.map(crearTarjetaProducto);
+    tarjetas.push(...nuevasTarjetas);
+    grilla.append(...nuevasTarjetas);
+    fragmento.append(grilla);
+  }
+
+  productosContainer.classList.remove("is-changing");
+  productosContainer.replaceChildren(fragmento);
+  productosContainer.setAttribute("aria-busy", "false");
+  observarEntradaTarjetas(tarjetas);
 }
 
 function observarEntradaTarjetas(tarjetas) {
@@ -109,9 +175,27 @@ async function cargarProductos() {
       ? productos.filter((producto) => producto.destacado)
       : productos;
     const limite = Number(productosContainer.dataset.limit) || seleccion.length;
-    const tarjetas = seleccion.slice(0, limite).map(crearTarjetaProducto);
-    productosContainer.replaceChildren(...tarjetas);
-    observarEntradaTarjetas(tarjetas);
+    const productosVisibles = seleccion.slice(0, limite);
+
+    if (filtros.length && productosContainer.classList.contains("shop-collections")) {
+      renderizarCatalogo(productosVisibles);
+      filtros.forEach((filtro) => {
+        filtro.addEventListener("click", () => {
+          filtros.forEach((opcion) => {
+            const estaActivo = opcion === filtro;
+            opcion.classList.toggle("is-active", estaActivo);
+            opcion.setAttribute("aria-pressed", String(estaActivo));
+          });
+          productosContainer.classList.add("is-changing");
+          window.clearTimeout(temporizadorFiltro);
+          temporizadorFiltro = window.setTimeout(() => renderizarCatalogo(productosVisibles, filtro.dataset.category), 120);
+        });
+      });
+    } else {
+      const tarjetas = productosVisibles.map(crearTarjetaProducto);
+      productosContainer.replaceChildren(...tarjetas);
+      observarEntradaTarjetas(tarjetas);
+    }
   } catch (error) {
     console.error(error);
     productosContainer.textContent = "No fue posible cargar los productos.";

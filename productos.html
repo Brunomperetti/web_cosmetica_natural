@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
+<body class="shop-page">
   <header class="site-header">
     <div class="container site-header__content">
       <a class="site-logo" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a>
@@ -28,14 +28,24 @@
     </div>
   </header>
 
-  <main class="container page-content">
-    <header class="page-heading">
+  <main class="container page-content shop-catalog">
+    <header class="page-heading shop-heading">
       <h1>Productos</h1>
-      <p>Descubrí nuestra selección de cosmética natural. Las imágenes y la información definitiva se incorporarán progresivamente.</p>
+      <p>Descubrí nuestra selección de cosmética natural.</p>
     </header>
-    <section aria-labelledby="catalog-title">
+    <nav class="shop-filters" aria-label="Filtrar productos por categoría">
+      <div class="shop-filters__list" role="group" aria-label="Categorías">
+        <button class="shop-filter is-active" type="button" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="shop-filter" type="button" data-category="Facial" aria-pressed="false">Facial</button>
+        <button class="shop-filter" type="button" data-category="Corporal" aria-pressed="false">Corporal</button>
+        <button class="shop-filter" type="button" data-category="Cabello" aria-pressed="false">Cabello</button>
+        <button class="shop-filter" type="button" data-category="Bienestar" aria-pressed="false">Bienestar</button>
+        <button class="shop-filter" type="button" data-category="Jabones" aria-pressed="false">Jabones</button>
+      </div>
+    </nav>
+    <section class="shop-results" aria-labelledby="catalog-title">
       <h2 id="catalog-title" class="visually-hidden">Catálogo</h2>
-      <div id="productos-container" class="product-grid" aria-live="polite">
+      <div id="productos-container" class="shop-collections" aria-live="polite" aria-busy="true">
         <p>Cargando productos...</p>
       </div>
     </section>
