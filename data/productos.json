@@ -56,7 +56,7 @@
     "galeria": [],
     "ingredientes": [],
     "modoUso": "",
-    "destacado": false,
+    "destacado": true,
     "disponible": true
   },
   {
@@ -221,7 +221,7 @@
     "galeria": [],
     "ingredientes": [],
     "modoUso": "",
-    "destacado": true,
+    "destacado": false,
     "disponible": true
   },
   {
