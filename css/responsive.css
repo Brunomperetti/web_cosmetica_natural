@@ -40,8 +40,6 @@
   .hero__visual { position: relative; grid-row: 2; width: 100%; aspect-ratio: 4 / 3; margin: 0; }
   .hero__visual img { object-position: 61% center; }
   .category-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-  .category__image { height: min(120vw, 32rem); }
-  .category:nth-child(2) .category__image { height: min(105vw, 29rem); }
   .section-heading--split { display: block; }
   .section-heading--split .text-link { margin-top: 1rem; }
   .product-grid { grid-template-columns: 1fr; gap: 3.5rem; }
@@ -87,8 +85,4 @@
   .site-logo--footer { width: 14rem; }
   .footer-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 3rem; }
   .site-footer__bottom { flex-direction: column; gap: .25rem; }
-}
-
-@media (min-width: 48.0625rem) and (max-width: 64rem) {
-  .category__image { height: 25rem; }
 }
