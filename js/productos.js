@@ -5,6 +5,19 @@ const filtros = [...document.querySelectorAll(".shop-filter")];
 const ordenCategorias = ["Facial", "Corporal", "Cabello", "Bienestar", "Jabones"];
 let temporizadorFiltro;
 
+function obtenerCategoriaInicial() {
+  const categoriaSolicitada = new URLSearchParams(window.location.search).get("categoria");
+  return ordenCategorias.includes(categoriaSolicitada) ? categoriaSolicitada : "Todos";
+}
+
+function activarFiltro(categoria) {
+  filtros.forEach((filtro) => {
+    const estaActivo = filtro.dataset.category === categoria;
+    filtro.classList.toggle("is-active", estaActivo);
+    filtro.setAttribute("aria-pressed", String(estaActivo));
+  });
+}
+
 function crearTarjetaProducto(producto) {
   const tarjeta = document.createElement("article");
   tarjeta.className = "product-card";
@@ -178,14 +191,12 @@ async function cargarProductos() {
     const productosVisibles = seleccion.slice(0, limite);
 
     if (filtros.length && productosContainer.classList.contains("shop-collections")) {
-      renderizarCatalogo(productosVisibles);
+      const categoriaInicial = obtenerCategoriaInicial();
+      activarFiltro(categoriaInicial);
+      renderizarCatalogo(productosVisibles, categoriaInicial);
       filtros.forEach((filtro) => {
         filtro.addEventListener("click", () => {
-          filtros.forEach((opcion) => {
-            const estaActivo = opcion === filtro;
-            opcion.classList.toggle("is-active", estaActivo);
-            opcion.setAttribute("aria-pressed", String(estaActivo));
-          });
+          activarFiltro(filtro.dataset.category);
           productosContainer.classList.add("is-changing");
           window.clearTimeout(temporizadorFiltro);
           temporizadorFiltro = window.setTimeout(() => renderizarCatalogo(productosVisibles, filtro.dataset.category), 120);
