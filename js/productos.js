@@ -5,6 +5,10 @@ const filtros = [...document.querySelectorAll(".shop-filter")];
 const ordenCategorias = ["Facial", "Corporal", "Cabello", "Bienestar", "Jabones"];
 let temporizadorFiltro;
 
+function formatearPrecio(precio) {
+  return `$${precio.toLocaleString("es-AR", { maximumFractionDigits: 0 })}`;
+}
+
 function obtenerCategoriaInicial() {
   const categoriaSolicitada = new URLSearchParams(window.location.search).get("categoria");
   return ordenCategorias.includes(categoriaSolicitada) ? categoriaSolicitada : "Todos";
@@ -93,11 +97,7 @@ function crearTarjetaProducto(producto) {
   if (typeof producto.precio === "number" && Number.isFinite(producto.precio)) {
     const precio = document.createElement("p");
     precio.className = "product-card__price";
-    precio.textContent = producto.precio.toLocaleString("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      maximumFractionDigits: 0
-    });
+    precio.textContent = formatearPrecio(producto.precio);
     informacion.append(precio);
   }
 
