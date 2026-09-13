@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Completá tus datos y revisá tu pedido Luzia.">
+  <title>Finalizar pedido | Luzia Cosmética Natural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__content">
+      <a class="site-logo" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation"><span class="menu-toggle__label">Menú</span><span class="menu-toggle__lines" aria-hidden="true"></span></button>
+      <nav class="site-nav" id="main-navigation" aria-label="Navegación principal"><ul class="site-nav__list"><li><a href="index.html">Inicio</a></li><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav>
+      <a class="site-cart" href="carrito.html" aria-label="Ver carrito, 0 productos" data-cart-link><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 8V6a4.5 4.5 0 0 1 9 0v2M5 8h14l1 13H4L5 8Z"/></svg><span class="site-cart__badge" data-cart-count hidden>0</span></a>
+    </div>
+  </header>
+  <main class="container checkout-page">
+    <header class="checkout-heading"><p class="eyebrow">Un último paso</p><h1>Finalizar pedido</h1><p>Completá tus datos para preparar tu pedido.</p></header>
+    <div id="checkout-contenido" class="checkout-layout" aria-busy="true">
+      <form id="checkout-form" class="checkout-form" novalidate>
+        <section aria-labelledby="datos-title">
+          <h2 id="datos-title">Tus datos</h2>
+          <div class="checkout-fields">
+            <div class="form-field form-field--wide"><label for="nombre">Nombre y apellido <span aria-hidden="true">*</span></label><input id="nombre" name="nombre" type="text" required autocomplete="name" aria-describedby="nombre-error"><small id="nombre-error" class="field-error"></small></div>
+            <div class="form-field"><label for="telefono">Teléfono <span aria-hidden="true">*</span></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel" aria-describedby="telefono-error"><small id="telefono-error" class="field-error"></small></div>
+            <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error"><small id="email-error" class="field-error"></small></div>
+            <div class="form-field form-field--wide"><label for="localidad">Localidad <span aria-hidden="true">*</span></label><input id="localidad" name="localidad" type="text" required autocomplete="address-level2" aria-describedby="localidad-error"><small id="localidad-error" class="field-error"></small></div>
+            <div class="form-field form-field--wide"><label for="direccion">Dirección / punto de entrega</label><input id="direccion" name="direccion" type="text" autocomplete="street-address"></div>
+            <div class="form-field form-field--wide"><label for="notas">Notas del pedido</label><textarea id="notas" name="notas" rows="4"></textarea></div>
+          </div>
+        </section>
+        <fieldset class="delivery-options"><legend>Entrega</legend><label class="payment-option"><input type="radio" name="entrega" value="coordinar entrega"><span class="payment-option__copy"><strong>Coordinar entrega</strong></span></label><label class="payment-option"><input type="radio" name="entrega" value="retiro a coordinar"><span class="payment-option__copy"><strong>Retiro a coordinar</strong></span></label><p>El costo y las condiciones de entrega se coordinan una vez confirmado el pedido.</p></fieldset>
+        <p id="form-status" class="form-status" aria-live="assertive"></p>
+        <button class="button checkout-confirm" type="submit">Confirmar pedido</button>
+      </form>
+      <aside id="checkout-resumen" class="checkout-summary" aria-label="Resumen final del pedido"><p>Cargando tu pedido…</p></aside>
+    </div>
+    <section id="pedido-confirmado" class="order-ready" hidden aria-live="polite" aria-labelledby="pedido-listo-title"></section>
+  </main>
+  <footer class="site-footer"><div class="container site-footer__main"><a class="site-logo site-logo--footer" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a><nav aria-label="Navegación del pie de página"><ul class="footer-nav"><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div><div class="container site-footer__bottom"><p>&copy; <span data-current-year></span> Luzia Cosmética Natural</p><p>Hecho con cuidado</p></div></footer>
+  <script src="js/carrito-store.js"></script><script src="js/main.js"></script><script src="js/checkout.js"></script>
+</body>
+</html>

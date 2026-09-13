@@ -126,3 +126,19 @@
   .cart-item__price { grid-column: 2; text-align: left; }
   .cart-item__promotion { margin-left: 0; }
 }
+
+@media (max-width: 67rem) {
+  .checkout-layout { grid-template-columns: 1fr; }
+  .checkout-summary { position: static; }
+}
+
+@media (max-width: 48rem) {
+  .checkout-page { padding-block: 4rem 5rem; }
+  .checkout-heading { margin-bottom: 2.5rem; }
+  .checkout-fields { grid-template-columns: 1fr; }
+  .form-field--wide { grid-column: auto; }
+  .form-field input { min-height: 3.25rem; }
+  .checkout-confirm, .cart-summary__checkout { width: 100%; }
+  .checkout-product { grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: .75rem; }
+  .checkout-product img { width: 3.5rem; }
+}
