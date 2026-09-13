@@ -3,6 +3,22 @@
 const contenedorCarrito = document.querySelector("#carrito-contenido");
 const anuncioCarrito = document.querySelector("#carrito-anuncio");
 let catalogo = [];
+const CLAVE_PAGO = "luzia_checkout_payment_v1";
+
+function obtenerPago() {
+  try {
+    const pago = window.sessionStorage.getItem(CLAVE_PAGO);
+    return pago === "transferencia" || pago === "otro" ? pago : "";
+  } catch (error) {
+    return "";
+  }
+}
+
+function guardarPago(pago) {
+  try { window.sessionStorage.setItem(CLAVE_PAGO, pago); } catch (error) {
+    // La elección sigue activa en los controles aunque sessionStorage no esté disponible.
+  }
+}
 
 function elemento(etiqueta, texto, clase) {
   const nodo = document.createElement(etiqueta);
@@ -96,13 +112,55 @@ function renderizarCarrito() {
     lista.append(crearFila(producto, item.cantidad));
   });
   const resumen = elemento("aside", undefined, "cart-summary");
+  const fieldset = elemento("fieldset", undefined, "payment-options");
+  fieldset.append(elemento("legend", "Forma de pago"));
+  const pagoInicial = obtenerPago();
+  [
+    { valor: "transferencia", titulo: "Transferencia bancaria", ayuda: "10% de descuento" },
+    { valor: "otro", titulo: "Otro medio de pago", ayuda: "El total se mantiene sin descuento" }
+  ].forEach((opcion) => {
+    const label = elemento("label", undefined, "payment-option");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "forma-pago";
+    input.value = opcion.valor;
+    input.checked = pagoInicial === opcion.valor;
+    const copy = elemento("span", undefined, "payment-option__copy");
+    copy.append(elemento("strong", opcion.titulo), elemento("small", opcion.ayuda));
+    label.append(input, copy);
+    fieldset.append(label);
+  });
+  const descuentoFila = Object.assign(elemento("div", undefined, "cart-summary__row cart-summary__discount"), { hidden: true });
+  const totalFila = elemento("div", undefined, "cart-summary__row cart-summary__total");
+  const estado = elemento("p", "Elegí una forma de pago para continuar.", "cart-summary__status");
+  estado.setAttribute("aria-live", "polite");
+  const finalizar = elemento("button", "Finalizar pedido", "button cart-summary__button cart-summary__checkout");
+  finalizar.type = "button";
+  const continuar = Object.assign(elemento("a", "Continuar comprando", "cart-summary__continue"), { href: "productos.html" });
+
+  function actualizarResumen(pago) {
+    const descuento = pago === "transferencia" ? Math.round(total * 0.10) : 0;
+    descuentoFila.hidden = descuento === 0;
+    descuentoFila.replaceChildren(elemento("span", "Descuento transferencia (10%)"), elemento("strong", `− ${window.LuziaCarrito.formatearPrecio(descuento)}`));
+    totalFila.replaceChildren(elemento("span", "Total"), elemento("strong", window.LuziaCarrito.formatearPrecio(total - descuento)));
+    finalizar.disabled = !pago;
+    estado.textContent = pago ? (pago === "transferencia" ? `Descuento aplicado. Total ${window.LuziaCarrito.formatearPrecio(total - descuento)}.` : `Total ${window.LuziaCarrito.formatearPrecio(total)} sin descuento.`) : "Elegí una forma de pago para continuar.";
+  }
+
+  fieldset.addEventListener("change", (event) => {
+    if (!event.target.matches('input[name="forma-pago"]')) return;
+    guardarPago(event.target.value);
+    actualizarResumen(event.target.value);
+  });
+  finalizar.addEventListener("click", () => {
+    if (window.LuziaCarrito.obtenerCarrito().length && obtenerPago()) window.location.href = "checkout.html";
+  });
   resumen.append(
     elemento("h2", "Resumen"),
     Object.assign(elemento("div", undefined, "cart-summary__row"), { innerHTML: `<span>Subtotal productos</span><strong>${window.LuziaCarrito.formatearPrecio(total)}</strong>` }),
-    Object.assign(elemento("div", undefined, "cart-summary__row cart-summary__total"), { innerHTML: `<span>Total</span><strong>${window.LuziaCarrito.formatearPrecio(total)}</strong>` }),
-    elemento("p", "El envío y la forma de entrega se coordinan al finalizar el pedido.", "cart-summary__note"),
-    Object.assign(elemento("a", "Continuar comprando", "button cart-summary__button"), { href: "productos.html" })
+    fieldset, descuentoFila, totalFila, estado, finalizar, continuar
   );
+  actualizarResumen(pagoInicial);
   contenedorCarrito.replaceChildren(lista, resumen);
 }
 
