@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Revisá los productos elegidos para tu ritual Luzia.">
+  <title>Tu carrito | Luzia Cosmética Natural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__content">
+      <a class="site-logo" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation"><span class="menu-toggle__label">Menú</span><span class="menu-toggle__lines" aria-hidden="true"></span></button>
+      <nav class="site-nav" id="main-navigation" aria-label="Navegación principal"><ul class="site-nav__list"><li><a href="index.html">Inicio</a></li><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav>
+      <a class="site-cart" href="carrito.html" aria-current="page" aria-label="Ver carrito, 0 productos" data-cart-link><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 8V6a4.5 4.5 0 0 1 9 0v2M5 8h14l1 13H4L5 8Z"/></svg><span class="site-cart__badge" data-cart-count hidden>0</span></a>
+    </div>
+  </header>
+  <main class="container cart-page">
+    <header class="cart-heading"><p class="eyebrow">Tu selección</p><h1>Tu carrito</h1><p>Los productos que elegiste para tu ritual.</p></header>
+    <p id="carrito-anuncio" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+    <div id="carrito-contenido" class="cart-layout" aria-busy="true"><p>Cargando tu selección…</p></div>
+  </main>
+  <footer class="site-footer"><div class="container site-footer__main"><a class="site-logo site-logo--footer" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a><nav aria-label="Navegación del pie de página"><ul class="footer-nav"><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div><div class="container site-footer__bottom"><p>&copy; <span data-current-year></span> Luzia Cosmética Natural</p><p>Hecho con cuidado</p></div></footer>
+  <script src="js/carrito-store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+</html>

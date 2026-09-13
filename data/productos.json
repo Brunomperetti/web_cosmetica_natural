@@ -300,7 +300,9 @@
     "modoUso": "Humedecer, generar espuma y aplicar suavemente sobre la piel. Enjuagar con abundante agua y evitar el contacto con los ojos.",
     "destacado": false,
     "disponible": true,
-    "promocion": "2 por $9.000"
+    "promocion": "2 por $9.000",
+    "promocionCantidad": 2,
+    "promocionPrecio": 9000
   },
   {
     "id": 8,
