@@ -1,3 +1,7 @@
+@media (min-width: 61rem) {
+  .product-detail__visual { position: sticky; top: clamp(1.5rem, 3vw, 2.5rem); align-self: start; }
+}
+
 @media (max-width: 60rem) {
   .product-detail__layout { grid-template-columns: minmax(0, 1.02fr) minmax(20rem, .98fr); gap: clamp(2.5rem, 5vw, 3.5rem); }
   .product-detail__information h1 { font-size: clamp(3rem, 5.5vw, 3.75rem); }
