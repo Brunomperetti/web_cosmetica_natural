@@ -1,5 +1,24 @@
 "use strict";
 
+function actualizarIndicadoresCarrito() {
+  if (!window.LuziaCarrito) return;
+  const cantidad = window.LuziaCarrito.obtenerCantidadTotal();
+  document.querySelectorAll("[data-cart-link]").forEach((enlace) => {
+    enlace.setAttribute("aria-label", `Ver carrito, ${cantidad} ${cantidad === 1 ? "producto" : "productos"}`);
+    const badge = enlace.querySelector("[data-cart-count]");
+    if (badge) {
+      badge.textContent = cantidad;
+      badge.hidden = cantidad === 0;
+    }
+  });
+}
+
+actualizarIndicadoresCarrito();
+window.addEventListener("luzia:carrito-actualizado", actualizarIndicadoresCarrito);
+window.addEventListener("storage", (event) => {
+  if (event.key === window.LuziaCarrito?.CLAVE) actualizarIndicadoresCarrito();
+});
+
 document.querySelectorAll("[data-current-year]").forEach((element) => {
   element.textContent = new Date().getFullYear();
 });

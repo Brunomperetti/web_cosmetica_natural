@@ -2,9 +2,7 @@
 
 const detalleProducto = document.querySelector("#producto-detalle");
 
-function formatearPrecio(precio) {
-  return `$${precio.toLocaleString("es-AR", { maximumFractionDigits: 0 })}`;
-}
+const formatearPrecio = window.LuziaCarrito.formatearPrecio;
 
 function crearTexto(etiqueta, contenido, clase = "") {
   const elemento = document.createElement(etiqueta);
@@ -58,11 +56,23 @@ function renderizarProducto(producto) {
     crearSeccion("Modo de uso", producto.modoUso)
   ].filter(Boolean).forEach((seccion) => informacion.append(seccion));
 
-  const cta = document.createElement("a");
+  const cta = document.createElement("button");
   cta.className = "button product-detail__cta";
-  cta.href = "contacto.html";
-  cta.textContent = "Consultar por este producto";
-  informacion.append(cta);
+  cta.type = "button";
+  cta.textContent = "Agregar al carrito";
+  const feedback = crearTexto("p", "", "product-detail__feedback");
+  feedback.setAttribute("aria-live", "polite");
+  cta.addEventListener("click", () => {
+    window.LuziaCarrito.agregarProducto(producto.slug);
+    cta.textContent = "Agregado ✓";
+    feedback.replaceChildren(
+      document.createTextNode("Producto agregado · "),
+      Object.assign(document.createElement("a"), { href: "carrito.html", textContent: "Ver carrito" })
+    );
+    window.clearTimeout(cta.feedbackTimeout);
+    cta.feedbackTimeout = window.setTimeout(() => { cta.textContent = "Agregar al carrito"; }, 1700);
+  });
+  informacion.append(cta, feedback);
 
   detalleProducto.replaceChildren(figura, informacion);
   detalleProducto.setAttribute("aria-busy", "false");
