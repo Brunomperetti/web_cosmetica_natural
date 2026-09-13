@@ -81,8 +81,16 @@
     "precio": 9500,
     "imagen": "assets/productos/balsamo-labial-mica.png",
     "galeria": [],
-    "ingredientes": [],
-    "modoUso": "Aplicar suavemente sobre los labios limpios cuando sea necesario.",
+    "ingredientes": [
+      "Cera de soja",
+      "Aceite de coco",
+      "Aceite esencial de cereza",
+      "Manteca de cacao",
+      "Manteca de karité",
+      "Pigmento de mica",
+      "Conservante"
+    ],
+    "modoUso": "Aplicar suavemente sobre los labios limpios.",
     "destacado": true,
     "disponible": true
   },
@@ -91,12 +99,19 @@
     "slug": "balsamo-labial-natural",
     "nombre": "Bálsamo Labial Natural",
     "categoria": "Facial",
-    "descripcion": "Ayuda a nutrir, suavizar y proteger los labios, favoreciendo una sensación de hidratación y flexibilidad. Ideal para el uso cotidiano cuando los labios necesitan confort y cuidado sin un acabado pesado.",
-    "descripcionCompleta": "Ayuda a nutrir, suavizar y proteger los labios, favoreciendo una sensación de hidratación y flexibilidad. Ideal para el uso cotidiano cuando los labios necesitan confort y cuidado sin un acabado pesado.",
+    "descripcion": "Ayuda a nutrir, suavizar y proteger los labios, favoreciendo una sensación de hidratación y flexibilidad. Ideal para el uso cotidiano.",
+    "descripcionCompleta": "Ayuda a nutrir, suavizar y proteger los labios, favoreciendo una sensación de hidratación y flexibilidad. Ideal para el uso cotidiano.",
     "precio": 9500,
     "imagen": "assets/productos/balsamo-labial-natural.png",
     "galeria": [],
-    "ingredientes": [],
+    "ingredientes": [
+      "Cera de soja",
+      "Aceite de coco",
+      "Aceite esencial de vainilla",
+      "Manteca de cacao",
+      "Manteca de karité",
+      "Conservante"
+    ],
     "modoUso": "Aplicar suavemente sobre los labios limpios cuando sea necesario.",
     "destacado": false,
     "disponible": true
@@ -200,15 +215,19 @@
     "nombre": "Crema Facial Coco y Vainilla",
     "categoria": "Facial",
     "descripcion": "El coco aporta emoliencia y ayuda a reducir la sensación de sequedad, mientras la vainilla brinda una experiencia suave y reconfortante. Ideal para una rutina facial nutritiva que deja la piel flexible, confortable y cuidada.",
-    "descripcionCompleta": "El coco aporta emoliencia y ayuda a reducir la sensación de sequedad, mientras la vainilla brinda una experiencia suave y reconfortante. Ideal para una rutina facial nutritiva que deja la piel flexible, confortable y cuidada.",
+    "descripcionCompleta": "Restaura la vitalidad de tu piel con un tratamiento nutritivo que elimina la sequedad. Su fórmula con aceite natural de almendras y vitamina E humecta en profundidad, mientras que el coco y la vainilla aportan máxima emoliencia. Deja el rostro suave, flexible y protegido. Ideal para piel normal a seca.",
     "precio": 23500,
     "imagen": "assets/productos/crema-facial-coco-vainilla.jpg",
     "galeria": [],
     "ingredientes": [
-      "coco",
-      "vainilla"
+      "Crema base",
+      "Aceite natural de almendras",
+      "Vitamina E",
+      "Aceite esencial de coco",
+      "Aceite esencial de vainilla",
+      "Conservante natural"
     ],
-    "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio, evitando el contorno de ojos. Masajear suavemente hasta su absorción.",
+    "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio. Masajear suavemente hasta su absorción.",
     "destacado": false,
     "disponible": true
   },
@@ -217,17 +236,17 @@
     "slug": "crema-facial-efecto-juventud",
     "nombre": "Crema Facial Efecto Juventud",
     "categoria": "Facial",
-    "descripcion": "Con ácido hialurónico, geranio, rosas, argán y vitamina E. El ácido hialurónico ayuda a mantener la hidratación; el argán y la vitamina E aportan nutrición y acción antioxidante, mientras rosas y geranio acompañan una rutina facial suave y revitalizante.",
-    "descripcionCompleta": "Con ácido hialurónico, geranio, rosas, argán y vitamina E. El ácido hialurónico ayuda a mantener la hidratación; el argán y la vitamina E aportan nutrición y acción antioxidante, mientras rosas y geranio acompañan una rutina facial suave y revitalizante.",
+    "descripcion": "El ácido hialurónico ayuda a mantener la hidratación, suavidad y apariencia tersa de la piel. El argán y la vitamina E aportan nutrición y acción antioxidante, completando una fórmula suave y revitalizante.",
+    "descripcionCompleta": "El ácido hialurónico ayuda a mantener la hidratación, suavidad y apariencia tersa de la piel. El argán y la vitamina E aportan nutrición y acción antioxidante, completando una fórmula suave y revitalizante.",
     "precio": 28500,
     "imagen": "assets/productos/crema-facial-efecto-juventud.jpg",
     "galeria": [],
     "ingredientes": [
-      "ácido hialurónico",
-      "geranio",
-      "rosas",
-      "argán",
-      "vitamina E"
+      "Ácido hialurónico",
+      "Geranio",
+      "Argán",
+      "Vitamina E",
+      "Conservante natural"
     ],
     "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio, evitando el contorno de ojos. Masajear suavemente hasta su absorción.",
     "destacado": true,
@@ -238,15 +257,15 @@
     "slug": "crema-facial-limon",
     "nombre": "Crema Facial Limón",
     "categoria": "Facial",
-    "descripcion": "Crema facial de perfil fresco y revitalizante. Ayuda a mantener la piel hidratada y confortable, mientras el aroma cítrico del limón aporta una sensación de frescura ideal para acompañar el cuidado cotidiano del rostro.",
-    "descripcionCompleta": "Crema facial de perfil fresco y revitalizante. Ayuda a mantener la piel hidratada y confortable, mientras el aroma cítrico del limón aporta una sensación de frescura ideal para acompañar el cuidado cotidiano del rostro.",
+    "descripcion": "Crema facial de textura fresca y liviana, ideal para el cuidado diario. Ayuda a mantener la piel hidratada, suave y confortable, mientras el limón aporta una agradable sensación de frescura. Especialmente recomendada para pieles mixtas o grasas, aunque puede incorporarse a distintas rutinas según las necesidades de cada piel.",
+    "descripcionCompleta": "Crema facial de textura fresca y liviana, ideal para el cuidado diario. Ayuda a mantener la piel hidratada, suave y confortable, mientras el limón aporta una agradable sensación de frescura. Especialmente recomendada para pieles mixtas o grasas, aunque puede incorporarse a distintas rutinas según las necesidades de cada piel.",
     "precio": 23500,
     "imagen": "assets/productos/crema-facial-limon.jpg",
     "galeria": [],
     "ingredientes": [
       "limón"
     ],
-    "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio, evitando el contorno de ojos. Masajear suavemente hasta su absorción.",
+    "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio. Masajear suavemente hasta su absorción.",
     "destacado": false,
     "disponible": true
   },
@@ -255,13 +274,17 @@
     "slug": "espuma-facial-agua-rosas",
     "nombre": "Espuma Facial Agua de Rosas",
     "categoria": "Facial",
-    "descripcion": "El agua de rosas aporta frescura y confort mientras su textura en espuma permite una limpieza suave. Ayuda a retirar impurezas y suciedad cotidiana sin dejar una sensación pesada, preparando la piel para los pasos siguientes de la rutina.",
-    "descripcionCompleta": "El agua de rosas aporta frescura y confort mientras su textura en espuma permite una limpieza suave. Ayuda a retirar impurezas y suciedad cotidiana sin dejar una sensación pesada, preparando la piel para los pasos siguientes de la rutina.",
+    "descripcion": "El agua de rosas aporta frescura, mientras su textura en espuma permite una limpieza suave y delicada. Ayuda a retirar impurezas y suciedad cotidiana, preparando la piel para los pasos siguientes de la rutina. Recomendada especialmente para pieles normales a secas.",
+    "descripcionCompleta": "El agua de rosas aporta frescura, mientras su textura en espuma permite una limpieza suave y delicada. Ayuda a retirar impurezas y suciedad cotidiana, preparando la piel para los pasos siguientes de la rutina. Recomendada especialmente para pieles normales a secas.",
     "precio": 19500,
     "imagen": "assets/productos/espuma-facial-agua-rosas.png",
     "galeria": [],
     "ingredientes": [
-      "agua de rosas"
+      "Agua de rosas",
+      "Genagen",
+      "Aceite esencial de rosas",
+      "Conservante natural",
+      "Coco glucósido"
     ],
     "modoUso": "Aplicar sobre el rostro húmedo, masajear suavemente y enjuagar con abundante agua. Evitar el contacto con los ojos.",
     "destacado": false,
@@ -272,13 +295,18 @@
     "slug": "espuma-facial-limon",
     "nombre": "Espuma Facial Limón",
     "categoria": "Facial",
-    "descripcion": "Limpieza facial suave con una sensación fresca y renovada. El perfil cítrico del limón acompaña la eliminación de impurezas del día a día y deja la piel preparada para continuar con la rutina facial.",
-    "descripcionCompleta": "Limpieza facial suave con una sensación fresca y renovada. El perfil cítrico del limón acompaña la eliminación de impurezas del día a día y deja la piel preparada para continuar con la rutina facial.",
+    "descripcion": "Limpieza facial suave y refrescante con limón y manzanilla. El limón aporta una sensación fresca y ayuda a acompañar la limpieza diaria, mientras la manzanilla brinda suavidad y ayuda a calmar la piel. Elimina impurezas y deja el rostro preparado para continuar con la rutina facial. Especialmente recomendada para pieles mixtas a grasas.",
+    "descripcionCompleta": "Limpieza facial suave y refrescante con limón y manzanilla. El limón aporta una sensación fresca y ayuda a acompañar la limpieza diaria, mientras la manzanilla brinda suavidad y ayuda a calmar la piel. Elimina impurezas y deja el rostro preparado para continuar con la rutina facial. Especialmente recomendada para pieles mixtas a grasas.",
     "precio": 19500,
     "imagen": "assets/productos/espuma-facial-limon.png",
     "galeria": [],
     "ingredientes": [
-      "limón"
+      "Hidrolato de manzanilla",
+      "Genagen",
+      "Aceite esencial de limón",
+      "Aceite esencial de manzanilla",
+      "Conservante natural",
+      "Coco glucósido"
     ],
     "modoUso": "Aplicar sobre el rostro húmedo, masajear suavemente y enjuagar con abundante agua. Evitar el contacto con los ojos.",
     "destacado": false,
@@ -309,19 +337,20 @@
     "slug": "serum-facial-descongestivo",
     "nombre": "Sérum Facial Descongestivo",
     "categoria": "Facial",
-    "descripcion": "Con manzanilla, semilla de uva, lavanda, vitamina E y aceite de jojoba. La manzanilla y la lavanda aportan una sensación calmante; la jojoba ayuda a suavizar y mantener el confort de la piel, mientras la vitamina E y la semilla de uva aportan acción antioxidante.",
-    "descripcionCompleta": "Con manzanilla, semilla de uva, lavanda, vitamina E y aceite de jojoba. La manzanilla y la lavanda aportan una sensación calmante; la jojoba ayuda a suavizar y mantener el confort de la piel, mientras la vitamina E y la semilla de uva aportan acción antioxidante.",
+    "descripcion": "Con manzanilla, semilla de uva, lavanda, vitamina E y aceite de jojoba. Su combinación de activos ayuda a calmar y refrescar la zona del contorno de ojos, contribuyendo a disminuir la apariencia de hinchazón y bolsas. También puede aplicarse suavemente debajo de las fosas nasales, donde su aroma herbal aporta una sensación de frescura y alivio, ayudando a sentir la respiración más despejada.",
+    "descripcionCompleta": "Con manzanilla, semilla de uva, lavanda, vitamina E y aceite de jojoba. Su combinación de activos ayuda a calmar y refrescar la zona del contorno de ojos, contribuyendo a disminuir la apariencia de hinchazón y bolsas. También puede aplicarse suavemente debajo de las fosas nasales, donde su aroma herbal aporta una sensación de frescura y alivio, ayudando a sentir la respiración más despejada.",
     "precio": 9800,
     "imagen": "assets/productos/serum-facial-descongestivo.png",
     "galeria": [],
     "ingredientes": [
-      "manzanilla",
-      "semilla de uva",
-      "lavanda",
-      "vitamina E",
-      "aceite de jojoba"
+      "Manzanilla",
+      "Semilla de uva",
+      "Lavanda",
+      "Vitamina E",
+      "Aceite de jojoba",
+      "Conservante natural"
     ],
-    "modoUso": "Aplicar unas gotas sobre el rostro limpio y masajear suavemente hasta su absorción. Evitar el contacto con los ojos.",
+    "modoUso": "Aplicar el roll-on sobre el rostro limpio y masajear suavemente hasta su absorción. Evitar el contacto directo con los ojos.",
     "destacado": false,
     "disponible": true
   },
@@ -330,18 +359,19 @@
     "slug": "serum-facial-rejuvenecedor",
     "nombre": "Sérum Facial Rejuvenecedor",
     "categoria": "Facial",
-    "descripcion": "Con argán, vitamina E, ácido hialurónico y geranio. El ácido hialurónico ayuda a conservar la hidratación, mientras el argán y la vitamina E aportan nutrición y acción antioxidante. El geranio completa una fórmula pensada para favorecer una piel de aspecto suave, flexible y luminoso.",
-    "descripcionCompleta": "Con argán, vitamina E, ácido hialurónico y geranio. El ácido hialurónico ayuda a conservar la hidratación, mientras el argán y la vitamina E aportan nutrición y acción antioxidante. El geranio completa una fórmula pensada para favorecer una piel de aspecto suave, flexible y luminoso.",
+    "descripcion": "Con argán, vitamina E, ácido hialurónico y geranio. El ácido hialurónico ayuda a atraer y retener la hidratación en la piel, favoreciendo un aspecto más terso, suave y flexible. El argán y la vitamina E complementan la fórmula con nutrición y acción antioxidante, mientras el geranio aporta equilibrio y una agradable sensación de frescura. Una combinación pensada para acompañar la hidratación diaria y realzar la luminosidad natural del rostro.",
+    "descripcionCompleta": "Con argán, vitamina E, ácido hialurónico y geranio. El ácido hialurónico ayuda a atraer y retener la hidratación en la piel, favoreciendo un aspecto más terso, suave y flexible. El argán y la vitamina E complementan la fórmula con nutrición y acción antioxidante, mientras el geranio aporta equilibrio y una agradable sensación de frescura. Una combinación pensada para acompañar la hidratación diaria y realzar la luminosidad natural del rostro.",
     "precio": 11500,
     "imagen": "assets/productos/serum-facial-rejuvenecedor.png",
     "galeria": [],
     "ingredientes": [
-      "argán",
-      "vitamina E",
-      "ácido hialurónico",
-      "geranio"
+      "Argán",
+      "Vitamina E",
+      "Ácido hialurónico",
+      "Geranio",
+      "Conservante natural"
     ],
-    "modoUso": "Aplicar unas gotas sobre el rostro limpio y masajear suavemente hasta su absorción. Evitar el contacto con los ojos.",
+    "modoUso": "Aplicar el roll-on sobre el rostro limpio y masajear suavemente hasta su absorción. Evitar el contacto directo con los ojos.",
     "destacado": false,
     "disponible": true
   },
@@ -356,10 +386,11 @@
     "imagen": "assets/productos/serum-facial-suave.png",
     "galeria": [],
     "ingredientes": [
-      "aceite de almendras",
-      "cereza"
+      "Aceite de almendras",
+      "Cereza",
+      "Conservante natural"
     ],
-    "modoUso": "Aplicar unas gotas sobre el rostro limpio y masajear suavemente hasta su absorción. Evitar el contacto con los ojos.",
+    "modoUso": "Aplicar el roll-on sobre el rostro limpio y masajear suavemente hasta su absorción. Evitar el contacto directo con los ojos.",
     "destacado": false,
     "disponible": true
   },
