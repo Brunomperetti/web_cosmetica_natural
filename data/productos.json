@@ -10,14 +10,11 @@
     "imagen": "assets/productos/acondicionador-equilibrio.png",
     "galeria": [],
     "ingredientes": [
-      "BTMS",
-      "manteca de karité",
-      "aceite de almendras",
-      "ortiga",
-      "aceite de ricino",
-      "cera de soja",
-      "aceites esenciales",
-      "conservante natural"
+      "Manteca de karité",
+      "Aceite de coco",
+      "Aceite de almendras",
+      "Aceite esencial de naranja",
+      "Aceite esencial de vainilla"
     ],
     "modoUso": "Aplicar sobre el cabello húmedo, de medios a puntas. Dejar actuar unos minutos y enjuagar.",
     "destacado": false,
@@ -34,14 +31,11 @@
     "imagen": "assets/productos/acondicionador-fuerza.png",
     "galeria": [],
     "ingredientes": [
-      "BTMS",
-      "manteca de karité",
-      "aceite de almendras",
-      "ortiga",
-      "aceite de ricino",
-      "cera de soja",
-      "aceites esenciales",
-      "conservante natural"
+      "Manteca de karité",
+      "Aceite de coco",
+      "Aceite de ricino",
+      "Aceite esencial de lavanda",
+      "Aceite esencial de limón"
     ],
     "modoUso": "Aplicar sobre el cabello húmedo, de medios a puntas. Dejar actuar unos minutos y enjuagar.",
     "destacado": false,
@@ -58,14 +52,11 @@
     "imagen": "assets/productos/acondicionador-purificante.png",
     "galeria": [],
     "ingredientes": [
-      "BTMS",
-      "manteca de karité",
-      "aceite de almendras",
-      "ortiga",
-      "aceite de ricino",
-      "cera de soja",
-      "aceites esenciales",
-      "conservante natural"
+      "Manteca de karité",
+      "Aceite de coco",
+      "Aceite de jojoba",
+      "Aceite esencial de tea tree",
+      "Aceite esencial de menta"
     ],
     "modoUso": "Aplicar sobre el cabello húmedo, de medios a puntas. Dejar actuar unos minutos y enjuagar.",
     "destacado": false,
@@ -126,7 +117,11 @@
     "precio": 17500,
     "imagen": "assets/productos/bruma-naranja-limon.png",
     "galeria": [],
-    "ingredientes": [],
+    "ingredientes": [
+      "Alcohol de cereal",
+      "Agua destilada",
+      "Aceite esencial"
+    ],
     "modoUso": "Rociar a una distancia prudente sobre el cuerpo o en el ambiente. Evitar el contacto con los ojos.",
     "destacado": false,
     "disponible": true
@@ -141,7 +136,11 @@
     "precio": 17500,
     "imagen": "assets/productos/bruma-sandalo-dulce.png",
     "galeria": [],
-    "ingredientes": [],
+    "ingredientes": [
+      "Alcohol de cereal",
+      "Agua destilada",
+      "Aceite esencial"
+    ],
     "modoUso": "Rociar a una distancia prudente sobre el cuerpo o en el ambiente. Evitar el contacto con los ojos.",
     "destacado": false,
     "disponible": true
@@ -156,7 +155,11 @@
     "precio": 17500,
     "imagen": "assets/productos/bruma-serena-flor.png",
     "galeria": [],
-    "ingredientes": [],
+    "ingredientes": [
+      "Alcohol de cereal",
+      "Agua destilada",
+      "Aceite esencial"
+    ],
     "modoUso": "Rociar a una distancia prudente sobre el cuerpo o en el ambiente. Evitar el contacto con los ojos.",
     "destacado": false,
     "disponible": true
@@ -202,8 +205,9 @@
     "imagen": "assets/productos/crema-de-peinar.png",
     "galeria": [],
     "ingredientes": [
-      "lino",
-      "manteca de karité"
+      "Manteca de karité",
+      "Aceite de ricino",
+      "Aceite esencial de ylang ylang"
     ],
     "modoUso": "Distribuir una pequeña cantidad sobre el cabello húmedo, de medios a puntas. Peinar como de costumbre, sin enjuagar.",
     "destacado": false,
@@ -263,7 +267,10 @@
     "imagen": "assets/productos/crema-facial-limon.jpg",
     "galeria": [],
     "ingredientes": [
-      "limón"
+      "Crema base",
+      "Aceite de almendras",
+      "Vitamina E",
+      "Aceite esencial de limón"
     ],
     "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio. Masajear suavemente hasta su absorción.",
     "destacado": false,
@@ -405,12 +412,11 @@
     "imagen": "assets/productos/shampoo-equilibrio.png",
     "galeria": [],
     "ingredientes": [
-      "SCI",
-      "aceite de almendras",
-      "aceite de coco",
-      "aceite de ricino",
-      "aceite de jojoba",
-      "arcilla según variedad"
+      "Arcilla blanca",
+      "Manteca de karité",
+      "Aceite de almendras",
+      "Aceite esencial de naranja",
+      "Aceite esencial de vainilla"
     ],
     "modoUso": "Aplicar sobre el cabello húmedo, masajear suavemente el cuero cabelludo y enjuagar con abundante agua.",
     "destacado": false,
@@ -427,12 +433,11 @@
     "imagen": "assets/productos/shampoo-fuerza.png",
     "galeria": [],
     "ingredientes": [
-      "SCI",
-      "aceite de almendras",
-      "aceite de coco",
-      "aceite de ricino",
-      "aceite de jojoba",
-      "arcilla según variedad"
+      "Arcilla blanca",
+      "Manteca de karité",
+      "Aceite de ricino",
+      "Aceite esencial de lavanda",
+      "Aceite esencial de limón"
     ],
     "modoUso": "Aplicar sobre el cabello húmedo, masajear suavemente el cuero cabelludo y enjuagar con abundante agua.",
     "destacado": false,
@@ -449,12 +454,11 @@
     "imagen": "assets/productos/shampoo-purificante.png",
     "galeria": [],
     "ingredientes": [
-      "SCI",
-      "aceite de almendras",
-      "aceite de coco",
-      "aceite de ricino",
-      "aceite de jojoba",
-      "caolín o arcilla verde según variedad"
+      "Arcilla verde",
+      "Manteca de karité",
+      "Aceite de jojoba",
+      "Aceite esencial de tea tree",
+      "Aceite esencial de menta"
     ],
     "modoUso": "Aplicar sobre el cabello húmedo, masajear suavemente el cuero cabelludo y enjuagar con abundante agua.",
     "destacado": false,
