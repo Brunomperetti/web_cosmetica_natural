@@ -18,6 +18,7 @@
   .wholesale-teaser__botanical { width: 5rem; opacity: .15; }
   .wholesale-visual { min-height: 29rem; }
   .wholesale-visual--hero { min-height: 33rem; }
+  .brand-benefits__grid { grid-template-columns: repeat(2, 1fr); gap: 4.5rem 3rem; }
 }
 
 @media (max-width: 48rem) {
@@ -89,15 +90,18 @@
   .story__layout { grid-template-columns: 1fr; gap: 0; }
   .visual-placeholder--story { min-height: min(115vw, 34rem); }
   .story__content { padding-block: 4.5rem; }
-  .principles__list { grid-template-columns: 1fr; }
-  .principles__list li, .principles__list li:first-child { min-height: 0; padding: 2rem 0; border-top: 1px solid var(--color-border); border-left: 0; }
-  .principles__list li:first-child { border-top: 0; }
-  .principles__list h3 { margin-top: .75rem; }
   .instagram__grid { grid-template-columns: repeat(2, 1fr); }
   .site-footer__main { align-items: flex-start; flex-direction: column; }
   .site-logo--footer { width: 14rem; }
   .footer-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 3rem; }
   .site-footer__bottom { flex-direction: column; gap: .25rem; }
+}
+
+@media (max-width: 36rem) {
+  .brand-benefits { padding-block: 4.5rem; }
+  .brand-benefits__grid { grid-template-columns: 1fr; gap: 3.75rem; }
+  .brand-benefit__icon { width: 2.625rem; height: 2.625rem; margin-bottom: 1.5rem; }
+  .brand-benefit p { max-width: 17rem; }
 }
 
 @media (max-width: 67rem) {
