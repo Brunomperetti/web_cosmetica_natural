@@ -7,7 +7,7 @@ const contextoNecesidad = document.querySelector("[data-need-context]");
 const tituloNecesidad = document.querySelector("[data-need-title]");
 const necesidades = {
   "piel-seca": {
-    nombre: "Piel seca",
+    nombre: "Piel seca o normal",
     slugs: ["crema-facial-coco-vainilla", "espuma-facial-agua-rosas"]
   },
   "piel-mixta-grasa": {
