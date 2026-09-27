@@ -19,6 +19,7 @@
   .wholesale-visual { min-height: 29rem; }
   .wholesale-visual--hero { min-height: 33rem; }
   .brand-benefits__grid { grid-template-columns: repeat(2, 1fr); gap: 4.5rem 3rem; }
+  .shop-by-need__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 48rem) {
@@ -69,6 +70,11 @@
   .shop-collection__heading h2 { font-size: clamp(2.55rem, 12vw, 3.5rem); }
   .shop-page .product-card__visual { aspect-ratio: 4 / 5; }
   .shop-page .product-card__overlay { display: none; }
+  .shop-by-need__grid { gap: 3rem 1rem; }
+  .need-card__content { grid-template-columns: 1fr; padding-top: 1rem; }
+  .need-card__title { font-size: clamp(1.45rem, 5vw, 1.85rem); }
+  .need-card__link { width: max-content; margin-top: .25rem; }
+  .need-context { align-items: flex-start; flex-direction: column; gap: 1.25rem; margin-top: -1.25rem; }
   .wholesale-teaser__layout, .wholesale-hero__layout, .wholesale-value__layout { grid-template-columns: 1fr; }
   .wholesale-teaser__layout { gap: 3rem; }
   .wholesale-teaser::before { inset: 45% -25% 4% 25%; background: radial-gradient(ellipse at center, rgba(226,211,231,.1), transparent 70%); }
@@ -125,6 +131,10 @@
   .cart-quantity { grid-column: 2; }
   .cart-item__price { grid-column: 3; }
   .cart-summary { max-width: none; }
+}
+
+@media (max-width: 25rem) {
+  .shop-by-need__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 24rem) {

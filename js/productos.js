@@ -3,6 +3,34 @@
 const productosContainer = document.querySelector("#productos-container");
 const filtros = [...document.querySelectorAll(".shop-filter")];
 const ordenCategorias = ["Facial", "Corporal", "Cabello", "Bienestar", "Jabones"];
+const contextoNecesidad = document.querySelector("[data-need-context]");
+const tituloNecesidad = document.querySelector("[data-need-title]");
+const necesidades = {
+  "piel-seca": {
+    nombre: "Piel seca",
+    slugs: ["crema-facial-coco-vainilla", "espuma-facial-agua-rosas"]
+  },
+  "piel-mixta-grasa": {
+    nombre: "Piel mixta o grasa",
+    slugs: ["crema-facial-limon", "espuma-facial-limon"]
+  },
+  "hidratacion-luminosidad": {
+    nombre: "Hidratación y luminosidad",
+    slugs: ["crema-facial-efecto-juventud", "serum-facial-rejuvenecedor"]
+  },
+  "cabello-graso": {
+    nombre: "Cabello graso",
+    slugs: ["shampoo-purificante", "acondicionador-purificante"]
+  },
+  "cabello-debilitado": {
+    nombre: "Cabello debilitado",
+    slugs: ["shampoo-fuerza", "acondicionador-fuerza"]
+  },
+  "cabello-equilibrio": {
+    nombre: "Cabello normal o seco",
+    slugs: ["shampoo-equilibrio", "acondicionador-equilibrio", "crema-de-peinar"]
+  }
+};
 let temporizadorFiltro;
 
 function formatearPrecio(precio) {
@@ -12,6 +40,25 @@ function formatearPrecio(precio) {
 function obtenerCategoriaInicial() {
   const categoriaSolicitada = new URLSearchParams(window.location.search).get("categoria");
   return ordenCategorias.includes(categoriaSolicitada) ? categoriaSolicitada : "Todos";
+}
+
+function obtenerNecesidadInicial() {
+  const necesidadSolicitada = new URLSearchParams(window.location.search).get("necesidad");
+  return Object.hasOwn(necesidades, necesidadSolicitada) ? necesidadSolicitada : null;
+}
+
+function mostrarContextoNecesidad(necesidad) {
+  if (!contextoNecesidad || !tituloNecesidad) return;
+  contextoNecesidad.hidden = !necesidad;
+  tituloNecesidad.textContent = necesidad ? necesidades[necesidad].nombre : "";
+}
+
+function actualizarUrlCategoria(categoria) {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("necesidad");
+  if (categoria === "Todos") url.searchParams.delete("categoria");
+  else url.searchParams.set("categoria", categoria);
+  window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
 }
 
 function activarFiltro(categoria) {
@@ -153,6 +200,20 @@ function renderizarCatalogo(productos, categoria = "Todos") {
   observarEntradaTarjetas(tarjetas);
 }
 
+function renderizarNecesidad(productos, necesidad) {
+  const slugs = necesidades[necesidad].slugs;
+  const productosPorSlug = new Map(productos.map((producto) => [producto.slug, producto]));
+  const seleccion = slugs.map((slug) => productosPorSlug.get(slug)).filter(Boolean);
+  const grilla = document.createElement("div");
+  grilla.className = "product-grid product-grid--filtered";
+  const tarjetas = seleccion.map(crearTarjetaProducto);
+  grilla.append(...tarjetas);
+  productosContainer.classList.remove("is-changing");
+  productosContainer.replaceChildren(grilla);
+  productosContainer.setAttribute("aria-busy", "false");
+  observarEntradaTarjetas(tarjetas);
+}
+
 function observarEntradaTarjetas(tarjetas) {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -191,12 +252,17 @@ async function cargarProductos() {
     const productosVisibles = seleccion.slice(0, limite);
 
     if (filtros.length && productosContainer.classList.contains("shop-collections")) {
+      const necesidadInicial = obtenerNecesidadInicial();
       const categoriaInicial = obtenerCategoriaInicial();
-      activarFiltro(categoriaInicial);
-      renderizarCatalogo(productosVisibles, categoriaInicial);
+      mostrarContextoNecesidad(necesidadInicial);
+      activarFiltro(necesidadInicial ? "" : categoriaInicial);
+      if (necesidadInicial) renderizarNecesidad(productosVisibles, necesidadInicial);
+      else renderizarCatalogo(productosVisibles, categoriaInicial);
       filtros.forEach((filtro) => {
         filtro.addEventListener("click", () => {
+          mostrarContextoNecesidad(null);
           activarFiltro(filtro.dataset.category);
+          actualizarUrlCategoria(filtro.dataset.category);
           productosContainer.classList.add("is-changing");
           window.clearTimeout(temporizadorFiltro);
           temporizadorFiltro = window.setTimeout(() => renderizarCatalogo(productosVisibles, filtro.dataset.category), 120);
