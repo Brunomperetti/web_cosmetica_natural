@@ -165,3 +165,18 @@
   .checkout-product { grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: .75rem; }
   .checkout-product img { width: 3.5rem; }
 }
+
+
+@media (max-width: 60rem) {
+  .wholesale-packs__grid { grid-template-columns: 1fr; }
+  .wholesale-pack { max-width: 44rem; margin-inline: auto; }
+}
+
+@media (max-width: 48rem) {
+  .wholesale-pack__visual { aspect-ratio: 4 / 3; }
+  .wholesale-pack__content { padding: 1.75rem 1.35rem 2rem; }
+  .wholesale-pack__topline { align-items: flex-start; flex-direction: column; gap: .75rem; }
+  .wholesale-conditions__grid { grid-template-columns: 1fr; }
+  .wholesale-conditions__grid article, .wholesale-conditions__grid article:first-child { min-height: 0; padding: 1.75rem 0; border-top: 1px solid var(--color-border); border-left: 0; }
+  .wholesale-conditions__grid article:first-child { border-top: 0; }
+}
