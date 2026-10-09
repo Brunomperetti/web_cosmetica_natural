@@ -527,3 +527,5 @@ button.button { border: 0; cursor: pointer; font-family: var(--font-sans); }
 .contact-v2-note__grid > span { color: rgba(251,248,252,.75); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
 .contact-v2-note__grid > strong { justify-self: end; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; }
 
+
+.contact-v2-honey { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
