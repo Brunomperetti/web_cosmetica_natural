@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Página de contacto de Cosmética Natural.">
+  <meta name="description" content="Contactá a Luzia Cosmética Natural por consultas sobre productos, pedidos y venta mayorista.">
   <title>Contacto | Luzia Cosmética Natural</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
+<body class="contact-v2">
   <header class="site-header">
     <div class="container site-header__content">
       <a class="site-logo" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a>
@@ -32,18 +32,102 @@
     </div>
   </header>
 
-  <main class="container page-content">
-    <section class="page-heading" aria-labelledby="contact-title">
-      <h1 id="contact-title">Contacto</h1>
-      <p>Esta página queda preparada para incorporar los datos de contacto.</p>
+  <main class="contact-v2__main">
+    <section class="contact-v2-hero" aria-labelledby="contact-title">
+      <div class="container contact-v2-hero__grid">
+        <div class="contact-v2-intro">
+          <p class="eyebrow">Hablemos</p>
+          <h1 id="contact-title">Estamos para<br>ayudarte</h1>
+          <p class="contact-v2-intro__lead">Si tenés una consulta sobre productos, tu pedido o querés conocer nuestra propuesta mayorista, escribinos. Te respondemos personalmente.</p>
+
+          <div class="contact-v2-channels" aria-label="Otras formas de contacto">
+            <a class="contact-v2-channel" href="https://www.instagram.com/luziacosmeticanatural/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-v2-channel__index">01</span>
+              <span><strong>Instagram</strong><small>@luziacosmeticanatural</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-v2-channel" href="mayoristas.html">
+              <span class="contact-v2-channel__index">02</span>
+              <span><strong>Mayoristas</strong><small>Tiendas · espacios · profesionales</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="contact-v2-signature">
+            <svg viewBox="0 0 120 180" aria-hidden="true" focusable="false"><path d="M60 172C50 110 75 65 62 12M59 135C25 130 14 105 12 89C43 91 57 108 59 135ZM61 98C94 90 104 70 108 48C78 55 66 74 61 98ZM66 63C40 58 31 36 31 17C58 24 65 43 66 63Z"/></svg>
+            <p>Cuidado natural,<br><strong>atención cercana.</strong></p>
+          </div>
+        </div>
+
+        <div class="contact-v2-form-panel">
+          <div class="contact-v2-form-panel__heading">
+            <p class="eyebrow">Enviá tu consulta</p>
+            <h2>Contanos cómo podemos ayudarte</h2>
+          </div>
+
+          <form class="contact-v2-form" action="#" method="post" data-contact-form novalidate>
+            <div class="contact-v2-form__row">
+              <label class="contact-v2-field">
+                <span>Nombre</span>
+                <input type="text" name="nombre" autocomplete="name" required>
+              </label>
+              <label class="contact-v2-field">
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+            </div>
+
+            <div class="contact-v2-form__row">
+              <label class="contact-v2-field">
+                <span>WhatsApp <small>(opcional)</small></span>
+                <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel">
+              </label>
+              <label class="contact-v2-field">
+                <span>Motivo de consulta</span>
+                <select name="motivo" required data-contact-reason>
+                  <option value="">Seleccioná una opción</option>
+                  <option value="productos">Consulta sobre productos</option>
+                  <option value="pedido">Pedido / compra</option>
+                  <option value="mayorista">Venta mayorista</option>
+                  <option value="otra">Otra consulta</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="contact-v2-field contact-v2-field--message">
+              <span>Mensaje</span>
+              <textarea name="mensaje" rows="6" required placeholder="Escribinos tu consulta..."></textarea>
+            </label>
+
+            <div class="contact-v2-form__footer">
+              <p>Respondemos personalmente a cada mensaje.</p>
+              <button class="button contact-v2-form__submit" type="submit">Enviar consulta</button>
+            </div>
+            <p class="contact-v2-form__status" data-contact-status role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-v2-form-panel__ornament" aria-hidden="true"><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-v2-note" aria-label="Atención personalizada">
+      <div class="container contact-v2-note__grid">
+        <span>Productos</span>
+        <span>Pedidos</span>
+        <span>Mayoristas</span>
+        <strong>Luzia · cuidado que se siente cercano</strong>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container site-footer__main"><a class="site-logo site-logo--footer" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a><nav aria-label="Navegación del pie de página"><ul class="footer-nav"><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div>
+    <div class="container site-footer__main"><a class="site-logo site-logo--footer" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a><nav aria-label="Navegación del pie de página"><ul class="footer-nav"><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html" aria-current="page">Contacto</a></li></ul></nav></div>
     <div class="container site-footer__bottom"><p>&copy; <span data-current-year></span> Luzia Cosmética Natural</p><p>Hecho con cuidado</p></div>
   </footer>
+
   <script src="js/carrito-store.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/contacto.js"></script>
 </body>
 </html>
