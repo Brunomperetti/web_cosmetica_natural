@@ -207,3 +207,30 @@
   .wholesale-v4-cta__action > .wholesale-v4-button { width: 100%; }
   .wholesale-v4-audience { font-size: .6875rem; }
 }
+
+
+/* Contacto v2 */
+@media (max-width: 64rem) {
+  .contact-v2-hero__grid { grid-template-columns: minmax(0,.85fr) minmax(27rem,1.15fr); gap: 2.5rem; }
+  .contact-v2-form-panel { padding: 2rem; }
+}
+
+@media (max-width: 48rem) {
+  .contact-v2-hero { padding-block: 3.75rem; }
+  .contact-v2-hero__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-v2-intro { padding-top: 0; }
+  .contact-v2-intro h1 { font-size: clamp(3.5rem,16vw,5rem); }
+  .contact-v2-form-panel { padding: 2rem 1.35rem; }
+  .contact-v2-form__row { grid-template-columns: 1fr; gap: 0; }
+  .contact-v2-form__footer { align-items: stretch; flex-direction: column; }
+  .contact-v2-form__submit { width: 100%; }
+  .contact-v2-note__grid { grid-template-columns: repeat(3,1fr); gap: .75rem; text-align: center; }
+  .contact-v2-note__grid > strong { grid-column: 1 / -1; justify-self: center; margin-top: .25rem; }
+}
+
+@media (max-width: 30rem) {
+  .contact-v2-channel { grid-template-columns: 1.5rem 1fr auto; gap: .75rem; }
+  .contact-v2-channel strong { font-size: 1.35rem; }
+  .contact-v2-note__grid { grid-template-columns: 1fr; }
+  .contact-v2-note__grid > strong { grid-column: auto; }
+}
