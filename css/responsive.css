@@ -208,3 +208,32 @@
   .wholesale-levels { grid-template-columns: 1fr; }
   .wholesale-levels__connector { width: auto; height: 2.25rem; justify-self: center; border-top: 0; border-left: 1px solid rgba(113,84,127,.25); }
 }
+
+
+@media (max-width: 60rem) {
+  .wholesale-v3 .wholesale-v3-hero__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .wholesale-v3 .wholesale-v3-free-note { grid-template-columns: auto 1fr; }
+  .wholesale-v3 .wholesale-v3-free-note > p, .wholesale-v3 .wholesale-v3-free-note .text-link { grid-column: 2; }
+  .wholesale-v3 .wholesale-v3-cta__inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 48rem) {
+  .wholesale-v3 .wholesale-v3-hero { padding-block: 3.5rem; }
+  .wholesale-v3 .wholesale-v3-hero__grid { grid-template-columns: 1fr; }
+  .wholesale-v3 .wholesale-v3-hero__copy h1 { font-size: clamp(3.3rem, 15vw, 4.8rem); }
+  .wholesale-v3 .wholesale-v3-hero__actions { align-items: flex-start; flex-direction: column; }
+  .wholesale-v3 .wholesale-v3-summary { min-height: 25rem; }
+  .wholesale-v3 .wholesale-v3-summary__levels { grid-template-columns: 1fr; }
+  .wholesale-v3 .wholesale-v3-modes, .wholesale-v3 .wholesale-v3-packs, .wholesale-v3 .wholesale-v3-cta { padding-block: 4rem; }
+  .wholesale-v3 .wholesale-v3-modes__grid, .wholesale-v3 .wholesale-v3-packs__grid { grid-template-columns: 1fr; }
+  .wholesale-v3 .wholesale-v3-mode { min-height: 25rem; padding: 2rem 1.35rem 7rem; }
+  .wholesale-v3 .wholesale-v3-heading--packs { grid-template-columns: 1fr; gap: 1rem; }
+  .wholesale-v3 .wholesale-v3-pack__body { min-height: 0; padding: 2rem 1.35rem; }
+  .wholesale-v3 .wholesale-v3-free-note { grid-template-columns: 1fr; padding: 1.5rem 1.35rem; }
+  .wholesale-v3 .wholesale-v3-free-note > p, .wholesale-v3 .wholesale-v3-free-note .text-link { grid-column: auto; }
+  .wholesale-v3 .wholesale-v3-editorial { grid-template-columns: 1fr; }
+  .wholesale-v3 .wholesale-v3-editorial__image { min-height: min(100vw, 30rem); }
+  .wholesale-v3 .wholesale-v3-editorial__copy { padding: 3.5rem 1.25rem; }
+  .wholesale-v3 .wholesale-v3-cta__inner { grid-template-columns: 1fr; }
+  .wholesale-v3 .wholesale-v3-cta h2 { font-size: clamp(2.8rem, 12vw, 3.8rem); }
+}
