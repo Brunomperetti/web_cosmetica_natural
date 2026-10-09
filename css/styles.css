@@ -477,3 +477,55 @@ button.button { border: 0; cursor: pointer; font-family: var(--font-sans); }
 .wholesale-v4-cta__grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; gap: 4rem; }
 .wholesale-v4-cta h2 { color: #fbf8fc; }
 .wholesale-v4-cta__action > p { margin-bottom: 1.5rem; }
+
+
+/* Contacto v2 — composición editorial y formulario */
+.contact-v2__main { overflow: hidden; }
+.contact-v2-hero { position: relative; padding-block: clamp(4.5rem, 7vw, 6.75rem); background: linear-gradient(120deg, #fbf8fc 0%, #f8f3fa 52%, #f0e4ef 100%); }
+.contact-v2-hero::before { position: absolute; top: -10rem; left: -7rem; width: 24rem; height: 24rem; border: 1px solid rgba(113,84,127,.08); border-radius: 50%; content: ""; }
+.contact-v2-hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,.9fr) minmax(30rem,1.1fr); align-items: start; gap: clamp(3rem,7vw,7rem); }
+.contact-v2-intro { padding-top: clamp(1rem,3vw,2.5rem); }
+.contact-v2-intro h1 { max-width: 33rem; margin-bottom: 1.5rem; font-size: clamp(4.25rem,6.4vw,6.2rem); line-height: .94; }
+.contact-v2-intro__lead { max-width: 31rem; margin-bottom: 2.5rem; color: var(--color-text-secondary); font-size: var(--text-md); line-height: 1.85; }
+.contact-v2-channels { display: grid; max-width: 34rem; border-top: 1px solid rgba(113,84,127,.15); }
+.contact-v2-channel { display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(113,84,127,.15); color: inherit; text-decoration: none; transition: padding-left .25s ease, color .25s ease; }
+.contact-v2-channel:hover { padding-left: .35rem; color: var(--color-primary-deep); }
+.contact-v2-channel__index { color: var(--color-primary); font-family: var(--font-serif); font-size: .9rem; font-style: italic; }
+.contact-v2-channel strong, .contact-v2-channel small { display: block; }
+.contact-v2-channel strong { font-family: var(--font-serif); font-size: 1.55rem; font-weight: 500; line-height: 1.1; }
+.contact-v2-channel small { margin-top: .25rem; color: var(--color-text-secondary); font-size: .65rem; letter-spacing: .06em; text-transform: uppercase; }
+.contact-v2-signature { display: flex; align-items: end; gap: 1.25rem; margin-top: 3rem; }
+.contact-v2-signature svg { width: 3.75rem; height: 5.5rem; fill: none; stroke: var(--color-primary); stroke-width: 1; opacity: .55; }
+.contact-v2-signature p { margin: 0; color: var(--color-text-secondary); font-family: var(--font-serif); font-size: 1.45rem; line-height: 1.2; }
+.contact-v2-signature strong { color: var(--color-primary-deep); font-weight: 500; }
+
+.contact-v2-form-panel { position: relative; padding: clamp(2rem,4vw,3.5rem); overflow: hidden; border: 1px solid rgba(113,84,127,.12); background: rgba(251,248,252,.9); box-shadow: 0 1.5rem 4rem rgba(90,73,100,.06); }
+.contact-v2-form-panel__heading { position: relative; z-index: 2; max-width: 34rem; margin-bottom: 2.5rem; }
+.contact-v2-form-panel__heading h2 { margin-bottom: 0; font-size: clamp(2.5rem,4vw,3.7rem); }
+.contact-v2-form { position: relative; z-index: 2; }
+.contact-v2-form__row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.25rem; }
+.contact-v2-field { display: grid; gap: .55rem; margin-bottom: 1.35rem; }
+.contact-v2-field > span { color: var(--color-text-secondary); font-size: .66rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.contact-v2-field > span small { font-size: inherit; font-weight: 400; letter-spacing: .04em; text-transform: none; }
+.contact-v2-field input, .contact-v2-field select, .contact-v2-field textarea { width: 100%; min-width: 0; border: 0; border-bottom: 1px solid rgba(113,84,127,.23); border-radius: 0; outline: none; background: transparent; color: var(--color-text); font: inherit; transition: border-color .2s ease, background .2s ease; }
+.contact-v2-field input, .contact-v2-field select { min-height: 3rem; }
+.contact-v2-field textarea { min-height: 8rem; padding: .85rem 0; resize: vertical; }
+.contact-v2-field select { appearance: none; background-image: linear-gradient(45deg,transparent 50%,#71547f 50%),linear-gradient(135deg,#71547f 50%,transparent 50%); background-position: calc(100% - 12px) 50%,calc(100% - 7px) 50%; background-size: 5px 5px,5px 5px; background-repeat: no-repeat; padding-right: 1.5rem; }
+.contact-v2-field input:focus, .contact-v2-field select:focus, .contact-v2-field textarea:focus { border-color: var(--color-primary-deep); background: rgba(246,241,248,.35); }
+.contact-v2-field input:user-invalid, .contact-v2-field select:user-invalid, .contact-v2-field textarea:user-invalid { border-color: #9a6277; }
+.contact-v2-field--message { margin-bottom: 1.6rem; }
+.contact-v2-form__footer { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.contact-v2-form__footer > p { max-width: 17rem; margin: 0; color: var(--color-text-secondary); font-size: .72rem; line-height: 1.6; }
+.contact-v2-form__submit { border: 0; cursor: pointer; font-family: var(--font-sans); }
+.contact-v2-form__status { min-height: 1.4rem; margin: .9rem 0 0; color: var(--color-primary-deep); font-size: .74rem; }
+.contact-v2-form-panel__ornament span { position: absolute; border: 1px solid rgba(113,84,127,.07); border-radius: 50%; pointer-events: none; }
+.contact-v2-form-panel__ornament span:first-child { top: -8rem; right: -6rem; width: 18rem; height: 18rem; }
+.contact-v2-form-panel__ornament span:last-child { right: 4rem; bottom: -7rem; width: 13rem; height: 13rem; }
+
+.contact-v2-note { padding-block: 1.5rem; background: var(--color-primary-deep); color: var(--color-cream); }
+.contact-v2-note__grid { display: grid; grid-template-columns: auto auto auto 1fr; align-items: center; gap: clamp(1rem,3vw,2.5rem); }
+.contact-v2-note__grid > span { color: rgba(251,248,252,.75); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+.contact-v2-note__grid > strong { justify-self: end; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; }
+
+
+.contact-v2-honey { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
