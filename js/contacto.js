@@ -1,5 +1,4 @@
 (() => {
-  const form = document.querySelector("[data-contact-form]");
   const reason = document.querySelector("[data-contact-reason]");
   const status = document.querySelector("[data-contact-status]");
 
@@ -11,15 +10,7 @@
     reason.value = requestedReason;
   }
 
-  if (!form) return;
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!form.reportValidity()) return;
-
-    if (status) {
-      status.textContent = "El formulario está listo. Falta conectar el destino de envío antes de publicarlo.";
-    }
-  });
+  if (status && params.get("enviado") === "1") {
+    status.textContent = "Gracias por escribirnos. Recibimos tu consulta y te responderemos a la brevedad.";
+  }
 })();
