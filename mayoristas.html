@@ -7,11 +7,11 @@
   <title>Venta Mayorista | Luzia Cosmética Natural</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body class="wholesale-page wholesale-v3">
+<body class="wholesale-v4">
   <header class="site-header">
     <div class="container site-header__content">
       <a class="site-logo" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a>
@@ -32,205 +32,131 @@
     </div>
   </header>
 
-  <main class="wholesale-v3__main">
-    <section class="wholesale-v3-hero" aria-labelledby="wholesale-v3-title">
-      <div class="container wholesale-v3-hero__grid">
-        <div class="wholesale-v3-hero__copy">
+  <main class="wholesale-v4__main">
+    <section class="wholesale-v4-hero wholesale-v4-section" aria-labelledby="wholesale-title">
+      <div class="container wholesale-v4-hero__grid">
+        <div class="wholesale-v4-hero__copy">
           <p class="eyebrow">Venta mayorista Luzia</p>
-          <h1 id="wholesale-v3-title">Mayorista simple,<br>flexible y con identidad</h1>
-          <p class="wholesale-v3-hero__lead">Elegí los productos que quieras o empezá con una selección sugerida. Vos definís la combinación; el beneficio crece con tu compra.</p>
-          <div class="wholesale-v3-hero__actions">
-            <a class="button" href="#wholesale-v3-modalidades">Ver cómo comprar</a>
-            <a class="text-link" href="#wholesale-v3-packs">Ver packs sugeridos</a>
+          <h1 id="wholesale-title">Mayorista simple,<br>flexible y con identidad</h1>
+          <p class="wholesale-v4-hero__lead">Elegí los productos que quieras o empezá con una selección sugerida. Vos definís la combinación; el beneficio crece con tu compra.</p>
+          <div class="wholesale-v4-actions">
+            <a class="wholesale-v4-button" href="#modalidades">Conocer las opciones</a>
+            <a class="wholesale-v4-link" href="#consulta-mayorista">Consultar por mayorista <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="wholesale-v3-audience" aria-label="Ideal para">
-            <span>Tiendas</span><span>Espacios de bienestar</span><span>Profesionales</span>
-          </div>
+          <ul class="wholesale-v4-facts" aria-label="Beneficios mayoristas">
+            <li><strong>$150.000</strong><span>Pedido mínimo</span></li>
+            <li><strong>25% OFF</strong><span>Desde $150.000</span></li>
+            <li><strong>30% OFF</strong><span>Desde $300.000</span></li>
+          </ul>
+          <p class="wholesale-v4-audience">Ideal para: <span>Tiendas · Espacios de bienestar · Profesionales</span></p>
         </div>
+        <figure class="wholesale-v4-hero__art">
+          <img src="assets/images/luzia-historia.jpg" alt="Manos preparando una crema artesanal con ingredientes naturales" width="1122" height="1402" fetchpriority="high">
+          <span class="wholesale-v4-hero__seal">Luzia<small>Mayorista</small></span>
+          <figcaption><span>Hecho con cuidado</span><strong>Cuidado · selección · identidad</strong></figcaption>
+          <svg class="wholesale-v4-botanical" viewBox="0 0 120 180" aria-hidden="true" focusable="false"><path d="M60 172C50 110 75 65 62 12M59 135C25 130 14 105 12 89C43 91 57 108 59 135ZM61 98C94 90 104 70 108 48C78 55 66 74 61 98ZM66 63C40 58 31 36 31 17C58 24 65 43 66 63Z"/></svg>
+        </figure>
+      </div>
+    </section>
 
-        <aside class="wholesale-v3-summary" aria-label="Resumen de condiciones mayoristas">
-          <div class="wholesale-v3-summary__brand">
-            <span class="wholesale-v3-summary__micro">Tu compra · tus productos</span>
-            <strong>LUZIA<br>MAYORISTA</strong>
-          </div>
-          <div class="wholesale-v3-summary__levels">
-            <article>
-              <span>Desde</span>
-              <strong>$150.000</strong>
-              <b>25% OFF</b>
-            </article>
-            <article>
-              <span>Desde</span>
-              <strong>$300.000</strong>
-              <b>30% OFF</b>
-            </article>
-          </div>
-          <p>Los packs son opcionales: también podés armar el pedido completamente a tu manera.</p>
-          <span class="wholesale-v3-summary__shape wholesale-v3-summary__shape--a" aria-hidden="true"></span>
-          <span class="wholesale-v3-summary__shape wholesale-v3-summary__shape--b" aria-hidden="true"></span>
+    <section class="wholesale-v4-modes wholesale-v4-section" id="modalidades" aria-labelledby="modes-title">
+      <div class="container">
+        <header class="wholesale-v4-heading">
+          <p class="eyebrow">Elegí tu modalidad</p>
+          <h2 id="modes-title">Dos maneras de comprar,<br>la misma libertad de elegir</h2>
+        </header>
+        <div class="wholesale-v4-pair">
+          <article class="wholesale-v4-mode wholesale-v4-mode--free">
+            <span class="wholesale-v4-mode__number" aria-hidden="true">01</span>
+            <p class="eyebrow">01 / Pedido libre</p>
+            <h3>Armalo a tu manera</h3>
+            <p>Elegí cualquier combinación del catálogo hasta alcanzar el monto mayorista.</p>
+            <dl class="wholesale-v4-levels">
+              <div><dt>Desde $150.000</dt><dd>25% OFF</dd></div>
+              <div><dt>Desde $300.000</dt><dd>30% OFF</dd></div>
+            </dl>
+            <p class="wholesale-v4-mode__note">Sin obligación de llevar un pack cerrado.</p>
+            <a class="wholesale-v4-link" href="productos.html">Quiero elegir mis productos <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="wholesale-v4-mode wholesale-v4-mode--suggested">
+            <span class="wholesale-v4-mode__number" aria-hidden="true">02</span>
+            <p class="eyebrow">02 / Packs sugeridos</p>
+            <h3>Una selección para empezar más fácil</h3>
+            <p>Si no sabés qué productos elegir, podés tomar una combinación ya pensada como punto de partida.</p>
+            <ul class="wholesale-v4-mode__benefits"><li>Selección equilibrada</li><li>Mix de categorías</li><li>Podés modificarla</li></ul>
+            <a class="wholesale-v4-link" href="#packs">Ver packs <span aria-hidden="true">↓</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wholesale-v4-packs wholesale-v4-section" id="packs" aria-labelledby="packs-title">
+      <div class="container">
+        <header class="wholesale-v4-heading wholesale-v4-heading--split">
+          <div><p class="eyebrow">Packs sugeridos</p><h2 id="packs-title">Si no sabés qué elegir,<br>empezá por acá</h2></div>
+          <p>Son combinaciones orientativas. Podés elegirlas tal cual, modificarlas o armar tu pedido completamente libre.</p>
+        </header>
+        <div class="wholesale-v4-pair wholesale-v4-packs__grid">
+          <article class="wholesale-v4-pack" aria-labelledby="pack-start-title">
+            <header class="wholesale-v4-pack__cover">
+              <div class="wholesale-v4-pack__top"><span>Pack 01</span><span>12 unidades</span></div>
+              <div class="wholesale-v4-pack__discount"><strong>25%</strong><span>OFF</span></div>
+              <p>Pack Inicio</p>
+              <svg class="wholesale-v4-pack__botanical" viewBox="0 0 120 180" aria-hidden="true" focusable="false"><path d="M60 172C50 110 75 65 62 12M59 135C25 130 14 105 12 89C43 91 57 108 59 135ZM61 98C94 90 104 70 108 48C78 55 66 74 61 98ZM66 63C40 58 31 36 31 17C58 24 65 43 66 63Z"/></svg>
+            </header>
+            <div class="wholesale-v4-pack__body">
+              <h3 id="pack-start-title">Una selección completa para empezar</h3>
+              <p>Una combinación equilibrada entre cuidado facial, corporal, capilar y bienestar.</p>
+              <ul class="wholesale-v4-chips" aria-label="Categorías"><li>Facial</li><li>Cabello</li><li>Corporal</li><li>Bienestar</li></ul>
+              <dl class="wholesale-v4-price"><div class="wholesale-v4-price__retail"><dt>Valor tienda</dt><dd><s>$204.000</s></dd></div><div class="wholesale-v4-price__total"><dt>Precio mayorista</dt><dd>$153.000</dd></div><div class="wholesale-v4-price__saving"><dt>Ahorro</dt><dd>$51.000</dd></div></dl>
+              <details class="wholesale-v4-content"><summary>Ver contenido</summary><ul>
+                <li>1 Crema Facial Efecto Juventud</li><li>1 Crema Facial Coco y Vainilla</li><li>1 Espuma Facial Agua de Rosas</li><li>1 Sérum Facial Rejuvenecedor</li><li>1 Bálsamo Labial Natural</li><li>1 Shampoo Equilibrio</li><li>1 Shampoo Purificante</li><li>1 Acondicionador Fuerza</li><li>1 Crema de Peinar</li><li>1 Crema Corporal Jazmín</li><li>1 Bruma Naranja y Limón</li><li>1 Jabón de Carbón</li>
+              </ul></details>
+              <a class="wholesale-v4-button" href="#consulta-mayorista">Quiero este pack <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="wholesale-v4-pack wholesale-v4-pack--business" aria-labelledby="pack-business-title">
+            <header class="wholesale-v4-pack__cover">
+              <div class="wholesale-v4-pack__top"><span>Pack 02</span><span>26 unidades</span></div>
+              <div class="wholesale-v4-pack__discount"><strong>30%</strong><span>OFF</span></div>
+              <p>Pack Negocio</p>
+              <svg class="wholesale-v4-pack__botanical" viewBox="0 0 120 180" aria-hidden="true" focusable="false"><path d="M60 172C50 110 75 65 62 12M59 135C25 130 14 105 12 89C43 91 57 108 59 135ZM61 98C94 90 104 70 108 48C78 55 66 74 61 98ZM66 63C40 58 31 36 31 17C58 24 65 43 66 63Z"/></svg>
+            </header>
+            <div class="wholesale-v4-pack__body">
+              <h3 id="pack-business-title">La línea completa para tu espacio</h3>
+              <p>Pensado para locales y profesionales que quieren comenzar con una propuesta más amplia.</p>
+              <ul class="wholesale-v4-chips" aria-label="Características"><li>Línea completa</li><li>26 unidades</li><li>Mayor variedad</li></ul>
+              <dl class="wholesale-v4-price"><div class="wholesale-v4-price__retail"><dt>Valor tienda</dt><dd><s>$429.100</s></dd></div><div class="wholesale-v4-price__total"><dt>Precio mayorista</dt><dd>$300.370</dd></div><div class="wholesale-v4-price__saving"><dt>Ahorro</dt><dd>$128.730</dd></div></dl>
+              <details class="wholesale-v4-content"><summary>Ver contenido</summary><ul><li>1 unidad de cada uno de los 23 productos del catálogo Luzia</li><li>+ 1 Bruma Naranja y Limón</li><li>+ 1 Crema de Peinar</li><li>+ 1 Bálsamo Labial Natural</li></ul></details>
+              <a class="wholesale-v4-button" href="#consulta-mayorista">Quiero este pack <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+        <aside class="wholesale-v4-free" aria-labelledby="free-title">
+          <div><p class="eyebrow">¿Preferís elegir vos?</p><h3 id="free-title">No necesitás llevar<br>un pack cerrado.</h3></div>
+          <div class="wholesale-v4-free__terms"><p>Elegí cualquier combinación de productos hasta alcanzar:</p><ul><li>$150.000 <span aria-hidden="true">→</span> <strong>25% OFF</strong></li><li>$300.000 <span aria-hidden="true">→</span> <strong>30% OFF</strong></li></ul></div>
+          <a class="wholesale-v4-button wholesale-v4-button--light" href="productos.html">Armar pedido libre <span aria-hidden="true">↗</span></a>
         </aside>
       </div>
     </section>
 
-    <section class="wholesale-v3-modes" id="wholesale-v3-modalidades" aria-labelledby="wholesale-v3-modes-title">
-      <div class="container">
-        <header class="wholesale-v3-heading">
-          <p class="eyebrow">Elegí tu modalidad</p>
-          <h2 id="wholesale-v3-modes-title">Dos caminos. Una sola condición: que te sirva.</h2>
-        </header>
-
-        <div class="wholesale-v3-modes__grid">
-          <article class="wholesale-v3-mode wholesale-v3-mode--free">
-            <div class="wholesale-v3-mode__marker">01</div>
-            <p class="eyebrow">Pedido libre</p>
-            <h3>Elegí producto por producto</h3>
-            <p>Armá tu compra con cualquier combinación del catálogo y alcanzá el nivel mayorista que prefieras.</p>
-            <ul>
-              <li>Sin pack obligatorio</li>
-              <li>Ideal si ya conocés qué necesita tu negocio</li>
-              <li>25% o 30% OFF según monto</li>
-            </ul>
-            <a class="text-link" href="#consulta-mayorista">Quiero elegir mis productos</a>
-            <div class="wholesale-v3-mode__art" aria-hidden="true"><i></i><i></i><i></i></div>
-          </article>
-
-          <article class="wholesale-v3-mode wholesale-v3-mode--packs">
-            <div class="wholesale-v3-mode__marker">02</div>
-            <p class="eyebrow">Packs sugeridos</p>
-            <h3>Empezá con una selección ya pensada</h3>
-            <p>Si no sabés por dónde empezar, usamos una combinación equilibrada como guía inicial.</p>
-            <ul>
-              <li>Mix de categorías</li>
-              <li>Selección orientativa</li>
-              <li>Podés tomarla tal cual o modificarla</li>
-            </ul>
-            <a class="text-link" href="#wholesale-v3-packs">Ver packs</a>
-            <div class="wholesale-v3-mode__seal" aria-hidden="true"><span>Selección</span><strong>Luzia</strong><small>sugerida</small></div>
-          </article>
+    <section class="wholesale-v4-support wholesale-v4-section" aria-labelledby="support-title">
+      <div class="container wholesale-v4-support__grid">
+        <figure class="wholesale-v4-support__image"><img src="assets/images/mayoristas-luzia.jpg" alt="Selección Luzia de cuidado facial, corporal y capilar en un entorno natural" width="480" height="480" loading="lazy"><figcaption>Una selección con sentido.</figcaption></figure>
+        <div class="wholesale-v4-support__copy">
+          <p class="eyebrow">Acompañamiento real</p>
+          <h2 id="support-title">¿No sabés qué<br>conviene llevar?</h2>
+          <p>No hace falta conocer todo el catálogo. Contanos qué tipo de espacio tenés, a quién le vendés y cuánto querés invertir.</p>
+          <p>Te ayudamos a definir una selección equilibrada, evitando comprar variedad que no necesitás.</p>
+          <ul class="wholesale-v4-support__benefits"><li>Selección según tu público</li><li>Variedad sin sobrecargar stock</li><li>Pedido libre o sugerido</li></ul>
         </div>
       </div>
     </section>
 
-    <section class="wholesale-v3-packs" id="wholesale-v3-packs" aria-labelledby="wholesale-v3-packs-title">
-      <div class="container">
-        <header class="wholesale-v3-heading wholesale-v3-heading--packs">
-          <div>
-            <p class="eyebrow">Packs sugeridos</p>
-            <h2 id="wholesale-v3-packs-title">Dos puntos de partida</h2>
-          </div>
-          <p>Una ayuda para empezar más fácil. No son cerrados ni obligatorios: también podés armar tu pedido libre.</p>
-        </header>
-
-        <div class="wholesale-v3-packs__grid">
-          <article class="wholesale-v3-pack wholesale-v3-pack--start">
-            <div class="wholesale-v3-pack__visual">
-              <span class="wholesale-v3-pack__index">PACK 01</span>
-              <strong>25%</strong>
-              <span class="wholesale-v3-pack__off">OFF</span>
-              <div class="wholesale-v3-pack__tags"><span>12 unidades</span><span>Mix de líneas</span><span>Primera compra</span></div>
-              <span class="wholesale-v3-pack__orb wholesale-v3-pack__orb--one" aria-hidden="true"></span>
-              <span class="wholesale-v3-pack__orb wholesale-v3-pack__orb--two" aria-hidden="true"></span>
-            </div>
-            <div class="wholesale-v3-pack__body">
-              <p class="eyebrow">Pack Inicio</p>
-              <h3>Una selección completa para empezar</h3>
-              <p>Facial, corporal, cabello, bienestar y jabón en una combinación equilibrada.</p>
-              <div class="wholesale-v3-pack__price">
-                <span>Valor tienda <s>$204.000</s></span>
-                <strong>$153.000</strong>
-                <small>Ahorrás $51.000</small>
-              </div>
-              <details>
-                <summary>Ver contenido</summary>
-                <ul>
-                  <li>1 Crema Facial Efecto Juventud</li>
-                  <li>1 Crema Facial Coco y Vainilla</li>
-                  <li>1 Espuma Facial Agua de Rosas</li>
-                  <li>1 Sérum Facial Rejuvenecedor</li>
-                  <li>1 Bálsamo Labial Natural</li>
-                  <li>1 Shampoo Equilibrio</li>
-                  <li>1 Shampoo Purificante</li>
-                  <li>1 Acondicionador Fuerza</li>
-                  <li>1 Crema de Peinar</li>
-                  <li>1 Crema Corporal Jazmín</li>
-                  <li>1 Bruma Naranja y Limón</li>
-                  <li>1 Jabón de Carbón</li>
-                </ul>
-              </details>
-              <a class="button" href="#consulta-mayorista">Quiero este pack</a>
-            </div>
-          </article>
-
-          <article class="wholesale-v3-pack wholesale-v3-pack--business">
-            <div class="wholesale-v3-pack__visual">
-              <span class="wholesale-v3-pack__index">PACK 02</span>
-              <strong>30%</strong>
-              <span class="wholesale-v3-pack__off">OFF</span>
-              <div class="wholesale-v3-pack__tags"><span>26 unidades</span><span>Línea completa</span><span>Mayor variedad</span></div>
-              <span class="wholesale-v3-pack__orb wholesale-v3-pack__orb--one" aria-hidden="true"></span>
-              <span class="wholesale-v3-pack__orb wholesale-v3-pack__orb--two" aria-hidden="true"></span>
-            </div>
-            <div class="wholesale-v3-pack__body">
-              <p class="eyebrow">Pack Negocio</p>
-              <h3>La línea completa para tu espacio</h3>
-              <p>Pensado para locales y profesionales que quieren exhibir una propuesta amplia desde el comienzo.</p>
-              <div class="wholesale-v3-pack__price">
-                <span>Valor tienda <s>$429.100</s></span>
-                <strong>$300.370</strong>
-                <small>Ahorrás $128.730</small>
-              </div>
-              <details>
-                <summary>Ver contenido</summary>
-                <ul>
-                  <li>1 unidad de cada uno de los 23 productos del catálogo Luzia</li>
-                  <li>+ 1 Bruma Naranja y Limón</li>
-                  <li>+ 1 Crema de Peinar</li>
-                  <li>+ 1 Bálsamo Labial Natural</li>
-                </ul>
-              </details>
-              <a class="button" href="#consulta-mayorista">Quiero este pack</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="wholesale-v3-free-note">
-          <div class="wholesale-v3-free-note__number">∞</div>
-          <div>
-            <p class="eyebrow">Tu pedido, tu selección</p>
-            <h3>No necesitás llevar un pack cerrado</h3>
-          </div>
-          <p>Elegí cualquier combinación del catálogo hasta llegar a $150.000 o $300.000 y accedé al descuento correspondiente.</p>
-          <a class="text-link" href="#consulta-mayorista">Armar pedido libre</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="wholesale-v3-editorial" aria-labelledby="wholesale-v3-editorial-title">
-      <div class="wholesale-v3-editorial__image">
-        <img src="assets/images/luzia-historia.jpg" alt="Proceso artesanal y cuidado en la elaboración de Luzia">
-      </div>
-      <div class="wholesale-v3-editorial__copy">
-        <p class="eyebrow">Acompañamiento real</p>
-        <h2 id="wholesale-v3-editorial-title">Si no sabés qué conviene llevar, lo vemos con vos</h2>
-        <p>No hace falta conocer todo el catálogo. Contanos qué tipo de espacio tenés, a quién le vendés y cuánto querés invertir. A partir de eso podemos orientarte en una selección equilibrada.</p>
-        <div class="wholesale-v3-editorial__mini">
-          <span>Selección según tu público</span>
-          <span>Variedad sin sobrecargar stock</span>
-          <span>Pedido libre o sugerido</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="wholesale-v3-cta" id="consulta-mayorista" aria-labelledby="wholesale-v3-cta-title">
-      <div class="container wholesale-v3-cta__inner">
-        <div>
-          <p class="eyebrow">Hablemos</p>
-          <h2 id="wholesale-v3-cta-title">Armemos una propuesta que tenga sentido para tu espacio</h2>
-        </div>
-        <div class="wholesale-v3-cta__action">
-          <p>Decinos si querés pedido libre, Pack Inicio o Pack Negocio y te ayudamos a avanzar.</p>
-          <a class="button wholesale-v3-cta__button" href="contacto.html">Quiero recibir información</a>
-        </div>
+    <section class="wholesale-v4-cta wholesale-v4-section" id="consulta-mayorista" aria-labelledby="cta-title">
+      <div class="container wholesale-v4-cta__grid">
+        <div><p class="eyebrow">Hablemos</p><h2 id="cta-title">Armemos una propuesta que tenga sentido para tu espacio</h2></div>
+        <div class="wholesale-v4-cta__action"><p>Decinos si preferís pedido libre, Pack Inicio o Pack Negocio y te ayudamos a avanzar.</p><a class="wholesale-v4-button wholesale-v4-button--light" href="contacto.html">Quiero recibir información <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
   </main>
