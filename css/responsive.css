@@ -45,8 +45,8 @@
   .hero__text { max-width: 23rem; margin-bottom: 2.25rem; line-height: 1.75; }
   h1 { font-size: clamp(3.35rem, 16vw, 5.2rem); line-height: 1; }
   h2 { font-size: clamp(2.55rem, 12vw, 3.5rem); line-height: 1.08; }
-  .hero__visual { position: relative; grid-row: 2; width: 100%; aspect-ratio: 4 / 3; margin: 0; overflow: hidden; }
-  .hero__visual img { object-position: 82% center; transform: scale(1.32); transform-origin: 82% 52%; }
+  .hero__visual { position: relative; grid-row: 2; width: 100%; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; }
+  .hero__visual img { object-position: center; transform: none; }
   .category-grid { grid-template-columns: 1fr; gap: 3.5rem; }
   .section-heading--split { display: block; }
   .section-heading--split .text-link { margin-top: 1rem; }
