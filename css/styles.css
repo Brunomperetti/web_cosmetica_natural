@@ -543,15 +543,13 @@ button.button { border: 0; cursor: pointer; font-family: var(--font-sans); }
 .about-v3-hero { background: #fbf8fc; }
 .about-v3-hero__grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; gap: 3rem; }
 .about-v3-hero__copy > p:last-child { max-width: 34rem; margin: 0; }
-.about-v3-hero__art { position: relative; display: flex; min-height: 26rem; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; padding: 2.5rem; isolation: isolate; background: #f6f1f8; }
-.about-v3-hero__oval { position: absolute; z-index: -1; inset: 1.5rem; border: 1px solid #cdb5d8; border-radius: 50% 50% 44% 44%; transform: rotate(-8deg); }
-.about-v3-hero__art::before { position: absolute; z-index: -1; top: 2rem; right: 1.5rem; width: 6.5rem; aspect-ratio: 1; border-radius: 50%; background: #e8d2e4; content: ""; }
-.about-v3-hero__art img { width: min(65%, 12.5rem); height: auto; }
-.about-v3-hero__years { display: grid; justify-items: center; gap: .25rem; padding-top: 1.5rem; border-top: 1px solid #d8c6e5; }
-.about-v3-hero__years strong { color: var(--about-plum); font-family: var(--font-serif); font-size: 5.25rem; font-weight: 500; line-height: 1; }
-.about-v3-hero__years span { font-size: .6875rem; letter-spacing: .22em; text-transform: uppercase; }
-.about-v3-hero__art > p { margin: 0; font-size: .6875rem; letter-spacing: .06em; }
-.about-v3-hero__botanical { position: absolute; left: 1rem; bottom: 1.75rem; width: 4rem; height: 6.5rem; fill: none; stroke: #b89acb; stroke-width: 1; pointer-events: none; }
+.about-v3-hero__art { display: flex; min-height: 26rem; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2.5rem; border: 1px solid #d8c6e5; background: linear-gradient(145deg, #f6f1f8, #f0e5ef); text-align: center; }
+.about-v3-hero__art > p { margin: 0; }
+.about-v3-hero__art .about-v3-hero__kicker { color: #71547f; font-size: .625rem; font-weight: 500; line-height: 1.6; letter-spacing: .24em; }
+.about-v3-hero__number { color: var(--about-plum); font-family: var(--font-serif); font-size: 7.5rem; font-weight: 500; line-height: 1; letter-spacing: -.04em; }
+.about-v3-hero__art .about-v3-hero__caption { color: var(--about-plum); font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.2; }
+.about-v3-hero__art .about-v3-hero__location { color: #71547f; font-size: .75rem; line-height: 1.6; letter-spacing: .05em; }
+.about-v3-hero__art .about-v3-hero__journey { max-width: 18rem; color: #71547f; font-size: .6875rem; line-height: 1.8; text-wrap: balance; }
 .about-v3-history { background: #eee5f3; }
 .about-v3-history__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .about-v3-history__card { display: flex; min-width: 0; flex-direction: column; padding: 2rem; border: 1px solid #cdb5d8; background: #d8c6e5; }
