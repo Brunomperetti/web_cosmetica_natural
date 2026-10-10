@@ -91,6 +91,7 @@ function crearTarjetaProducto(producto) {
     const imagen = document.createElement("img");
     imagen.className = "product-card__image";
     imagen.alt = `Fotografía de ${producto.nombre}`;
+    imagen.decoding = "async";
     imagen.hidden = true;
     imagen.addEventListener("load", () => {
       imagen.hidden = false;
@@ -167,11 +168,13 @@ function crearTarjetaProducto(producto) {
       window.LuziaCarrito.agregarProducto(producto.slug, 1);
       agregar.classList.add("is-added");
       agregar.textContent = "Agregado ✓";
+      agregar.setAttribute("aria-label", `${producto.nombre} agregado al carrito`);
       agregar.disabled = true;
 
       window.setTimeout(() => {
         agregar.classList.remove("is-added");
         agregar.textContent = "Agregar al carrito";
+        agregar.setAttribute("aria-label", `Agregar ${producto.nombre} al carrito`);
         agregar.disabled = false;
       }, 1100);
     });
