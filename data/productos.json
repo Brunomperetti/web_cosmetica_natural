@@ -214,22 +214,20 @@
     "disponible": true
   },
   {
-    "id": 4,
-    "slug": "crema-facial-coco-vainilla",
-    "nombre": "Crema Facial Coco y Vainilla",
+    "id": 6,
+    "slug": "crema-facial-limon",
+    "nombre": "Crema Facial Limón",
     "categoria": "Facial",
-    "descripcion": "El coco aporta emoliencia y ayuda a reducir la sensación de sequedad, mientras la vainilla brinda una experiencia suave y reconfortante. Ideal para una rutina facial nutritiva que deja la piel flexible, confortable y cuidada.",
-    "descripcionCompleta": "Restaura la vitalidad de tu piel con un tratamiento nutritivo que elimina la sequedad. Su fórmula con aceite natural de almendras y vitamina E humecta en profundidad, mientras que el coco y la vainilla aportan máxima emoliencia. Deja el rostro suave, flexible y protegido. Ideal para piel normal a seca.",
+    "descripcion": "Crema facial de textura fresca y liviana, ideal para el cuidado diario. Ayuda a mantener la piel hidratada, suave y confortable, mientras el limón aporta una agradable sensación de frescura. Especialmente recomendada para pieles mixtas o grasas, aunque puede incorporarse a distintas rutinas según las necesidades de cada piel.",
+    "descripcionCompleta": "Crema facial de textura fresca y liviana, ideal para el cuidado diario. Ayuda a mantener la piel hidratada, suave y confortable, mientras el limón aporta una agradable sensación de frescura. Especialmente recomendada para pieles mixtas o grasas, aunque puede incorporarse a distintas rutinas según las necesidades de cada piel.",
     "precio": 23500,
-    "imagen": "assets/productos/crema-facial-coco-vainilla.jpg",
+    "imagen": "assets/productos/crema-facial-limon.jpg",
     "galeria": [],
     "ingredientes": [
       "Crema base",
-      "Aceite natural de almendras",
+      "Aceite de almendras",
       "Vitamina E",
-      "Aceite esencial de coco",
-      "Aceite esencial de vainilla",
-      "Conservante natural"
+      "Aceite esencial de limón"
     ],
     "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio. Masajear suavemente hasta su absorción.",
     "destacado": false,
@@ -257,20 +255,22 @@
     "disponible": true
   },
   {
-    "id": 6,
-    "slug": "crema-facial-limon",
-    "nombre": "Crema Facial Limón",
+    "id": 4,
+    "slug": "crema-facial-coco-vainilla",
+    "nombre": "Crema Facial Coco y Vainilla",
     "categoria": "Facial",
-    "descripcion": "Crema facial de textura fresca y liviana, ideal para el cuidado diario. Ayuda a mantener la piel hidratada, suave y confortable, mientras el limón aporta una agradable sensación de frescura. Especialmente recomendada para pieles mixtas o grasas, aunque puede incorporarse a distintas rutinas según las necesidades de cada piel.",
-    "descripcionCompleta": "Crema facial de textura fresca y liviana, ideal para el cuidado diario. Ayuda a mantener la piel hidratada, suave y confortable, mientras el limón aporta una agradable sensación de frescura. Especialmente recomendada para pieles mixtas o grasas, aunque puede incorporarse a distintas rutinas según las necesidades de cada piel.",
+    "descripcion": "El coco aporta emoliencia y ayuda a reducir la sensación de sequedad, mientras la vainilla brinda una experiencia suave y reconfortante. Ideal para una rutina facial nutritiva que deja la piel flexible, confortable y cuidada.",
+    "descripcionCompleta": "Restaura la vitalidad de tu piel con un tratamiento nutritivo que elimina la sequedad. Su fórmula con aceite natural de almendras y vitamina E humecta en profundidad, mientras que el coco y la vainilla aportan máxima emoliencia. Deja el rostro suave, flexible y protegido. Ideal para piel normal a seca.",
     "precio": 23500,
-    "imagen": "assets/productos/crema-facial-limon.jpg",
+    "imagen": "assets/productos/crema-facial-coco-vainilla.jpg",
     "galeria": [],
     "ingredientes": [
       "Crema base",
-      "Aceite de almendras",
+      "Aceite natural de almendras",
       "Vitamina E",
-      "Aceite esencial de limón"
+      "Aceite esencial de coco",
+      "Aceite esencial de vainilla",
+      "Conservante natural"
     ],
     "modoUso": "Aplicar una pequeña cantidad sobre el rostro limpio. Masajear suavemente hasta su absorción.",
     "destacado": false,
