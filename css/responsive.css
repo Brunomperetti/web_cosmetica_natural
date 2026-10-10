@@ -86,7 +86,9 @@
   .story__layout { grid-template-columns: 1fr; gap: 0; }
   .visual-placeholder--story { min-height: min(115vw, 34rem); }
   .story__content { padding-block: 4.5rem; }
-  .instagram__grid { grid-template-columns: repeat(2, 1fr); }
+  .instagram { padding-block: 3rem; }
+  .instagram__layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .instagram__button { width: fit-content; }
   .site-footer__main { align-items: flex-start; flex-direction: column; }
   .site-logo--footer { width: 14rem; }
   .footer-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 3rem; }
@@ -270,4 +272,8 @@
   .about-v3-actions { align-items: stretch; flex-direction: column; }
   .about-v3-button { width: 100%; }
   .about-v3-link { align-self: center; }
+}
+
+@media (max-width: 36rem) {
+  .instagram__button { width: 100%; }
 }
