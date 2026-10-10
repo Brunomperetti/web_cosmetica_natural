@@ -234,3 +234,42 @@
   .contact-v2-note__grid { grid-template-columns: 1fr; }
   .contact-v2-note__grid > strong { grid-column: auto; }
 }
+
+/* Nosotros v3: desktop, tablet y mobile sin afectar elementos compartidos. */
+@media (max-width: 64rem) {
+  .about-v3-hero__grid { gap: 2rem; }
+  .about-v3-hero__art { min-height: 24rem; padding: 2rem 1.5rem; }
+  .about-v3-history__card { padding: 1.5rem; }
+  .about-v3-values__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+  .about-v3-roots__grid, .about-v3-closing__grid { gap: 2.5rem; }
+}
+
+@media (max-width: 48rem) {
+  .about-v3-section { padding-block: 3.5rem; }
+  .about-v3-main h1 { font-size: clamp(2.625rem, 8vw, 3.75rem); }
+  .about-v3-main h2 { font-size: clamp(2.375rem, 7vw, 3rem); }
+  .about-v3-hero__grid, .about-v3-history__grid, .about-v3-roots__grid, .about-v3-closing__grid { grid-template-columns: minmax(0, 1fr); }
+  .about-v3-hero__grid { gap: 2rem; }
+  .about-v3-hero__art { width: min(100%, 26rem); min-height: 21rem; justify-self: center; gap: 1rem; }
+  .about-v3-hero__art img { width: min(60%, 10rem); }
+  .about-v3-hero__years { padding-top: 1rem; }
+  .about-v3-hero__years strong { font-size: 4rem; }
+  .about-v3-heading { margin-bottom: 2rem; }
+  .about-v3-history__card { padding: 1.75rem; }
+  .about-v3-history__number { margin-bottom: 1.25rem; font-size: 4rem; }
+  .about-v3-history__card h3 { min-height: 0; }
+  .about-v3-roots__grid { gap: 2rem; }
+  .about-v3-roots__badge { width: min(100%, 17rem); }
+  .about-v3-roots__badge strong { font-size: 3rem; }
+  .about-v3-closing__grid { gap: 1.5rem; }
+  .about-v3-closing__copy > p { max-width: 36rem; }
+}
+
+@media (max-width: 36rem) {
+  .about-v3-values__grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .about-v3-value h3 { min-height: 0; }
+  .about-v3-value__number { margin-bottom: .75rem; }
+  .about-v3-actions { align-items: stretch; flex-direction: column; }
+  .about-v3-button { width: 100%; }
+  .about-v3-link { align-self: center; }
+}
