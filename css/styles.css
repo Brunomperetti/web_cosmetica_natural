@@ -101,6 +101,12 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 .product-card__meta { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
 .product-card__category { margin: 0; color: var(--color-taupe); font-size: var(--text-xs); letter-spacing: .06em; text-transform: uppercase; }
 .product-card__price { margin: 0; font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
+.product-card__actions { margin-top: 1.15rem; }
+.product-card__add { min-height: 2.7rem; padding: .68rem 1rem; border: 1px solid rgba(113,84,127,.42); background: transparent; color: var(--color-primary-deep); cursor: pointer; font-family: var(--font-sans); font-size: .66rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; transition: background .22s ease, color .22s ease, border-color .22s ease, transform .18s ease; }
+.product-card__add:hover { border-color: var(--color-primary-deep); background: var(--color-primary-deep); color: var(--color-cream); }
+.product-card__add:focus-visible { outline: 2px solid var(--color-primary-deep); outline-offset: 3px; }
+.product-card__add:active { transform: translateY(1px); }
+.product-card__add.is-added, .product-card__add:disabled { border-color: var(--color-primary); background: var(--color-lilac); color: var(--color-primary-deep); cursor: default; }
 .product-card__overlay { position: absolute; z-index: 3; inset: 0; display: flex; align-items: flex-end; padding: clamp(1.35rem, 2.5vw, 2rem); background: linear-gradient(to bottom, rgba(247,243,248,0) 0%, rgba(247,243,248,0) 52%, rgba(247,243,248,.025) 60%, rgba(247,243,248,.09) 68%, rgba(248,244,249,.3) 80%, rgba(248,244,249,.72) 100%); opacity: 0; pointer-events: none; transition: opacity 720ms cubic-bezier(.22,.61,.36,1); }
 .product-card__overlay-content { width: 100%; color: var(--color-primary-deep); opacity: 0; transform: translateY(8px); transition: opacity 620ms ease 110ms, transform 680ms cubic-bezier(.22,.61,.36,1) 110ms; }
 .product-card__description { display: -webkit-box; margin: 0 0 .75rem; overflow: hidden; color: #685873; font-family: var(--font-sans); font-size: clamp(.72rem, 1vw, .8rem); line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
