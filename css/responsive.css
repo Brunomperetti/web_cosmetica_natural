@@ -70,6 +70,7 @@
   .shop-collection__heading h2 { font-size: clamp(2.55rem, 12vw, 3.5rem); }
   .shop-page .product-card__visual { aspect-ratio: 4 / 5; }
   .shop-page .product-card__overlay { display: none; }
+  .shop-page .product-card__add { width: 100%; min-height: 3.1rem; }
   .shop-by-need__grid { gap: 3rem 1rem; }
   .need-card__content { grid-template-columns: 1fr; padding-top: 1rem; }
   .need-card__title { font-size: clamp(1.45rem, 5vw, 1.85rem); }
