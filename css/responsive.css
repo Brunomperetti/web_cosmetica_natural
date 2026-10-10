@@ -250,10 +250,8 @@
   .about-v3-main h2 { font-size: clamp(2.375rem, 7vw, 3rem); }
   .about-v3-hero__grid, .about-v3-history__grid, .about-v3-roots__grid, .about-v3-closing__grid { grid-template-columns: minmax(0, 1fr); }
   .about-v3-hero__grid { gap: 2rem; }
-  .about-v3-hero__art { width: min(100%, 26rem); min-height: 21rem; justify-self: center; gap: 1rem; }
-  .about-v3-hero__art img { width: min(60%, 10rem); }
-  .about-v3-hero__years { padding-top: 1rem; }
-  .about-v3-hero__years strong { font-size: 4rem; }
+  .about-v3-hero__art { width: min(100%, 26rem); min-height: 21rem; justify-self: center; gap: .75rem; }
+  .about-v3-hero__number { font-size: 6rem; }
   .about-v3-heading { margin-bottom: 2rem; }
   .about-v3-history__card { padding: 1.75rem; }
   .about-v3-history__number { margin-bottom: 1.25rem; font-size: 4rem; }
