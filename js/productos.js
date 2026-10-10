@@ -150,6 +150,36 @@ function crearTarjetaProducto(producto) {
 
   enlace.append(visual, nombre, informacion);
   tarjeta.append(enlace);
+
+  if (document.body.classList.contains("shop-page")) {
+    const acciones = document.createElement("div");
+    acciones.className = "product-card__actions";
+
+    const agregar = document.createElement("button");
+    agregar.className = "product-card__add";
+    agregar.type = "button";
+    agregar.textContent = "Agregar al carrito";
+    agregar.setAttribute("aria-label", `Agregar ${producto.nombre} al carrito`);
+
+    agregar.addEventListener("click", () => {
+      if (!window.LuziaCarrito) return;
+
+      window.LuziaCarrito.agregarProducto(producto.slug, 1);
+      agregar.classList.add("is-added");
+      agregar.textContent = "Agregado ✓";
+      agregar.disabled = true;
+
+      window.setTimeout(() => {
+        agregar.classList.remove("is-added");
+        agregar.textContent = "Agregar al carrito";
+        agregar.disabled = false;
+      }, 1100);
+    });
+
+    acciones.append(agregar);
+    tarjeta.append(acciones);
+  }
+
   return tarjeta;
 }
 
