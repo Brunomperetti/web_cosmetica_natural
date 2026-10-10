@@ -155,12 +155,13 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
   .need-card:hover .need-card__image { transform: scale(1.02); }
   .need-card:hover .need-card__link { transform: translateX(.2rem); }
 }
-.instagram__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; }
-.instagram__item { aspect-ratio: 1; background: var(--color-blush); }
-.instagram__item--two { background: var(--color-lavender); }
-.instagram__item--three { background: var(--color-lilac); }
-.instagram__item--four { background: #eadff0; }
-.instagram__handle { margin: 1.5rem 0 0; font-size: var(--text-xs); letter-spacing: .09em; text-align: center; text-transform: uppercase; }
+.instagram { padding-block: 4rem; border-top: 1px solid var(--color-border); background: var(--color-lilac); }
+.instagram__layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; }
+.instagram__copy .eyebrow { margin-bottom: .75rem; color: var(--color-primary-deep); }
+.instagram__copy h2 { margin-bottom: .75rem; font-size: clamp(2.5rem, 4vw, 3.5rem); }
+.instagram__copy > p:last-child { max-width: 35rem; margin: 0; }
+.instagram__button { display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+
 
 .site-footer { padding-top: 5rem; background: #eee5f3; }
 .site-footer__main { display: flex; align-items: center; justify-content: space-between; gap: 3rem; padding-bottom: 4rem; }
@@ -179,7 +180,6 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
 /* Contenedores fotográficos: la imagen real se superpone al fallback existente. */
 .media-frame__image,
 .category__photo,
-.instagram__photo,
 .product-card__image {
   position: absolute;
   inset: 0;
@@ -209,11 +209,8 @@ h2 { margin-bottom: 1.5rem; font-size: var(--heading-md); letter-spacing: -.015e
   .product-card__cta { transition: border-color 250ms ease, opacity 250ms ease; }
   .product-card:hover .product-card__cta { border-color: var(--color-primary-deep); }
 }
-.instagram__item { position: relative; overflow: hidden; }
-.instagram__photo { object-position: center; }
 .media-frame__image[hidden],
 .category__photo[hidden],
-.instagram__photo[hidden],
 .product-card__image[hidden] { display: none; }
 .product-card__price--pending { color: var(--color-taupe); }
 
