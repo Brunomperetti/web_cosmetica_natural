@@ -52,10 +52,10 @@
   body.home .categories { background: #fffdfb; box-shadow: inset 0 1px 0 rgba(113,84,127,.06); }
   body.home .brand-benefits { background: #f1eaf4; box-shadow: inset 0 1px 0 rgba(113,84,127,.07), inset 0 -1px 0 rgba(113,84,127,.07); }
   body.home .shop-by-need { background: #fbf8fc; }
-  body.home .featured { background: #f7f0f7; box-shadow: inset 0 1px 0 rgba(113,84,127,.06), inset 0 -1px 0 rgba(113,84,127,.06); }
-  body.home .story { background: #fffafc; }
+  body.home .featured { background: #f5edf6; box-shadow: inset 0 1px 0 rgba(113,84,127,.07), inset 0 -1px 0 rgba(113,84,127,.07); }
+  body.home .story { background: #fffafc; box-shadow: inset 0 1px 0 rgba(113,84,127,.10); }
   body.home .wholesale-teaser { background: #f3ecf5; box-shadow: inset 0 1px 0 rgba(113,84,127,.06), inset 0 -1px 0 rgba(113,84,127,.06); }
-  body.home .instagram { border-top-color: rgba(113,84,127,.1); background: #eee5f3; }
+  body.home .instagram { border-top-color: rgba(113,84,127,.10); background: #f8f3f9; }
   .category-grid { grid-template-columns: 1fr; gap: 3.5rem; }
   .section-heading--split { display: block; }
   .section-heading--split .text-link { margin-top: 1rem; }
@@ -95,15 +95,19 @@
   .wholesale-teaser__visual { min-height: 0; aspect-ratio: 4 / 3; }
 
   .story__layout { grid-template-columns: 1fr; gap: 0; }
-  .visual-placeholder--story { min-height: min(115vw, 34rem); }
-  .story__content { padding-block: 4.5rem; }
+  .story__content { order: 1; padding-block: 4rem 3rem; }
+  .story__visual { order: 2; }
+  .visual-placeholder--story { min-height: min(110vw, 32rem); }
   .instagram { padding-block: 3rem; }
   .instagram__layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .instagram__button { width: fit-content; }
-  .site-footer__main { align-items: flex-start; flex-direction: column; }
-  .site-logo--footer { width: 14rem; }
-  .footer-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 3rem; }
-  .site-footer__bottom { flex-direction: column; gap: .25rem; }
+
+  .site-footer { padding-top: 2.75rem; border-top: 1px solid rgba(113,84,127,.10); background: #ece2f1; }
+  .site-footer__main { align-items: flex-start; flex-direction: column; gap: 2.25rem; padding-bottom: 2.5rem; }
+  .site-logo--footer { width: 11.75rem; }
+  .footer-nav { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 2rem; }
+  .footer-nav a { font-size: .75rem; }
+  .site-footer__bottom { flex-direction: column; gap: .2rem; padding-block: 1.1rem 1.6rem; }
 }
 
 @media (max-width: 36rem) {
