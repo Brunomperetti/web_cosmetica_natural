@@ -41,8 +41,17 @@ function calcularPedido(catalogo) {
   if (validos.length !== carrito.length) window.LuziaCarrito.guardarCarrito(validos);
   const subtotal = productos.reduce((suma, producto) => suma + producto.subtotal, 0);
   const pago = obtenerPago();
-  const descuento = pago === "transferencia" ? Math.round(subtotal * 0.10) : 0;
-  return { productos, subtotal, descuento, total: subtotal - descuento, pago };
+  const descuentos = window.LuziaCarrito.calcularDescuentosCompra(subtotal, pago);
+  return {
+    productos,
+    subtotal,
+    descuentoDiaMadre: descuentos.descuentoDiaMadre,
+    descuentoTransferencia: descuentos.descuentoTransferencia,
+    descuento: descuentos.descuentoTotal,
+    total: descuentos.total,
+    pago,
+    promoActiva: descuentos.promoActiva
+  };
 }
 
 function crearFilaResumen(nombre, valor, clase = "") {
@@ -66,7 +75,12 @@ function renderizarResumen() {
   });
   const totales = elemento("div", undefined, "checkout-totals");
   totales.append(crearFilaResumen("Subtotal productos", window.LuziaCarrito.formatearPrecio(detallePedido.subtotal)));
-  if (detallePedido.descuento) totales.append(crearFilaResumen("Descuento transferencia 10%", `− ${window.LuziaCarrito.formatearPrecio(detallePedido.descuento)}`, "cart-summary__discount"));
+  if (detallePedido.descuentoDiaMadre) {
+    totales.append(crearFilaResumen("Día de la Madre 10%", `− ${window.LuziaCarrito.formatearPrecio(detallePedido.descuentoDiaMadre)}`, "cart-summary__discount"));
+  }
+  if (detallePedido.descuentoTransferencia) {
+    totales.append(crearFilaResumen("Transferencia 10% extra", `− ${window.LuziaCarrito.formatearPrecio(detallePedido.descuentoTransferencia)}`, "cart-summary__discount"));
+  }
   totales.append(crearFilaResumen("Total", window.LuziaCarrito.formatearPrecio(detallePedido.total), "cart-summary__total"));
   const pago = elemento("p", undefined, "checkout-payment");
   pago.append(elemento("span", "Forma de pago:"), elemento("strong", detallePedido.pago === "transferencia" ? "Transferencia bancaria" : "Otro medio de pago"));
@@ -83,8 +97,14 @@ function generarObjetoPedido() {
     },
     entrega: datos.get("entrega") || "",
     pago: detallePedido.pago,
+    regalo: datos.get("regalo") === "si",
+    dedicatoria: (datos.get("dedicatoria") || "").trim(),
     productos: detallePedido.productos.map(({ slug, nombre, cantidad, precioUnitario, subtotal }) => ({ slug, nombre, cantidad, precioUnitario, subtotal })),
-    subtotal: detallePedido.subtotal, descuento: detallePedido.descuento, total: detallePedido.total
+    subtotal: detallePedido.subtotal,
+    descuentoDiaMadre: detallePedido.descuentoDiaMadre,
+    descuentoTransferencia: detallePedido.descuentoTransferencia,
+    descuento: detallePedido.descuento,
+    total: detallePedido.total
   };
 }
 
@@ -111,12 +131,17 @@ function validarFormulario() {
 function mostrarConfirmacion(pedido) {
   const productos = elemento("ul", undefined, "order-ready__products");
   pedido.productos.forEach((producto) => productos.append(elemento("li", `${producto.nombre} — ${producto.cantidad}`)));
-  const descuento = pedido.descuento ? `Descuento por transferencia: − ${window.LuziaCarrito.formatearPrecio(pedido.descuento)}` : "Sin descuento por forma de pago";
+  const descuentos = [];
+  if (pedido.descuentoDiaMadre) descuentos.push(elemento("p", `Día de la Madre 10%: − ${window.LuziaCarrito.formatearPrecio(pedido.descuentoDiaMadre)}`));
+  if (pedido.descuentoTransferencia) descuentos.push(elemento("p", `Transferencia 10% extra: − ${window.LuziaCarrito.formatearPrecio(pedido.descuentoTransferencia)}`));
+  const regalo = pedido.regalo ? elemento("p", pedido.dedicatoria ? `Regalo para mamá · Dedicatoria: “${pedido.dedicatoria}”` : "Preparar como regalo para mamá") : null;
   confirmacion.replaceChildren(
     elemento("p", "Pedido revisado", "eyebrow"), elemento("h2", "Tu pedido está listo para enviar"),
     elemento("p", `Nombre: ${pedido.cliente.nombre}`), productos,
     elemento("p", `Forma de pago: ${pedido.pago === "transferencia" ? "Transferencia bancaria" : "Otro medio de pago"}`),
-    elemento("p", descuento), elemento("p", `Total: ${window.LuziaCarrito.formatearPrecio(pedido.total)}`, "order-ready__total"),
+    ...descuentos,
+    elemento("p", `Total: ${window.LuziaCarrito.formatearPrecio(pedido.total)}`, "order-ready__total"),
+    ...(regalo ? [regalo] : []),
     elemento("p", `Forma de entrega: ${pedido.entrega || "A coordinar"}`),
     elemento("p", "En el próximo paso conectaremos la confirmación con el canal de venta de Luzia.", "order-ready__note")
   );
