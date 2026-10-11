@@ -35,6 +35,17 @@
             <div class="form-field form-field--wide"><label for="notas">Notas del pedido</label><textarea id="notas" name="notas" rows="4"></textarea></div>
           </div>
         </section>
+        <fieldset class="gift-options" data-mother-promo hidden>
+          <legend>Especial Día de la Madre</legend>
+          <label class="payment-option">
+            <input type="checkbox" name="regalo" value="si">
+            <span class="payment-option__copy"><strong>Prepararlo como regalo para mamá</strong><small>Podés sumar una dedicatoria breve.</small></span>
+          </label>
+          <div class="form-field gift-options__message">
+            <label for="dedicatoria">Dedicatoria (opcional)</label>
+            <textarea id="dedicatoria" name="dedicatoria" rows="3" maxlength="180" placeholder="Escribí un mensaje para acompañar el regalo"></textarea>
+          </div>
+        </fieldset>
         <fieldset class="delivery-options"><legend>Entrega</legend><label class="payment-option"><input type="radio" name="entrega" value="coordinar entrega"><span class="payment-option__copy"><strong>Coordinar entrega</strong></span></label><label class="payment-option"><input type="radio" name="entrega" value="retiro a coordinar"><span class="payment-option__copy"><strong>Retiro a coordinar</strong></span></label><p>El costo y las condiciones de entrega se coordinan una vez confirmado el pedido.</p></fieldset>
         <p id="form-status" class="form-status" aria-live="assertive"></p>
         <button class="button checkout-confirm" type="submit">Confirmar pedido</button>
