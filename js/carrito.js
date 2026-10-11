@@ -147,6 +147,12 @@ function renderizarCarrito() {
       : "Completás tus datos, coordinás la entrega y elegís cómo pagar.")
   );
 
+  const envio = elemento("div", undefined, "shipping-policy");
+  envio.append(
+    elemento("strong", "Envíos"),
+    elemento("p", "El envío no está incluido en el total y puede tener costo. Es gratis en compras desde $60.000 para Cabalango, Villa Carlos Paz, Tanti y Santa Cruz del Lago. La modalidad y el horario se coordinan con el vendedor.")
+  );
+
   const finalizar = elemento("button", "Continuar compra", "button cart-summary__button cart-summary__checkout");
   finalizar.type = "button";
   finalizar.addEventListener("click", () => {
@@ -156,7 +162,7 @@ function renderizarCarrito() {
 
   const continuar = Object.assign(elemento("a", "Seguir comprando", "cart-summary__continue"), { href: "productos.html" });
 
-  resumen.append(total, nota, finalizar, continuar);
+  resumen.append(total, envio, nota, finalizar, continuar);
   contenedorCarrito.replaceChildren(lista, resumen);
 }
 
