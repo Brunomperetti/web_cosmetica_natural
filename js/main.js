@@ -1,5 +1,24 @@
 "use strict";
 
+function activarPromocionDiaMadre() {
+  if (!window.LuziaCarrito?.promocionDiaMadreActiva()) return;
+
+  document.querySelectorAll("[data-mother-promo]").forEach((elemento) => {
+    elemento.hidden = false;
+  });
+
+  const header = document.querySelector(".site-header");
+  if (!header || document.querySelector(".promo-bar")) return;
+
+  const barra = document.createElement("aside");
+  barra.className = "promo-bar";
+  barra.setAttribute("aria-label", "Promoción Día de la Madre");
+  barra.innerHTML = '<div class="container promo-bar__content"><strong>Día de la Madre</strong><span>10% OFF en toda la tienda</span><span class="promo-bar__separator" aria-hidden="true">·</span><span>20% OFF total con transferencia</span><span class="promo-bar__separator" aria-hidden="true">·</span><span>Hasta el 31/10</span></div>';
+  header.before(barra);
+}
+
+activarPromocionDiaMadre();
+
 function actualizarIndicadoresCarrito() {
   if (!window.LuziaCarrito) return;
   const cantidad = window.LuziaCarrito.obtenerCantidadTotal();
