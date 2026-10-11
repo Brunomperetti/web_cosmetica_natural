@@ -1,13 +1,14 @@
 "use strict";
 
-const CLAVE_PAGO = "luzia_checkout_payment_v1";
 const contenido = document.querySelector("#checkout-contenido");
 const formulario = document.querySelector("#checkout-form");
 const resumen = document.querySelector("#checkout-resumen");
 const confirmacion = document.querySelector("#pedido-confirmado");
 const estadoFormulario = document.querySelector("#form-status");
-let detallePedido = null;
-let pedidoEnMemoria = null;
+const botonConfirmar = formulario?.querySelector(".checkout-confirm");
+const config = window.LuziaCheckoutConfig || {};
+let catalogo = [];
+let subtotalBase = 0;
 
 function elemento(etiqueta, texto, clase) {
   const nodo = document.createElement(etiqueta);
@@ -16,16 +17,20 @@ function elemento(etiqueta, texto, clase) {
   return nodo;
 }
 
-function obtenerPago() {
-  try {
-    const pago = window.sessionStorage.getItem(CLAVE_PAGO);
-    return pago === "transferencia" || pago === "otro" ? pago : "";
-  } catch (error) { return ""; }
+function obtenerPagoSeleccionado() {
+  return formulario?.querySelector('input[name="pago"]:checked')?.value || "";
 }
 
-function calcularPedido(catalogo) {
-  const carrito = window.LuziaCarrito.obtenerCarrito();
-  const productos = carrito.flatMap((item) => {
+function generarReferenciaPedido() {
+  const fecha = new Date();
+  const dos = (valor) => String(valor).padStart(2, "0");
+  const sello = `${fecha.getFullYear()}${dos(fecha.getMonth() + 1)}${dos(fecha.getDate())}-${dos(fecha.getHours())}${dos(fecha.getMinutes())}${dos(fecha.getSeconds())}`;
+  const sufijo = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `LZ-${sello}-${sufijo}`;
+}
+
+function calcularDetalle(pago = obtenerPagoSeleccionado()) {
+  const productos = window.LuziaCarrito.obtenerCarrito().flatMap((item) => {
     const producto = catalogo.find((dato) => dato.slug === item.slug && dato.disponible !== false);
     if (!producto) return [];
     return [{
@@ -37,20 +42,19 @@ function calcularPedido(catalogo) {
       subtotal: window.LuziaCarrito.calcularSubtotal(producto, item.cantidad)
     }];
   });
-  const validos = productos.map(({ slug, cantidad }) => ({ slug, cantidad }));
-  if (validos.length !== carrito.length) window.LuziaCarrito.guardarCarrito(validos);
+
   const subtotal = productos.reduce((suma, producto) => suma + producto.subtotal, 0);
-  const pago = obtenerPago();
-  const descuentos = window.LuziaCarrito.calcularDescuentosCompra(subtotal, pago);
+  const pagoParaCalculo = pago === "transferencia" ? "transferencia" : "otro";
+  const descuentos = window.LuziaCarrito.calcularDescuentosCompra(subtotal, pagoParaCalculo);
+
   return {
     productos,
     subtotal,
-    descuentoDiaMadre: descuentos.descuentoDiaMadre,
-    descuentoTransferencia: descuentos.descuentoTransferencia,
-    descuento: descuentos.descuentoTotal,
-    total: descuentos.total,
     pago,
-    promoActiva: descuentos.promoActiva
+    descuentoDiaMadre: descuentos.descuentoDiaMadre,
+    descuentoTransferencia: pago === "transferencia" ? descuentos.descuentoTransferencia : 0,
+    descuento: descuentos.descuentoDiaMadre + (pago === "transferencia" ? descuentos.descuentoTransferencia : 0),
+    total: subtotal - descuentos.descuentoDiaMadre - (pago === "transferencia" ? descuentos.descuentoTransferencia : 0)
   };
 }
 
@@ -61,55 +65,58 @@ function crearFilaResumen(nombre, valor, clase = "") {
 }
 
 function renderizarResumen() {
+  const detalle = calcularDetalle();
+
   const lista = elemento("div", undefined, "checkout-products");
-  lista.append(elemento("h2", "Productos seleccionados"));
-  detallePedido.productos.forEach((producto) => {
+  lista.append(elemento("p", "Tu compra", "eyebrow"), elemento("h2", "Resumen"));
+
+  detalle.productos.forEach((producto) => {
     const item = elemento("article", undefined, "checkout-product");
     const imagen = document.createElement("img");
     imagen.src = producto.imagen;
     imagen.alt = "";
+    imagen.loading = "lazy";
+    imagen.decoding = "async";
+
     const texto = elemento("div");
     texto.append(elemento("h3", producto.nombre), elemento("p", `Cantidad: ${producto.cantidad}`));
     item.append(imagen, texto, elemento("strong", window.LuziaCarrito.formatearPrecio(producto.subtotal)));
     lista.append(item);
   });
-  const totales = elemento("div", undefined, "checkout-totals");
-  totales.append(crearFilaResumen("Subtotal productos", window.LuziaCarrito.formatearPrecio(detallePedido.subtotal)));
-  if (detallePedido.descuentoDiaMadre) {
-    totales.append(crearFilaResumen("Día de la Madre 10%", `− ${window.LuziaCarrito.formatearPrecio(detallePedido.descuentoDiaMadre)}`, "cart-summary__discount"));
-  }
-  if (detallePedido.descuentoTransferencia) {
-    totales.append(crearFilaResumen("Transferencia 10% extra", `− ${window.LuziaCarrito.formatearPrecio(detallePedido.descuentoTransferencia)}`, "cart-summary__discount"));
-  }
-  totales.append(crearFilaResumen("Total", window.LuziaCarrito.formatearPrecio(detallePedido.total), "cart-summary__total"));
-  const pago = elemento("p", undefined, "checkout-payment");
-  pago.append(elemento("span", "Forma de pago:"), elemento("strong", detallePedido.pago === "transferencia" ? "Transferencia bancaria" : "Otro medio de pago"));
-  resumen.replaceChildren(lista, totales, pago);
-}
 
-function generarObjetoPedido() {
-  const datos = new FormData(formulario);
-  return {
-    cliente: {
-      nombre: datos.get("nombre").trim(), telefono: datos.get("telefono").trim(),
-      email: datos.get("email").trim(), localidad: datos.get("localidad").trim(),
-      direccion: datos.get("direccion").trim(), notas: datos.get("notas").trim()
-    },
-    entrega: datos.get("entrega") || "",
-    pago: detallePedido.pago,
-    regalo: datos.get("regalo") === "si",
-    dedicatoria: (datos.get("dedicatoria") || "").trim(),
-    productos: detallePedido.productos.map(({ slug, nombre, cantidad, precioUnitario, subtotal }) => ({ slug, nombre, cantidad, precioUnitario, subtotal })),
-    subtotal: detallePedido.subtotal,
-    descuentoDiaMadre: detallePedido.descuentoDiaMadre,
-    descuentoTransferencia: detallePedido.descuentoTransferencia,
-    descuento: detallePedido.descuento,
-    total: detallePedido.total
-  };
+  const totales = elemento("div", undefined, "checkout-totals");
+  totales.append(crearFilaResumen("Subtotal productos", window.LuziaCarrito.formatearPrecio(detalle.subtotal)));
+
+  if (detalle.descuentoDiaMadre) {
+    totales.append(crearFilaResumen("Día de la Madre 10%", `− ${window.LuziaCarrito.formatearPrecio(detalle.descuentoDiaMadre)}`, "cart-summary__discount"));
+  }
+
+  if (detalle.descuentoTransferencia) {
+    totales.append(crearFilaResumen("Transferencia 10% extra", `− ${window.LuziaCarrito.formatearPrecio(detalle.descuentoTransferencia)}`, "cart-summary__discount"));
+  }
+
+  totales.append(crearFilaResumen(detalle.pago ? "Total" : "Total con promo", window.LuziaCarrito.formatearPrecio(detalle.total), "cart-summary__total"));
+
+  const pago = elemento("div", undefined, "checkout-payment");
+  if (!detalle.pago) {
+    pago.append(elemento("span", "Pago"), elemento("strong", "Elegí una opción para continuar"));
+  } else {
+    pago.append(
+      elemento("span", "Pago elegido"),
+      elemento("strong", detalle.pago === "transferencia" ? "Transferencia por WhatsApp" : "Mercado Pago")
+    );
+  }
+
+  const entrega = elemento("div", undefined, "checkout-delivery-summary");
+  entrega.append(elemento("span", "Entrega"), elemento("strong", "A coordinar con el vendedor"));
+
+  resumen.replaceChildren(lista, totales, pago, entrega);
+  subtotalBase = detalle.subtotal;
 }
 
 function validarFormulario() {
   let primero = null;
+
   ["nombre", "telefono", "localidad"].forEach((nombre) => {
     const campo = formulario.elements[nombre];
     const error = document.querySelector(`#${nombre}-error`);
@@ -118,63 +125,232 @@ function validarFormulario() {
     error.textContent = invalido ? "Completá este campo para continuar." : "";
     if (invalido && !primero) primero = campo;
   });
+
   const email = formulario.elements.email;
   const errorEmail = document.querySelector("#email-error");
   const emailInvalido = email.value.trim() && !email.validity.valid;
   email.setAttribute("aria-invalid", String(Boolean(emailInvalido)));
   errorEmail.textContent = emailInvalido ? "Ingresá un email válido o dejá el campo vacío." : "";
   if (emailInvalido && !primero) primero = email;
+
+  if (!obtenerPagoSeleccionado() && !primero) {
+    primero = formulario.querySelector('input[name="pago"]:not(:disabled)');
+    estadoFormulario.textContent = "Elegí cómo querés pagar para continuar.";
+  }
+
   if (primero) primero.focus();
   return !primero;
 }
 
-function mostrarConfirmacion(pedido) {
-  const productos = elemento("ul", undefined, "order-ready__products");
-  pedido.productos.forEach((producto) => productos.append(elemento("li", `${producto.nombre} — ${producto.cantidad}`)));
-  const descuentos = [];
-  if (pedido.descuentoDiaMadre) descuentos.push(elemento("p", `Día de la Madre 10%: − ${window.LuziaCarrito.formatearPrecio(pedido.descuentoDiaMadre)}`));
-  if (pedido.descuentoTransferencia) descuentos.push(elemento("p", `Transferencia 10% extra: − ${window.LuziaCarrito.formatearPrecio(pedido.descuentoTransferencia)}`));
-  const regalo = pedido.regalo ? elemento("p", pedido.dedicatoria ? `Regalo para mamá · Dedicatoria: “${pedido.dedicatoria}”` : "Preparar como regalo para mamá") : null;
-  confirmacion.replaceChildren(
-    elemento("p", "Pedido revisado", "eyebrow"), elemento("h2", "Tu pedido está listo para enviar"),
-    elemento("p", `Nombre: ${pedido.cliente.nombre}`), productos,
-    elemento("p", `Forma de pago: ${pedido.pago === "transferencia" ? "Transferencia bancaria" : "Otro medio de pago"}`),
-    ...descuentos,
-    elemento("p", `Total: ${window.LuziaCarrito.formatearPrecio(pedido.total)}`, "order-ready__total"),
-    ...(regalo ? [regalo] : []),
-    elemento("p", `Forma de entrega: ${pedido.entrega || "A coordinar"}`),
-    elemento("p", "En el próximo paso conectaremos la confirmación con el canal de venta de Luzia.", "order-ready__note")
-  );
-  contenido.hidden = true;
-  confirmacion.hidden = false;
-  confirmacion.setAttribute("tabindex", "-1");
-  confirmacion.focus();
+function generarPedido() {
+  const datos = new FormData(formulario);
+  const pago = obtenerPagoSeleccionado();
+  const detalle = calcularDetalle(pago);
+
+  return {
+    referencia: generarReferenciaPedido(),
+    cliente: {
+      nombre: datos.get("nombre").trim(),
+      telefono: datos.get("telefono").trim(),
+      email: datos.get("email").trim(),
+      localidad: datos.get("localidad").trim(),
+      direccion: datos.get("direccion").trim(),
+      notas: datos.get("notas").trim()
+    },
+    entrega: "A coordinar con el vendedor",
+    pago,
+    regalo: datos.get("regalo") === "si",
+    dedicatoria: (datos.get("dedicatoria") || "").trim(),
+    productos: detalle.productos,
+    subtotal: detalle.subtotal,
+    descuentoDiaMadre: detalle.descuentoDiaMadre,
+    descuentoTransferencia: detalle.descuentoTransferencia,
+    descuento: detalle.descuento,
+    total: detalle.total
+  };
 }
 
-formulario.addEventListener("submit", (event) => {
+function lineasProductos(pedido) {
+  return pedido.productos.map((producto) =>
+    `${producto.cantidad} x ${producto.nombre} — ${window.LuziaCarrito.formatearPrecio(producto.subtotal)}`
+  ).join("\n");
+}
+
+function construirMensajeWhatsApp(pedido) {
+  const descuentos = [];
+  if (pedido.descuentoDiaMadre) descuentos.push(`Día de la Madre: -${window.LuziaCarrito.formatearPrecio(pedido.descuentoDiaMadre)}`);
+  if (pedido.descuentoTransferencia) descuentos.push(`Transferencia: -${window.LuziaCarrito.formatearPrecio(pedido.descuentoTransferencia)}`);
+
+  return [
+    "Hola Luzia, quiero confirmar este pedido:",
+    "",
+    `Pedido: ${pedido.referencia}`,
+    `Nombre: ${pedido.cliente.nombre}`,
+    `Teléfono: ${pedido.cliente.telefono}`,
+    `Localidad: ${pedido.cliente.localidad}`,
+    pedido.cliente.direccion ? `Dirección / referencia: ${pedido.cliente.direccion}` : "",
+    "",
+    "Productos:",
+    lineasProductos(pedido),
+    "",
+    `Subtotal: ${window.LuziaCarrito.formatearPrecio(pedido.subtotal)}`,
+    ...descuentos,
+    `TOTAL: ${window.LuziaCarrito.formatearPrecio(pedido.total)}`,
+    "",
+    "Pago: transferencia bancaria",
+    "Entrega: a coordinar con el vendedor",
+    pedido.regalo ? "Es para regalo por el Día de la Madre." : "",
+    pedido.dedicatoria ? `Dedicatoria: ${pedido.dedicatoria}` : "",
+    pedido.cliente.notas ? `Notas: ${pedido.cliente.notas}` : ""
+  ].filter(Boolean).join("\n");
+}
+
+function construirPayloadEmail(pedido) {
+  return {
+    _subject: `Nuevo pedido Luzia · ${pedido.referencia}`,
+    referencia: pedido.referencia,
+    cliente: pedido.cliente.nombre,
+    telefono: pedido.cliente.telefono,
+    email_cliente: pedido.cliente.email || "No informado",
+    localidad: pedido.cliente.localidad,
+    direccion: pedido.cliente.direccion || "A coordinar",
+    entrega: pedido.entrega,
+    pago: pedido.pago === "transferencia" ? "Transferencia por WhatsApp" : "Mercado Pago",
+    productos: lineasProductos(pedido),
+    subtotal: window.LuziaCarrito.formatearPrecio(pedido.subtotal),
+    descuento_dia_madre: pedido.descuentoDiaMadre ? window.LuziaCarrito.formatearPrecio(pedido.descuentoDiaMadre) : "—",
+    descuento_transferencia: pedido.descuentoTransferencia ? window.LuziaCarrito.formatearPrecio(pedido.descuentoTransferencia) : "—",
+    total: window.LuziaCarrito.formatearPrecio(pedido.total),
+    regalo: pedido.regalo ? "Sí" : "No",
+    dedicatoria: pedido.dedicatoria || "—",
+    notas: pedido.cliente.notas || "—"
+  };
+}
+
+async function enviarPedidoPorEmail(pedido) {
+  if (!config.orderEmailEndpoint) return false;
+
+  const respuesta = await fetch(config.orderEmailEndpoint, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(construirPayloadEmail(pedido))
+  });
+
+  const data = await respuesta.json().catch(() => ({}));
+  if (!respuesta.ok || data.success === "false" || data.success === false) {
+    throw new Error(data.message || "No se pudo registrar el pedido por email.");
+  }
+  return true;
+}
+
+function actualizarPagoDisponible() {
+  const opcionMercadoPago = formulario.querySelector('[data-payment-option="mercadopago"]');
+  const inputMercadoPago = opcionMercadoPago?.querySelector('input[value="mercadopago"]');
+  const estadoMercadoPago = opcionMercadoPago?.querySelector("[data-mp-status]");
+
+  if (inputMercadoPago && !config.mercadoPagoLink) {
+    inputMercadoPago.disabled = true;
+    opcionMercadoPago.classList.add("is-disabled");
+    if (estadoMercadoPago) estadoMercadoPago.textContent = "Se habilita cuando carguemos el enlace de cobro.";
+  }
+}
+
+function actualizarBotonPago() {
+  const pago = obtenerPagoSeleccionado();
+  if (!botonConfirmar) return;
+
+  botonConfirmar.disabled = !pago;
+  botonConfirmar.textContent = pago === "transferencia"
+    ? "Enviar pedido por WhatsApp"
+    : pago === "mercadopago"
+      ? "Continuar a Mercado Pago"
+      : "Elegí una forma de pago";
+}
+
+formulario.addEventListener("change", (event) => {
+  if (event.target.matches('input[name="pago"]')) {
+    estadoFormulario.textContent = "";
+    actualizarBotonPago();
+    renderizarResumen();
+  }
+});
+
+formulario.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (!validarFormulario()) {
-    estadoFormulario.textContent = "Revisá los campos señalados para continuar.";
+  estadoFormulario.textContent = "";
+
+  if (!validarFormulario()) return;
+
+  const pedido = generarPedido();
+  const pago = pedido.pago;
+  botonConfirmar.disabled = true;
+  botonConfirmar.textContent = "Registrando pedido…";
+  estadoFormulario.textContent = "Estamos registrando tu pedido.";
+
+  let emailRegistrado = false;
+  try {
+    emailRegistrado = await enviarPedidoPorEmail(pedido);
+  } catch (error) {
+    console.error(error);
+  }
+
+  if (pago === "transferencia") {
+    if (!config.whatsappNumber) {
+      estadoFormulario.textContent = "No pudimos abrir WhatsApp. Escribinos desde la sección Contacto.";
+      actualizarBotonPago();
+      return;
+    }
+
+    const mensaje = construirMensajeWhatsApp(pedido);
+    const url = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+    window.LuziaCarrito.vaciarCarrito();
+    estadoFormulario.textContent = emailRegistrado
+      ? "Pedido registrado. Abrimos WhatsApp para terminar de coordinarlo."
+      : "Abrimos WhatsApp para que puedas enviarnos el pedido.";
+    window.location.href = url;
     return;
   }
-  estadoFormulario.textContent = "Datos completos. Preparamos el resumen final.";
-  pedidoEnMemoria = generarObjetoPedido();
-  mostrarConfirmacion(pedidoEnMemoria);
+
+  if (pago === "mercadopago") {
+    if (!config.mercadoPagoLink) {
+      estadoFormulario.textContent = "Mercado Pago todavía no está habilitado. Elegí transferencia o volvé más tarde.";
+      actualizarBotonPago();
+      return;
+    }
+
+    window.LuziaCarrito.vaciarCarrito();
+    estadoFormulario.textContent = "Pedido registrado. Te llevamos a Mercado Pago.";
+    window.location.href = config.mercadoPagoLink;
+  }
 });
 
 async function iniciarCheckout() {
   try {
-    if (!obtenerPago()) throw new Error("Falta elegir una forma de pago.");
     const respuesta = await fetch("data/productos.json");
     if (!respuesta.ok) throw new Error(`No se pudo cargar el catálogo: ${respuesta.status}`);
-    detallePedido = calcularPedido(await respuesta.json());
-    if (!detallePedido.productos.length) throw new Error("El carrito está vacío.");
+    catalogo = await respuesta.json();
+
+    const carrito = window.LuziaCarrito.obtenerCarrito();
+    const validos = carrito.filter((item) => catalogo.some((producto) => producto.slug === item.slug && producto.disponible !== false));
+    if (validos.length !== carrito.length) window.LuziaCarrito.guardarCarrito(validos);
+    if (!validos.length) throw new Error("El carrito está vacío.");
+
+    actualizarPagoDisponible();
+    actualizarBotonPago();
     renderizarResumen();
   } catch (error) {
     console.error(error);
     formulario.hidden = true;
-    resumen.replaceChildren(elemento("h2", "No pudimos preparar el pedido"), elemento("p", "Volvé al carrito para revisar tus productos y elegir una forma de pago."), Object.assign(elemento("a", "Volver al carrito", "button"), { href: "carrito.html" }));
+    resumen.replaceChildren(
+      elemento("h2", "No pudimos preparar el pedido"),
+      elemento("p", "Volvé al carrito para revisar tu selección."),
+      Object.assign(elemento("a", "Volver al carrito", "button"), { href: "carrito.html" })
+    );
   }
+
   contenido.setAttribute("aria-busy", "false");
 }
 
