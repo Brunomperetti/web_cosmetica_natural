@@ -108,7 +108,11 @@ function renderizarResumen() {
   }
 
   const entrega = elemento("div", undefined, "checkout-delivery-summary");
-  entrega.append(elemento("span", "Entrega"), elemento("strong", "A coordinar con el vendedor"));
+  entrega.append(
+    elemento("span", "Entrega"),
+    elemento("strong", "A coordinar con el vendedor"),
+    elemento("small", "Envío no incluido · Gratis desde $60.000 en Cabalango, Villa Carlos Paz, Tanti y Santa Cruz del Lago")
+  );
 
   resumen.replaceChildren(lista, totales, pago, entrega);
   subtotalBase = detalle.subtotal;
@@ -199,6 +203,7 @@ function construirMensajeWhatsApp(pedido) {
     "",
     "Pago: transferencia bancaria",
     "Entrega: a coordinar con el vendedor",
+    "Envío: no incluido en el total. Gratis desde $60.000 en Cabalango, Villa Carlos Paz, Tanti y Santa Cruz del Lago.",
     pedido.regalo ? "Es para regalo por el Día de la Madre." : "",
     pedido.dedicatoria ? `Dedicatoria: ${pedido.dedicatoria}` : "",
     pedido.cliente.notas ? `Notas: ${pedido.cliente.notas}` : ""
@@ -215,6 +220,7 @@ function construirPayloadEmail(pedido) {
     localidad: pedido.cliente.localidad,
     direccion: pedido.cliente.direccion || "A coordinar",
     entrega: pedido.entrega,
+    politica_envio: "Envío no incluido en el total. Gratis desde $60.000 en Cabalango, Villa Carlos Paz, Tanti y Santa Cruz del Lago.",
     pago: pedido.pago === "transferencia" ? "Transferencia por WhatsApp" : "Mercado Pago",
     productos: lineasProductos(pedido),
     subtotal: window.LuziaCarrito.formatearPrecio(pedido.subtotal),

@@ -659,3 +659,10 @@ button.button { border: 0; cursor: pointer; font-family: var(--font-sans); }
 .checkout-confirm:disabled { background: var(--color-lavender); color: var(--color-text-secondary); cursor: not-allowed; box-shadow: none; transform: none; }
 .checkout-payment, .checkout-delivery-summary { display: grid; gap: .15rem; margin: 1.15rem 0 0; color: var(--color-text-secondary); font-size: var(--text-xs); }
 .checkout-payment strong, .checkout-delivery-summary strong { color: var(--color-text); font-size: var(--text-sm); font-weight: 500; }
+
+
+/* Política de envíos */
+.shipping-policy { margin: 1.35rem 0; padding: 1rem 1.1rem; border: 1px solid rgba(113,84,127,.16); background: #f6f0f7; }
+.shipping-policy strong { display: block; margin-bottom: .35rem; color: var(--color-primary-deep); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.shipping-policy p { margin: 0; color: var(--color-text-secondary); font-size: .72rem; line-height: 1.65; }
+.checkout-delivery-summary small { margin-top: .3rem; color: var(--color-text-secondary); font-size: .65rem; line-height: 1.55; }
