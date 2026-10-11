@@ -617,3 +617,45 @@ button.button { border: 0; cursor: pointer; font-family: var(--font-sans); }
 .gift-options { margin: 1.5rem 0; padding: 1.25rem 0; border: 0; border-block: 1px solid var(--color-border); }
 .gift-options legend { padding: 0; color: var(--color-text); font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; }
 .gift-options__message { margin-top: 1rem; }
+
+
+/* Checkout de compra v2 */
+.site-cart { width: auto; min-width: 2rem; gap: .45rem; padding: .45rem .55rem; border: 1px solid transparent; transition: border-color .2s ease, background .2s ease; }
+.site-cart:hover { border-color: var(--color-border); background: rgba(216,198,229,.12); }
+.site-cart__text { font-size: .625rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
+.site-cart__badge { top: -.2rem; right: -.25rem; }
+
+.mobile-cart-bar { display: none; }
+
+.cart-summary__next { margin: 1.4rem 0 1.7rem; padding: 1rem 1.1rem; background: var(--color-lilac); }
+.cart-summary__next strong { display: block; margin-bottom: .35rem; color: var(--color-text); font-size: var(--text-sm); font-weight: 500; }
+.cart-summary__next p { margin: 0; color: var(--color-text-secondary); font-size: var(--text-xs); line-height: 1.65; }
+
+.checkout-form { display: grid; gap: 1.35rem; }
+.checkout-step { margin: 0; padding: clamp(1.5rem, 3vw, 2.2rem); border: 1px solid var(--color-border); background: rgba(255,255,255,.28); }
+.checkout-step__heading { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.75rem; }
+.checkout-step__heading .eyebrow { margin-bottom: .35rem; }
+.checkout-step__heading h2 { margin: 0; }
+.checkout-step__number { display: inline-grid; width: 2.15rem; height: 2.15rem; flex: 0 0 auto; place-items: center; border: 1px solid rgba(113,84,127,.28); border-radius: 50%; color: var(--color-primary-deep); font-family: var(--font-serif); font-size: 1.25rem; }
+
+.gift-options.checkout-step { margin: 0; border: 1px solid var(--color-border); background: var(--color-lilac); }
+.gift-options.checkout-step legend { display: inline-flex; align-items: center; gap: .75rem; padding-right: .5rem; }
+
+.delivery-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.1rem; border: 1px solid var(--color-primary); background: rgba(216,198,229,.18); }
+.delivery-card__icon { display: grid; width: 1.75rem; height: 1.75rem; flex: 0 0 auto; place-items: center; border-radius: 50%; background: var(--color-primary-deep); color: white; font-size: .7rem; }
+.delivery-card strong { display: block; margin-bottom: .25rem; font-size: var(--text-sm); font-weight: 500; }
+.delivery-card p { margin: 0; color: var(--color-text-secondary); font-size: var(--text-xs); line-height: 1.65; }
+
+.payment-options.checkout-step { padding: clamp(1.5rem, 3vw, 2.2rem); border: 1px solid var(--color-border); }
+.payment-options.checkout-step legend { display: inline-flex; align-items: center; gap: .75rem; padding-right: .5rem; font-family: var(--font-serif); font-size: 1.8rem; }
+.payment-option--checkout { min-height: 5rem; margin-top: .85rem; padding: 1rem 1.1rem; border-color: var(--color-border); background: rgba(255,255,255,.35); }
+.payment-option--checkout:has(input:checked) { border-color: var(--color-primary-deep); background: rgba(216,198,229,.24); box-shadow: inset 3px 0 0 var(--color-primary-deep); }
+.payment-option--checkout.is-disabled { opacity: .58; cursor: not-allowed; }
+.payment-option--checkout.is-disabled input { cursor: not-allowed; }
+.payment-option__copy em { margin-top: .3rem; color: var(--color-primary-deep); font-size: .65rem; font-style: normal; line-height: 1.45; }
+
+.checkout-submit { padding-top: .35rem; }
+.checkout-submit__note { max-width: 38rem; margin: .9rem 0 0; color: var(--color-text-secondary); font-size: .68rem; line-height: 1.6; }
+.checkout-confirm:disabled { background: var(--color-lavender); color: var(--color-text-secondary); cursor: not-allowed; box-shadow: none; transform: none; }
+.checkout-payment, .checkout-delivery-summary { display: grid; gap: .15rem; margin: 1.15rem 0 0; color: var(--color-text-secondary); font-size: var(--text-xs); }
+.checkout-payment strong, .checkout-delivery-summary strong { color: var(--color-text); font-size: var(--text-sm); font-weight: 500; }

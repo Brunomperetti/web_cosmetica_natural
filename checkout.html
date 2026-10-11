@@ -21,22 +21,23 @@
     </div>
   </header>
   <main class="container checkout-page">
-    <header class="checkout-heading"><p class="eyebrow">Un último paso</p><h1>Finalizar pedido</h1><p>Completá tus datos para preparar tu pedido.</p></header>
+    <header class="checkout-heading"><p class="eyebrow">Compra segura y simple</p><h1>Finalizar compra</h1><p>Completá tus datos, coordiná la entrega y elegí cómo querés pagar.</p></header>
     <div id="checkout-contenido" class="checkout-layout" aria-busy="true">
       <form id="checkout-form" class="checkout-form" novalidate>
-        <section aria-labelledby="datos-title">
-          <h2 id="datos-title">Tus datos</h2>
+        <section class="checkout-step" aria-labelledby="datos-title">
+          <div class="checkout-step__heading"><span class="checkout-step__number">1</span><div><p class="eyebrow">Datos de contacto</p><h2 id="datos-title">¿Quién recibe el pedido?</h2></div></div>
           <div class="checkout-fields">
             <div class="form-field form-field--wide"><label for="nombre">Nombre y apellido <span aria-hidden="true">*</span></label><input id="nombre" name="nombre" type="text" required autocomplete="name" aria-describedby="nombre-error"><small id="nombre-error" class="field-error"></small></div>
-            <div class="form-field"><label for="telefono">Teléfono <span aria-hidden="true">*</span></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel" aria-describedby="telefono-error"><small id="telefono-error" class="field-error"></small></div>
+            <div class="form-field"><label for="telefono">WhatsApp / teléfono <span aria-hidden="true">*</span></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel" aria-describedby="telefono-error"><small id="telefono-error" class="field-error"></small></div>
             <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error"><small id="email-error" class="field-error"></small></div>
             <div class="form-field form-field--wide"><label for="localidad">Localidad <span aria-hidden="true">*</span></label><input id="localidad" name="localidad" type="text" required autocomplete="address-level2" aria-describedby="localidad-error"><small id="localidad-error" class="field-error"></small></div>
-            <div class="form-field form-field--wide"><label for="direccion">Dirección / punto de entrega</label><input id="direccion" name="direccion" type="text" autocomplete="street-address"></div>
-            <div class="form-field form-field--wide"><label for="notas">Notas del pedido</label><textarea id="notas" name="notas" rows="4"></textarea></div>
+            <div class="form-field form-field--wide"><label for="direccion">Dirección / referencia</label><input id="direccion" name="direccion" type="text" autocomplete="street-address"></div>
+            <div class="form-field form-field--wide"><label for="notas">Notas del pedido</label><textarea id="notas" name="notas" rows="3" placeholder="Horario, referencia o cualquier detalle que quieras contarnos"></textarea></div>
           </div>
         </section>
-        <fieldset class="gift-options" data-mother-promo hidden>
-          <legend>Especial Día de la Madre</legend>
+
+        <fieldset class="gift-options checkout-step" data-mother-promo hidden>
+          <legend><span class="checkout-step__number">+</span><span>Especial Día de la Madre</span></legend>
           <label class="payment-option">
             <input type="checkbox" name="regalo" value="si">
             <span class="payment-option__copy"><strong>Prepararlo como regalo para mamá</strong><small>Podés sumar una dedicatoria breve.</small></span>
@@ -46,15 +47,39 @@
             <textarea id="dedicatoria" name="dedicatoria" rows="3" maxlength="180" placeholder="Escribí un mensaje para acompañar el regalo"></textarea>
           </div>
         </fieldset>
-        <fieldset class="delivery-options"><legend>Entrega</legend><label class="payment-option"><input type="radio" name="entrega" value="coordinar entrega"><span class="payment-option__copy"><strong>Coordinar entrega</strong></span></label><label class="payment-option"><input type="radio" name="entrega" value="retiro a coordinar"><span class="payment-option__copy"><strong>Retiro a coordinar</strong></span></label><p>El costo y las condiciones de entrega se coordinan una vez confirmado el pedido.</p></fieldset>
-        <p id="form-status" class="form-status" aria-live="assertive"></p>
-        <button class="button checkout-confirm" type="submit">Confirmar pedido</button>
+
+        <section class="checkout-step" aria-labelledby="entrega-title">
+          <div class="checkout-step__heading"><span class="checkout-step__number">2</span><div><p class="eyebrow">Entrega</p><h2 id="entrega-title">Coordinamos con vos</h2></div></div>
+          <input type="hidden" name="entrega" value="A coordinar con el vendedor">
+          <div class="delivery-card">
+            <span class="delivery-card__icon" aria-hidden="true">✓</span>
+            <div><strong>Entrega a coordinar con el vendedor</strong><p>Después de confirmar el pedido coordinamos modalidad, costo y horario de entrega.</p></div>
+          </div>
+        </section>
+
+        <fieldset class="payment-options checkout-step" id="checkout-payment-options">
+          <legend><span class="checkout-step__number">3</span><span>Elegí cómo pagar</span></legend>
+          <label class="payment-option payment-option--checkout" data-payment-option="mercadopago">
+            <input type="radio" name="pago" value="mercadopago">
+            <span class="payment-option__copy"><strong>Mercado Pago</strong><small>10% OFF Día de la Madre · Continuás al pago online.</small><em data-mp-status></em></span>
+          </label>
+          <label class="payment-option payment-option--checkout" data-payment-option="transferencia">
+            <input type="radio" name="pago" value="transferencia">
+            <span class="payment-option__copy"><strong>Transferencia bancaria por WhatsApp</strong><small>20% OFF total durante octubre · Enviamos el pedido y coordinamos los datos de transferencia.</small></span>
+          </label>
+        </fieldset>
+
+        <div class="checkout-submit">
+          <p id="form-status" class="form-status" aria-live="assertive"></p>
+          <button class="button checkout-confirm" type="submit" disabled>Elegí una forma de pago</button>
+          <p class="checkout-submit__note">Tu pedido también queda registrado por email para que Luzia pueda revisarlo y acompañarte.</p>
+        </div>
       </form>
       <aside id="checkout-resumen" class="checkout-summary" aria-label="Resumen final del pedido"><p>Cargando tu pedido…</p></aside>
     </div>
     <section id="pedido-confirmado" class="order-ready" hidden aria-live="polite" aria-labelledby="pedido-listo-title"></section>
   </main>
   <footer class="site-footer"><div class="container site-footer__main"><a class="site-logo site-logo--footer" href="index.html" aria-label="Luzia Cosmética Natural, inicio"><img src="assets/logo/luzia-logo.png" alt="Luzia Cosmética Natural" width="1024" height="341"></a><nav aria-label="Navegación del pie de página"><ul class="footer-nav"><li><a href="productos.html">Tienda</a></li><li><a href="mayoristas.html">Mayoristas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div><div class="container site-footer__bottom"><p>&copy; <span data-current-year></span> Luzia Cosmética Natural</p><p>Hecho con cuidado</p></div></footer>
-  <script src="js/carrito-store.js"></script><script src="js/main.js"></script><script src="js/checkout.js"></script>
+  <script src="js/carrito-store.js"></script><script src="js/checkout-config.js"></script><script src="js/main.js"></script><script src="js/checkout.js"></script>
 </body>
 </html>

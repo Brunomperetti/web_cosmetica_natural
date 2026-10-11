@@ -19,17 +19,54 @@ function activarPromocionDiaMadre() {
 
 activarPromocionDiaMadre();
 
+function obtenerBarraCarritoMobile() {
+  let barra = document.querySelector(".mobile-cart-bar");
+  if (barra) return barra;
+
+  barra = document.createElement("a");
+  barra.className = "mobile-cart-bar";
+  barra.href = "carrito.html";
+  barra.hidden = true;
+  barra.innerHTML = '<span>Ver carrito</span><strong data-mobile-cart-copy></strong>';
+  document.body.append(barra);
+  return barra;
+}
+
 function actualizarIndicadoresCarrito() {
   if (!window.LuziaCarrito) return;
+
   const cantidad = window.LuziaCarrito.obtenerCantidadTotal();
+
   document.querySelectorAll("[data-cart-link]").forEach((enlace) => {
     enlace.setAttribute("aria-label", `Ver carrito, ${cantidad} ${cantidad === 1 ? "producto" : "productos"}`);
+
+    if (!enlace.querySelector(".site-cart__text")) {
+      const texto = document.createElement("span");
+      texto.className = "site-cart__text";
+      texto.textContent = "Carrito";
+      const badge = enlace.querySelector("[data-cart-count]");
+      enlace.insertBefore(texto, badge || null);
+    }
+
     const badge = enlace.querySelector("[data-cart-count]");
     if (badge) {
       badge.textContent = cantidad;
       badge.hidden = cantidad === 0;
     }
   });
+
+  const pagina = window.location.pathname.split("/").pop() || "index.html";
+  const puedeMostrarFlotante = pagina !== "carrito.html" && pagina !== "checkout.html";
+  const barra = obtenerBarraCarritoMobile();
+  barra.hidden = !(cantidad > 0 && puedeMostrarFlotante);
+
+  if (!barra.hidden) {
+    const copy = barra.querySelector("[data-mobile-cart-copy]");
+    copy.textContent = `${cantidad} ${cantidad === 1 ? "producto" : "productos"}`;
+    document.body.classList.add("has-mobile-cart-bar");
+  } else {
+    document.body.classList.remove("has-mobile-cart-bar");
+  }
 }
 
 actualizarIndicadoresCarrito();
