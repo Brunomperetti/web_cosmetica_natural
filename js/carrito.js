@@ -115,9 +115,18 @@ function renderizarCarrito() {
   const fieldset = elemento("fieldset", undefined, "payment-options");
   fieldset.append(elemento("legend", "Forma de pago"));
   const pagoInicial = obtenerPago();
+  const promoActiva = window.LuziaCarrito.promocionDiaMadreActiva();
   [
-    { valor: "transferencia", titulo: "Transferencia bancaria", ayuda: "10% de descuento" },
-    { valor: "otro", titulo: "Otro medio de pago", ayuda: "El total se mantiene sin descuento" }
+    {
+      valor: "transferencia",
+      titulo: "Transferencia bancaria",
+      ayuda: promoActiva ? "20% OFF total durante octubre" : "10% de descuento"
+    },
+    {
+      valor: "otro",
+      titulo: "Otro medio de pago",
+      ayuda: promoActiva ? "10% OFF Día de la Madre" : "El total se mantiene sin descuento"
+    }
   ].forEach((opcion) => {
     const label = elemento("label", undefined, "payment-option");
     const input = document.createElement("input");
@@ -130,7 +139,8 @@ function renderizarCarrito() {
     label.append(input, copy);
     fieldset.append(label);
   });
-  const descuentoFila = Object.assign(elemento("div", undefined, "cart-summary__row cart-summary__discount"), { hidden: true });
+  const descuentoMadreFila = Object.assign(elemento("div", undefined, "cart-summary__row cart-summary__discount"), { hidden: true });
+  const descuentoTransferenciaFila = Object.assign(elemento("div", undefined, "cart-summary__row cart-summary__discount"), { hidden: true });
   const totalFila = elemento("div", undefined, "cart-summary__row cart-summary__total");
   const estado = elemento("p", "Elegí una forma de pago para continuar.", "cart-summary__status");
   estado.setAttribute("aria-live", "polite");
@@ -139,12 +149,30 @@ function renderizarCarrito() {
   const continuar = Object.assign(elemento("a", "Continuar comprando", "cart-summary__continue"), { href: "productos.html" });
 
   function actualizarResumen(pago) {
-    const descuento = pago === "transferencia" ? Math.round(total * 0.10) : 0;
-    descuentoFila.hidden = descuento === 0;
-    descuentoFila.replaceChildren(elemento("span", "Descuento transferencia (10%)"), elemento("strong", `− ${window.LuziaCarrito.formatearPrecio(descuento)}`));
-    totalFila.replaceChildren(elemento("span", "Total"), elemento("strong", window.LuziaCarrito.formatearPrecio(total - descuento)));
+    const descuentos = window.LuziaCarrito.calcularDescuentosCompra(total, pago);
+    descuentoMadreFila.hidden = descuentos.descuentoDiaMadre === 0;
+    descuentoTransferenciaFila.hidden = descuentos.descuentoTransferencia === 0;
+    descuentoMadreFila.replaceChildren(
+      elemento("span", "Día de la Madre (10%)"),
+      elemento("strong", `− ${window.LuziaCarrito.formatearPrecio(descuentos.descuentoDiaMadre)}`)
+    );
+    descuentoTransferenciaFila.replaceChildren(
+      elemento("span", "Transferencia (10% extra)"),
+      elemento("strong", `− ${window.LuziaCarrito.formatearPrecio(descuentos.descuentoTransferencia)}`)
+    );
+    totalFila.replaceChildren(elemento("span", "Total"), elemento("strong", window.LuziaCarrito.formatearPrecio(descuentos.total)));
     finalizar.disabled = !pago;
-    estado.textContent = pago ? (pago === "transferencia" ? `Descuento aplicado. Total ${window.LuziaCarrito.formatearPrecio(total - descuento)}.` : `Total ${window.LuziaCarrito.formatearPrecio(total)} sin descuento.`) : "Elegí una forma de pago para continuar.";
+    if (!pago) {
+      estado.textContent = "Elegí una forma de pago para continuar.";
+    } else if (descuentos.promoActiva && pago === "transferencia") {
+      estado.textContent = `20% OFF total aplicado. Total ${window.LuziaCarrito.formatearPrecio(descuentos.total)}.`;
+    } else if (descuentos.promoActiva) {
+      estado.textContent = `10% OFF Día de la Madre aplicado. Total ${window.LuziaCarrito.formatearPrecio(descuentos.total)}.`;
+    } else if (pago === "transferencia") {
+      estado.textContent = `Descuento aplicado. Total ${window.LuziaCarrito.formatearPrecio(descuentos.total)}.`;
+    } else {
+      estado.textContent = `Total ${window.LuziaCarrito.formatearPrecio(descuentos.total)}.`;
+    }
   }
 
   fieldset.addEventListener("change", (event) => {
@@ -158,7 +186,7 @@ function renderizarCarrito() {
   resumen.append(
     elemento("h2", "Resumen"),
     Object.assign(elemento("div", undefined, "cart-summary__row"), { innerHTML: `<span>Subtotal productos</span><strong>${window.LuziaCarrito.formatearPrecio(total)}</strong>` }),
-    fieldset, descuentoFila, totalFila, estado, finalizar, continuar
+    fieldset, descuentoMadreFila, descuentoTransferenciaFila, totalFila, estado, finalizar, continuar
   );
   actualizarResumen(pagoInicial);
   contenedorCarrito.replaceChildren(lista, resumen);
