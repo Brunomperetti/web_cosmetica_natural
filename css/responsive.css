@@ -292,3 +292,17 @@
 @media (max-width: 36rem) {
   .instagram__button { width: 100%; }
 }
+
+
+/* Campaña Día de la Madre */
+@media (max-width: 48rem) {
+  .promo-bar__content { min-height: 2.9rem; flex-wrap: wrap; gap: .1rem .45rem; padding-block: .45rem; font-size: .56rem; }
+  .promo-bar__separator { display: none; }
+  .promo-bar__content strong { flex-basis: 100%; }
+  .mother-campaign { padding-block: 3.25rem; }
+  .mother-campaign__layout { grid-template-columns: 1fr; align-items: start; gap: 1.5rem; }
+  .mother-campaign__offer { justify-self: start; }
+  .mother-campaign__offer p { font-size: 1rem; }
+  .product-card__pricing { gap: .4rem; }
+  .product-detail__pricing { margin-bottom: .35rem; }
+}

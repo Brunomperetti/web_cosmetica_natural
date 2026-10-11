@@ -143,10 +143,23 @@ function crearTarjetaProducto(producto) {
   informacion.append(categoria);
 
   if (typeof producto.precio === "number" && Number.isFinite(producto.precio)) {
-    const precio = document.createElement("p");
-    precio.className = "product-card__price";
-    precio.textContent = formatearPrecio(producto.precio);
-    informacion.append(precio);
+    const precios = document.createElement("div");
+    precios.className = "product-card__pricing";
+    if (window.LuziaCarrito?.promocionDiaMadreActiva()) {
+      const precioAnterior = document.createElement("span");
+      precioAnterior.className = "product-card__price product-card__price--old";
+      precioAnterior.textContent = formatearPrecio(producto.precio);
+      const precioPromo = document.createElement("strong");
+      precioPromo.className = "product-card__price product-card__price--promo";
+      precioPromo.textContent = formatearPrecio(window.LuziaCarrito.calcularPrecioDiaMadre(producto.precio));
+      precios.append(precioAnterior, precioPromo);
+    } else {
+      const precio = document.createElement("strong");
+      precio.className = "product-card__price";
+      precio.textContent = formatearPrecio(producto.precio);
+      precios.append(precio);
+    }
+    informacion.append(precios);
   }
 
   enlace.append(visual, nombre, informacion);

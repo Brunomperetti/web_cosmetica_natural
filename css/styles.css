@@ -588,3 +588,32 @@ button.button { border: 0; cursor: pointer; font-family: var(--font-sans); }
 .about-v3-link { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 1rem; border-bottom: 1px solid currentColor; color: var(--about-plum); font-size: .6875rem; font-weight: 500; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
 .about-v3-link:hover { color: #71547f; }
 .about-v3-button:focus-visible, .about-v3-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+
+/* Campaña Día de la Madre · octubre 2026 */
+.promo-bar { position: relative; z-index: 30; background: var(--color-primary-deep); color: var(--color-cream); }
+.promo-bar__content { display: flex; min-height: 2.35rem; align-items: center; justify-content: center; gap: .7rem; font-size: .625rem; letter-spacing: .08em; line-height: 1.4; text-align: center; text-transform: uppercase; }
+.promo-bar__content strong { font-weight: 600; }
+.promo-bar__separator { opacity: .5; }
+
+.mother-campaign { padding-block: clamp(2.5rem, 4vw, 4rem); border-block: 1px solid rgba(113,84,127,.10); background: linear-gradient(105deg, #f3e8f1 0%, #f8f2f7 48%, #efe5f3 100%); }
+.mother-campaign__layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: end; gap: clamp(2rem, 6vw, 6rem); }
+.mother-campaign__copy .eyebrow { color: var(--color-primary-deep); }
+.mother-campaign__copy h2 { max-width: 34rem; margin-bottom: 0; font-size: clamp(2.6rem, 4.5vw, 4.25rem); }
+.mother-campaign__offer { max-width: 35rem; justify-self: end; }
+.mother-campaign__offer p { margin-bottom: 1.15rem; color: var(--color-text-secondary); font-size: var(--text-md); }
+.mother-campaign__offer strong { color: var(--color-text); font-weight: 500; }
+.mother-campaign__offer small { display: block; margin-top: .9rem; color: var(--color-text-secondary); font-size: .6875rem; }
+
+.product-card__pricing { display: flex; align-items: baseline; justify-content: flex-end; gap: .45rem; white-space: nowrap; }
+.product-card__price--old { color: var(--color-text-secondary); font-weight: 400; text-decoration: line-through; opacity: .75; }
+.product-card__price--promo { color: var(--color-primary-deep); font-weight: 600; }
+
+.product-detail__pricing { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem .75rem; margin-bottom: 0; }
+.product-detail__price--old { color: var(--color-text-secondary); font-size: 1.2rem; text-decoration: line-through; opacity: .7; }
+.product-detail__price--promo { color: var(--color-primary-deep); }
+.product-detail__promo-badge { flex-basis: 100%; width: max-content; margin-top: .2rem; color: var(--color-primary-deep); font-size: .6875rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+
+.gift-options { margin: 1.5rem 0; padding: 1.25rem 0; border: 0; border-block: 1px solid var(--color-border); }
+.gift-options legend { padding: 0; color: var(--color-text); font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; }
+.gift-options__message { margin-top: 1rem; }

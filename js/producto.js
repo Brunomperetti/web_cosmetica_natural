@@ -42,9 +42,21 @@ function renderizarProducto(producto) {
   informacion.className = "product-detail__information";
   informacion.append(
     crearTexto("p", producto.categoria, "eyebrow product-detail__category"),
-    crearTexto("h1", producto.nombre),
-    crearTexto("p", formatearPrecio(producto.precio), "product-detail__price")
+    crearTexto("h1", producto.nombre)
   );
+
+  const precios = document.createElement("div");
+  precios.className = "product-detail__pricing";
+  if (window.LuziaCarrito.promocionDiaMadreActiva()) {
+    precios.append(
+      crearTexto("span", formatearPrecio(producto.precio), "product-detail__price product-detail__price--old"),
+      crearTexto("strong", formatearPrecio(window.LuziaCarrito.calcularPrecioDiaMadre(producto.precio)), "product-detail__price product-detail__price--promo"),
+      crearTexto("span", "Especial Día de la Madre · 10% OFF", "product-detail__promo-badge")
+    );
+  } else {
+    precios.append(crearTexto("strong", formatearPrecio(producto.precio), "product-detail__price"));
+  }
+  informacion.append(precios);
 
   if (producto.promocion) {
     informacion.append(crearTexto("p", producto.promocion, "product-detail__promotion"));

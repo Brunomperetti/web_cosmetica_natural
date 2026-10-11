@@ -3,6 +3,40 @@
 (function iniciarCarrito(global) {
   const CLAVE = "luzia_cart_v1";
 
+  const PROMO_DIA_MADRE = Object.freeze({
+    nombre: "Día de la Madre",
+    inicio: "2026-10-11T00:00:00-03:00",
+    fin: "2026-11-01T00:00:00-03:00",
+    porcentaje: 0.10,
+    extraTransferencia: 0.10
+  });
+
+  function promocionDiaMadreActiva(fecha = new Date()) {
+    const instante = fecha instanceof Date ? fecha.getTime() : new Date(fecha).getTime();
+    return instante >= new Date(PROMO_DIA_MADRE.inicio).getTime() &&
+      instante < new Date(PROMO_DIA_MADRE.fin).getTime();
+  }
+
+  function calcularPrecioDiaMadre(precio) {
+    return promocionDiaMadreActiva() ? Math.round(precio * (1 - PROMO_DIA_MADRE.porcentaje)) : precio;
+  }
+
+  function calcularDescuentosCompra(subtotal, pago) {
+    const promoActiva = promocionDiaMadreActiva();
+    const descuentoDiaMadre = promoActiva ? Math.round(subtotal * PROMO_DIA_MADRE.porcentaje) : 0;
+    const descuentoTransferencia = pago === "transferencia"
+      ? Math.round(subtotal * PROMO_DIA_MADRE.extraTransferencia)
+      : 0;
+    const descuentoTotal = descuentoDiaMadre + descuentoTransferencia;
+    return {
+      promoActiva,
+      descuentoDiaMadre,
+      descuentoTransferencia,
+      descuentoTotal,
+      total: Math.max(0, subtotal - descuentoTotal)
+    };
+  }
+
   function normalizar(carrito) {
     if (!Array.isArray(carrito)) return [];
     const cantidades = new Map();
@@ -77,6 +111,7 @@
   global.LuziaCarrito = Object.freeze({
     CLAVE, obtenerCarrito, guardarCarrito, agregarProducto, quitarProducto,
     actualizarCantidad, vaciarCarrito, obtenerCantidadTotal, obtenerCantidadProducto,
-    formatearPrecio, calcularSubtotal
+    formatearPrecio, calcularSubtotal, PROMO_DIA_MADRE, promocionDiaMadreActiva,
+    calcularPrecioDiaMadre, calcularDescuentosCompra
   });
 })(window);
