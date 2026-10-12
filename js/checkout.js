@@ -257,10 +257,20 @@ function actualizarPagoDisponible() {
   const inputMercadoPago = opcionMercadoPago?.querySelector('input[value="mercadopago"]');
   const estadoMercadoPago = opcionMercadoPago?.querySelector("[data-mp-status]");
 
-  if (inputMercadoPago && !config.mercadoPagoLink) {
+  if (!inputMercadoPago) return;
+
+  if (!config.mercadoPagoLink) {
     inputMercadoPago.disabled = true;
     opcionMercadoPago.classList.add("is-disabled");
     if (estadoMercadoPago) estadoMercadoPago.textContent = "Se habilita cuando carguemos el enlace de cobro.";
+    return;
+  }
+
+  inputMercadoPago.disabled = false;
+  opcionMercadoPago.classList.remove("is-disabled");
+  if (estadoMercadoPago) {
+    const detalle = calcularDetalle("mercadopago");
+    estadoMercadoPago.textContent = `En Mercado Pago ingresá exactamente ${window.LuziaCarrito.formatearPrecio(detalle.total)}.`;
   }
 }
 
@@ -269,11 +279,14 @@ function actualizarBotonPago() {
   if (!botonConfirmar) return;
 
   botonConfirmar.disabled = !pago;
-  botonConfirmar.textContent = pago === "transferencia"
-    ? "Enviar pedido por WhatsApp"
-    : pago === "mercadopago"
-      ? "Continuar a Mercado Pago"
-      : "Elegí una forma de pago";
+  if (pago === "transferencia") {
+    botonConfirmar.textContent = "Enviar pedido por WhatsApp";
+  } else if (pago === "mercadopago") {
+    const detalle = calcularDetalle("mercadopago");
+    botonConfirmar.textContent = `Pagar ${window.LuziaCarrito.formatearPrecio(detalle.total)} con Mercado Pago`;
+  } else {
+    botonConfirmar.textContent = "Elegí una forma de pago";
+  }
 }
 
 formulario.addEventListener("change", (event) => {
@@ -327,8 +340,7 @@ formulario.addEventListener("submit", async (event) => {
       return;
     }
 
-    window.LuziaCarrito.vaciarCarrito();
-    estadoFormulario.textContent = "Pedido registrado. Te llevamos a Mercado Pago.";
+    estadoFormulario.textContent = `Pedido registrado. En Mercado Pago ingresá exactamente ${window.LuziaCarrito.formatearPrecio(pedido.total)}.`;
     window.location.href = config.mercadoPagoLink;
   }
 });
