@@ -6,7 +6,12 @@ const resumen = document.querySelector("#checkout-resumen");
 const confirmacion = document.querySelector("#pedido-confirmado");
 const estadoFormulario = document.querySelector("#form-status");
 const botonConfirmar = formulario?.querySelector(".checkout-confirm");
-const config = window.LuziaCheckoutConfig || {};
+const config = Object.freeze({
+  whatsappNumber: "5491130113146",
+  orderEmailEndpoint: "https://formsubmit.co/ajax/luziacosmeticanatural@gmail.com",
+  mercadoPagoLink: "https://link.mercadopago.com.ar/luziacosmetica",
+  ...(window.LuziaCheckoutConfig || {})
+});
 let catalogo = [];
 let subtotalBase = 0;
 
